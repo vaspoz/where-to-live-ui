@@ -67,7 +67,8 @@
     "rules": {
       "linebreak-style": ["error", "windows"],
       "react/jsx-closing-bracket-location": [1, "tag-aligned"],
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "prefer-template": 0
     }
   }
 }
