@@ -62,6 +62,9 @@
     "extends": [
       "xo-react/space",
       "xo-space/esnext"
-    ]
+    ],
+    "rules": {
+      "linebreak-style": ["error", "windows"]
+    }
   }
 }
