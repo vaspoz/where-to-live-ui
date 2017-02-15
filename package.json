@@ -3,7 +3,8 @@
     "axios": "^0.9.1",
     "material-ui": "^0.17.0",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
     "react-addons-test-utils": "^15.0.1",
@@ -64,7 +65,9 @@
       "xo-space/esnext"
     ],
     "rules": {
-      "linebreak-style": ["error", "windows"]
+      "linebreak-style": ["error", "windows"],
+      "react/jsx-closing-bracket-location": [1, "tag-aligned"],
+      "react/prop-types": 0
     }
   }
 }
