@@ -1,8 +1,18 @@
 import * as types from './ActionTypes';
+import api from '../../ajax/api';
 
-export function createCityList(cityList) {
+export function fetchCityList(countryName) {
+	return (dispatch) => {
+		return api.getCityList(countryName)
+			.then(cityList => dispatch(fetchCityListSuccess(cityList)))
+			.catch(error => {
+				throw(error)
+			});
+	}
+}
+export function fetchCityListSuccess(cityList) {
 	return {
-		type: types.CREATE_CITY_LIST,
+		type: types.FETCH_CITY_LIST_SUCCESS,
 		cityList
 	};
 }

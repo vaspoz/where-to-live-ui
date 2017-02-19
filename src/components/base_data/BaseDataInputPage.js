@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as countryActions from '../redux/actions/CountryActions';
 import * as cityActions from '../redux/actions/CityActions';
-import Ajax from '../ajax/AjaxConnection';
+import Ajax from '../ajax/api';
 import CountryInput from './CountryInput';
 import CityInput from './CityInput';
 import SubmitButton from './Submit';
@@ -29,9 +29,7 @@ class BaseDataInput extends React.Component {
 
 	onCountrySelect(countryName) {
 		this.props.countryActions.selectCountry(countryName);
-		this.props.cityActions.createCityList(
-			Ajax.getCityList(countryName)
-		);
+		this.props.cityActions.fetchCityList(countryName);
 		this.setState({
 			cityInputDisable: false
 		});
@@ -45,6 +43,7 @@ class BaseDataInput extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.state);
 		return (
 			<div style={styles.container}>
 				<h3>Base Location</h3>

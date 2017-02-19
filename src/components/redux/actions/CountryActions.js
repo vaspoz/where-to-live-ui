@@ -1,13 +1,24 @@
 import * as types from './ActionTypes';
-import AjaxConnection from '../../ajax/AjaxConnection';
+import api from '../../ajax/api';
 
 export function fetchCountryListFromBE() {
-	return {
-		type: types.FETCH_COUNTRY_LIST_FROM_BACKEND,
-		countryList: AjaxConnection.getCountryList()
+	return (dispatch) => {
+		return api.getCountryList()
+			.then((countryList) => {
+				dispatch(fetchCountrySuccess(countryList));
+			})
+			.catch((error) => {
+				throw(error);
+			});
 	};
 }
 
+export function fetchCountrySuccess(countryList) {
+	return {
+		type: types.FETCH_COUNTRY_LIST_SUCCESS,
+		countryList
+	}
+}
 export function selectCountry(countryName) {
 	return {
 		type: types.SELECT_COUNTRY,
