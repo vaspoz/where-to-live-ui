@@ -1,25 +1,40 @@
 import 'babel-polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Main} from './app/main';
+import {render} from 'react-dom';
+import {Router, browserHistory} from 'react-router';
+import configureStore from './components/redux/store/CofigureStore';
+import {Provider} from 'react-redux';
+import routes from './routes';
+import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import Ajax from './Connector';
+import {fetchCountryListFromBE} from './components/redux/actions/CountryActions';
 
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
+const initialState = {
+	countryList: [],
+	cityList: [],
+	baseData: {
+		country: "",
+		city: ""
+	},
 
-const ajax = new Ajax();
-const fetchCOuntriesList = function (data) {
-  ReactDOM.render(
-    <MuiThemeProvider>
-      <Main
-        countriesList={JSON.parse(data)}
-      />
-    </MuiThemeProvider>,
-    document.getElementById('root')
-  );
+	calculatedRates: []
+};
+const calculatedRate = {
+	comparedWithCountry: "",
+	comparedWithCity: "",
+	expenses: 0.00,
+	salary: 0.00,
+	overall: 0.00
 };
 
-ajax.getRequest("http://localhost:8080/countries", fetchCOuntriesList);
+const store = configureStore();
+store.dispatch(fetchCountryListFromBE());
+
+render(
+	<Provider store={store}>
+		<MuiThemeProvider>
+			<Router history={browserHistory} routes={routes}/>
+		</MuiThemeProvider>
+	</Provider>,
+	document.getElementById('app')
+);
