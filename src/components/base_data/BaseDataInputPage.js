@@ -3,22 +3,17 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as countryActions from '../redux/actions/CountryActions';
 import * as cityActions from '../redux/actions/CityActions';
-import Ajax from '../ajax/api';
 import CountryInput from './CountryInput';
 import CityInput from './CityInput';
 import SubmitButton from './Submit';
 
-// const styles = {
-// 	container: {
-// 		position: 'absolute',
-// 		textAlign: 'center',
-// 		paddingTop: 100,
-// 		top: 50,
-// 		bottom: 50,
-// 		width: '100%',
-// 		borderStyle: 'solid'
-// 	}
-// };
+const styles = {
+	container: {
+		textAlign: 'center',
+		paddingTop: 100,
+		top: 50
+	}
+};
 
 class BaseDataInput extends React.Component {
 	constructor(props, context) {
@@ -49,8 +44,8 @@ class BaseDataInput extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h3>Base Location</h3>
+			<div style={styles.container}>
+				<h1>Base Location</h1>
 				<CountryInput data={this.props.countries} onCountrySelect={this.onCountrySelect}/>
 				<CityInput data={this.props.cities} onCitySelect={this.onCitySelect} disable={this.state.cityInputDisable}/>
 				<SubmitButton disabled={this.state.submitDisable}/>

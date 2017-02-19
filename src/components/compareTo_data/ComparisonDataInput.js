@@ -1,29 +1,41 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import CountryTable from './CountryTable';
+
+const styles = {
+	container: {
+		textAlign: 'center',
+		paddingTop: 100,
+		top: 50
+	}
+};
 
 class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-
-		this.state = {};
 	}
+
 
 	render() {
 		return (
-			<div>
+			<div style={styles.container}>
 				<h1>Select countries of your dreams</h1>
+				<CountryTable countryList={this.props.countryList}/>
+				<div>
+					<h2>Test</h2>
+				</div>
 			</div>
 		);
 	}
 }
 
 ComparisonDataInput.propTypes = {
-	// property: React.PropTypes.object.isRequired,
+	countryList: React.PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		// state: state,
+		countryList: state.countryList
 	};
 }
 
