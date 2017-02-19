@@ -1,8 +1,10 @@
 import * as types from './ActionTypes';
 import api from '../../ajax/api';
+import beginAjaxCall from '../actions/AjaxStatusActions';
 
 export function fetchCityList(countryName) {
 	return (dispatch) => {
+		dispatch(beginAjaxCall());
 		return api.getCityList(countryName)
 			.then(cityList => dispatch(fetchCityListSuccess(cityList)))
 			.catch(error => {
