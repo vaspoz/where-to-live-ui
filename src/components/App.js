@@ -6,10 +6,16 @@ import {connect} from 'react-redux';
 class App extends React.Component {
 	render() {
 		return (
-			<div className="container-fluid">
-				<Header loading={this.props.loading}/>
-				{this.props.children}
-				<Footer/>
+			<div>
+				<header>
+					<Header loading={this.props.loading}/>
+				</header>
+				<main>
+					{this.props.children}
+				</main>
+				<footer>
+					<Footer/>
+				</footer>
 			</div>
 		);
 	}

@@ -8,9 +8,9 @@ export function fetchCityList(countryName) {
 		return api.getCityList(countryName)
 			.then(cityList => dispatch(fetchCityListSuccess(cityList)))
 			.catch(error => {
-				throw(error)
+				throw(error);
 			});
-	}
+	};
 }
 export function fetchCityListSuccess(cityList) {
 	return {

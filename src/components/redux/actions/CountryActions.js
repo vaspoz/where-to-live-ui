@@ -19,7 +19,7 @@ export function fetchCountrySuccess(countryList) {
 	return {
 		type: types.FETCH_COUNTRY_LIST_SUCCESS,
 		countryList
-	}
+	};
 }
 export function selectCountry(countryName) {
 	return {

@@ -8,12 +8,17 @@ import CountryInput from './CountryInput';
 import CityInput from './CityInput';
 import SubmitButton from './Submit';
 
-const styles = {
-	container: {
-		textAlign: 'center',
-		paddingTop: 180
-	}
-};
+// const styles = {
+// 	container: {
+// 		position: 'absolute',
+// 		textAlign: 'center',
+// 		paddingTop: 100,
+// 		top: 50,
+// 		bottom: 50,
+// 		width: '100%',
+// 		borderStyle: 'solid'
+// 	}
+// };
 
 class BaseDataInput extends React.Component {
 	constructor(props, context) {
@@ -43,9 +48,8 @@ class BaseDataInput extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.state);
 		return (
-			<div style={styles.container}>
+			<div>
 				<h3>Base Location</h3>
 				<CountryInput data={this.props.countries} onCountrySelect={this.onCountrySelect}/>
 				<CityInput data={this.props.cities} onCitySelect={this.onCitySelect} disable={this.state.cityInputDisable}/>

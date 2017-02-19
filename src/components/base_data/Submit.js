@@ -12,7 +12,7 @@ const SubmitButton = ({disabled}) => {
 		<div style={styles.container}>
 			<RaisedButton
 				label="Submit"
-				href={"/about"}
+				href={"/dreams"}
 				disabled={disabled}
 			/>
 		</div>
