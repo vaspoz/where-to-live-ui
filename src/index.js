@@ -10,21 +10,31 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fetchCountryListFromBE} from './components/redux/actions/CountryActions';
 
 const initialState = {
+	// Country list to choose from in initial step
 	countryList: [],
+	// City list loaded after country chosen
 	cityList: [],
+	// Selecter pair Country-City from the list
 	baseData: {
 		country: "",
 		city: ""
 	},
-
-	calculatedRates: []
-};
-const calculatedRate = {
-	comparedWithCountry: "",
-	comparedWithCity: "",
-	expenses: 0.00,
-	salary: 0.00,
-	overall: 0.00
+	// Array of countries to compare with
+	compareTo: [],
+	// Calculated rates for chosen countries
+	calculatedRates: [
+		{
+			country: "",
+			cityRates: [
+				{
+					city: "",
+					expenses: 0.00,
+					salary: 0.00,
+					overall: 0.00
+				}
+			]
+		}
+	]
 };
 
 const store = configureStore();
