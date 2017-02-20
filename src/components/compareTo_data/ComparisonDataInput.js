@@ -4,16 +4,40 @@ import CountryTable from './CountryTable';
 import SelectedCountryList from './SelectedCountries';
 
 const styles = {
-	container: {
-		textAlign: 'center',
-		paddingTop: 100,
-		top: 50
-	},
-	table: {
-		width: 200,
-		margin: 'auto'
+		container: {
+			textAlign: 'center',
+			paddingTop: 100,
+			top: 50
+		},
+		leftColumn: {
+			textAlign: 'center',
+			border: 'solid black',
+			width: '50%',
+			height: '200px',
+			float: 'left'
+		},
+		rightColumn: {
+			border: 'solid black',
+			marginLeft: '50%',
+			height: '200px'
+		},
+		innerLeft: {
+			border: 'solid red',
+			width: '50%',
+			height: '200px',
+			float: 'left'
+		},
+		innerRight: {
+			border: 'solid red',
+			marginLeft: '50%',
+			height: '200px'
+		},
+		table: {
+			width: 200,
+			margin: 'auto'
+		}
 	}
-};
+	;
 
 class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
@@ -22,12 +46,17 @@ class ComparisonDataInput extends React.Component {
 
 	render() {
 		return (
-			<div style={styles.container}>
-				<h1>Select countries of your dreams</h1>
-				<div style={{display: 'inline'}}>
-					<div style={styles.table}>
+			<div>
+				<div style={styles.leftColumn}>
+					<h1>Select countries of your dreams</h1>
+					<div style={styles.innerLeft}>
 						<CountryTable countryList={this.props.countryList}/>
 					</div>
+					<div style={styles.innerRight}>
+						<SelectedCountryList/>
+					</div>
+				</div>
+				<div style={styles.rightColumn}>
 				</div>
 			</div>
 		);
