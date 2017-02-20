@@ -7,7 +7,7 @@ const citiesURL = baseURL + '/cities/by/';
 
 const BEapi = {
 	getCountryList: () => {
-		return fetch(countriesURL).then(response => response.json());
+		return fetch(countriesURL).then(response => response.json()).then(countryList => countryList.sort());
 	},
 	getCityList: (countryName) => {
 		return fetch(citiesURL + countryName).then(response => response.json());
