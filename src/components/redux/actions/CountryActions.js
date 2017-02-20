@@ -27,3 +27,17 @@ export function selectBaseCountry(countryName) {
 		countryName
 	};
 }
+
+export function selectCompateToCountry(countryName) {
+	return {
+		type: types.SELECT_COMPARETO_COUNTRY,
+		countryName
+	};
+}
+
+export function deselectCompateToCountry(countryName) {
+	return {
+		type: types.DESELECT_COMPARETO_COUNTRY,
+		countryName
+	};
+}
