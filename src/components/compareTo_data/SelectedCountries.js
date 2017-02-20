@@ -1,33 +1,24 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 
-class SelectedCountries extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-		this.state = {};
-	}
-
-	render() {
-		return (
-			<List>
-				<ListItem primaryText="Text1"/>
-				<ListItem primaryText="Text2"/>
-				<ListItem primaryText="Text3"/>
-				<ListItem primaryText="Text4"/>
-			</List>
-		);
-	}
-}
-
-SelectedCountries.propTypes = {
-	// property: React.PropTypes.object.isRequired,
+const SelectedCountries = ({compareToList, onClickSelectedCountry}) => {
+	const getInnerTextCountryName = (callback) => {
+		return (context) => {
+			return callback(context.target.innerText);
+		};
+	};
+	return (
+		<List>
+			{compareToList.map(compareToElement => {
+				return <ListItem primaryText={compareToElement} onClick={getInnerTextCountryName(onClickSelectedCountry)}/>;
+			})}
+		</List>
+	);
 };
 
-function mapStateToProps(state) {
-	return {
-		// state: state,
-	};
-}
+SelectedCountries.propTypes = {
+	compareToList: React.PropTypes.array.isRequired,
+	onClickSelectedCountry: React.PropTypes.func.isRequired
+};
 
-export default connect(mapStateToProps)(SelectedCountries);
+export default SelectedCountries;

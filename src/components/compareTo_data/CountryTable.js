@@ -4,11 +4,19 @@ import {
 }
 	from 'material-ui/Table';
 
-const CountryTable = ({countryList}) => {
+
+const CountryTable = ({countryList, onCountrySelect}) => {
+	function transformIndexToName(callback){
+		return (index) => {
+			callback(countryList[index]);
+		}
+	}
+
 	return (
 		<Table
 			selectable={true}
 			multiSelectable={true}
+			onCellClick={transformIndexToName(onCountrySelect)}
 		>
 			<TableBody
 				displayRowCheckbox={true}
@@ -25,6 +33,8 @@ const CountryTable = ({countryList}) => {
 };
 
 CountryTable.propTypes = {
-	countryList: React.PropTypes.array.isRequired
+	countryList: React.PropTypes.array.isRequired,
+	onCountrySelect: React.PropTypes.func.isRequired
 };
+
 export default CountryTable;

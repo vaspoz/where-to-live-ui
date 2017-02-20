@@ -2,58 +2,80 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CountryTable from './CountryTable';
 import SelectedCountryList from './SelectedCountries';
+import {bindActionCreators} from "redux";
+import * as countryActions from '../redux/actions/CountryActions';
 
 const styles = {
-		container: {
-			textAlign: 'center',
-			paddingTop: 100,
-			top: 50
-		},
-		leftColumn: {
-			textAlign: 'center',
-			border: 'solid black',
-			width: '50%',
-			height: '200px',
-			float: 'left'
-		},
-		rightColumn: {
-			border: 'solid black',
-			marginLeft: '50%',
-			height: '200px'
-		},
-		innerLeft: {
-			border: 'solid red',
-			width: '50%',
-			height: '200px',
-			float: 'left'
-		},
-		innerRight: {
-			border: 'solid red',
-			marginLeft: '50%',
-			height: '200px'
-		},
-		table: {
-			width: 200,
-			margin: 'auto'
-		}
+	container: {
+		textAlign: 'center',
+		paddingTop: 100,
+		top: 50
+	},
+	leftColumn: {
+		textAlign: 'center',
+		border: 'solid black',
+		width: '50%',
+		height: '200px',
+		float: 'left'
+	},
+	rightColumn: {
+		border: 'solid black',
+		marginLeft: '50%',
+		height: '200px'
+	},
+	innerLeft: {
+		border: 'solid red',
+		width: '50%',
+		height: '200px',
+		float: 'left'
+	},
+	innerRight: {
+		border: 'solid red',
+		marginLeft: '50%',
+		height: '200px'
+	},
+	table: {
+		width: 200,
+		margin: 'auto'
 	}
-	;
+};
 
 class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
 		super(props, context);
+		this.onCountrySelect = this.onCountrySelect.bind(this);
+		this.onClickSelectedCountry = this.onClickSelectedCountry.bind(this);
+	}
+
+	onCountrySelect(countryName) {
+		const actions = this.props.countryActions;
+		if (this.props.compareToList.includes(countryName)) {
+			actions.deselectCompareToCountry(countryName);
+		} else {
+			actions.selectCompareToCountry(countryName);
+		}
+	}
+
+	onClickSelectedCountry(countryName) {
+		console.log('deselect' + countryName);
+		this.props.countryActions.deselectCompareToCountry(countryName);
 	}
 
 	render() {
+		console.log(this.props.compareToList);
 		return (
 			<div>
 				<div style={styles.leftColumn}>
-					<h1>Select countries of your dreams</h1>
+					<h1>Select countries of your dreamsssss</h1>
 					<div style={styles.innerLeft}>
-						<CountryTable countryList={this.props.countryList}/>
+						<CountryTable
+							countryList={this.props.countryList}
+							onCountrySelect={this.onCountrySelect}/>
 					</div>
 					<div style={styles.innerRight}>
-						<SelectedCountryList/>
+						<SelectedCountryList
+							compareToList={this.props.compareToList}
+							onClickSelectedCountry={this.onClickSelectedCountry}/>
 					</div>
 				</div>
 				<div style={styles.rightColumn}>
@@ -64,13 +86,22 @@ class ComparisonDataInput extends React.Component {
 }
 
 ComparisonDataInput.propTypes = {
-	countryList: React.PropTypes.array.isRequired
+	countryList: React.PropTypes.array.isRequired,
+	compareToList: React.PropTypes.array.isRequired,
+	countryActions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		countryList: state.countryList
+		countryList: state.countryList,
+		compareToList: state.compareTo
 	};
 }
 
-export default connect(mapStateToProps)(ComparisonDataInput);
+function mapDispatchToProps(dispatch) {
+	return {
+		countryActions: bindActionCreators(countryActions, dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComparisonDataInput);
