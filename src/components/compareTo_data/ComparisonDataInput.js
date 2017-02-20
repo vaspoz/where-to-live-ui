@@ -13,24 +13,24 @@ const styles = {
 	},
 	leftColumn: {
 		textAlign: 'center',
-		border: 'solid black',
+		// border: 'solid black',
 		width: '50%',
 		height: '200px',
 		float: 'left'
 	},
 	rightColumn: {
-		border: 'solid black',
+		// border: 'solid black',
 		marginLeft: '50%',
 		height: '200px'
 	},
 	innerLeft: {
-		border: 'solid red',
+		// border: 'solid red',
 		width: '50%',
 		height: '200px',
 		float: 'left'
 	},
 	innerRight: {
-		border: 'solid red',
+		// border: 'solid red',
 		marginLeft: '50%',
 		height: '200px'
 	},
@@ -45,6 +45,10 @@ class ComparisonDataInput extends React.Component {
 		super(props, context);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
 		this.onClickSelectedCountry = this.onClickSelectedCountry.bind(this);
+
+		this.state = {
+			unselectCountry: ""
+		};
 	}
 
 	onCountrySelect(countryName) {
@@ -57,12 +61,13 @@ class ComparisonDataInput extends React.Component {
 	}
 
 	onClickSelectedCountry(countryName) {
-		console.log('deselect' + countryName);
 		this.props.countryActions.deselectCompareToCountry(countryName);
+		this.setState({
+			unselectCountry: countryName
+		});
 	}
 
 	render() {
-		console.log(this.props.compareToList);
 		return (
 			<div>
 				<div style={styles.leftColumn}>
@@ -70,12 +75,15 @@ class ComparisonDataInput extends React.Component {
 					<div style={styles.innerLeft}>
 						<CountryTable
 							countryList={this.props.countryList}
-							onCountrySelect={this.onCountrySelect}/>
+							onCountrySelect={this.onCountrySelect}
+							unselectCountry={this.state.unselectCountry || ""}
+						/>
 					</div>
 					<div style={styles.innerRight}>
 						<SelectedCountryList
 							compareToList={this.props.compareToList}
-							onClickSelectedCountry={this.onClickSelectedCountry}/>
+							onClickSelectedCountry={this.onClickSelectedCountry}
+						/>
 					</div>
 				</div>
 				<div style={styles.rightColumn}>
