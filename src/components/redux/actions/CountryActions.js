@@ -21,9 +21,9 @@ export function fetchCountrySuccess(countryList) {
 		countryList
 	};
 }
-export function selectCountry(countryName) {
+export function selectBaseCountry(countryName) {
 	return {
-		type: types.SELECT_COUNTRY,
+		type: types.SELECT_BASE_COUNTRY,
 		countryName
 	};
 }

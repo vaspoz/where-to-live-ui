@@ -28,7 +28,7 @@ class BaseDataInput extends React.Component {
 	}
 
 	onCountrySelect(countryName) {
-		this.props.countryActions.selectCountry(countryName);
+		this.props.countryActions.selectBaseCountry(countryName);
 		this.props.cityActions.fetchCityList(countryName);
 		this.setState({
 			cityInputDisable: false
@@ -36,7 +36,7 @@ class BaseDataInput extends React.Component {
 	}
 
 	onCitySelect(cityName) {
-		this.props.cityActions.selectCity(cityName);
+		this.props.cityActions.selectBaseCity(cityName);
 		this.setState({
 			submitDisable: false
 		});

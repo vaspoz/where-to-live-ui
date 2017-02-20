@@ -19,9 +19,9 @@ export function fetchCityListSuccess(cityList) {
 	};
 }
 
-export function selectCity(cityName) {
+export function selectBaseCity(cityName) {
 	return {
-		type: types.SELECT_CITY,
+		type: types.SELECT_BASE_CITY,
 		cityName
 	};
 }
