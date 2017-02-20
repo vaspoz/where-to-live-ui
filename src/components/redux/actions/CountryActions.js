@@ -28,14 +28,14 @@ export function selectBaseCountry(countryName) {
 	};
 }
 
-export function selectCompateToCountry(countryName) {
+export function selectCompareToCountry(countryName) {
 	return {
 		type: types.SELECT_COMPARETO_COUNTRY,
 		countryName
 	};
 }
 
-export function deselectCompateToCountry(countryName) {
+export function deselectCompareToCountry(countryName) {
 	return {
 		type: types.DESELECT_COMPARETO_COUNTRY,
 		countryName
