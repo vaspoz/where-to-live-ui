@@ -4,35 +4,24 @@ import {
 }
 	from 'material-ui/Table';
 
-const styles = {
-	container: {
-		width: '300px',
-		textAlign: 'center',
-		border: 'solid',
-		borderColor: 'black'
-	}
-};
-
 const CountryTable = ({countryList}) => {
-		return (
-			<div style={styles.container}>
-				<Table
-					selectable={true}
-					multiSelectable={true}
-				>
-					<TableBody
-						displayRowCheckbox={true}
-						deselectOnClickaway={false}
-					>
-						{countryList.map((countryName, index) => (
-							<TableRow key={index}>
-								<TableRowColumn>{countryName}</TableRowColumn>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</div>
-		);
+	return (
+		<Table
+			selectable={true}
+			multiSelectable={true}
+		>
+			<TableBody
+				displayRowCheckbox={true}
+				deselectOnClickaway={false}
+			>
+				{countryList.map((countryName, index) => (
+					<TableRow key={index}>
+						<TableRowColumn>{countryName}</TableRowColumn>
+					</TableRow>
+				))}
+			</TableBody>
+		</Table>
+	);
 };
 
 CountryTable.propTypes = {
