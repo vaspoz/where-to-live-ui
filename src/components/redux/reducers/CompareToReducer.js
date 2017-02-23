@@ -5,7 +5,7 @@ export default function compareToReducer(state = [], action) {
 		case types.SELECT_COMPARETO_COUNTRY:
 			const ar = [...state];
 			ar.push(action.countryName);
-			return ar;
+			return ar.sort();
 		case types.DESELECT_COMPARETO_COUNTRY:
 			return state.filter(countryName => countryName != action.countryName);
 		default:

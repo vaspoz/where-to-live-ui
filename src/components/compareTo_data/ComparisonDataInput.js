@@ -44,11 +44,6 @@ class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
-		this.onClickSelectedCountry = this.onClickSelectedCountry.bind(this);
-
-		this.state = {
-			unselectCountry: ""
-		};
 	}
 
 	onCountrySelect(countryName) {
@@ -60,13 +55,6 @@ class ComparisonDataInput extends React.Component {
 		}
 	}
 
-	onClickSelectedCountry(countryName) {
-		this.props.countryActions.deselectCompareToCountry(countryName);
-		this.setState({
-			unselectCountry: countryName
-		});
-	}
-
 	render() {
 		return (
 			<div>
@@ -76,13 +64,11 @@ class ComparisonDataInput extends React.Component {
 						<CountryTable
 							countryList={this.props.countryList}
 							onCountrySelect={this.onCountrySelect}
-							unselectCountry={this.state.unselectCountry || ""}
 						/>
 					</div>
 					<div style={styles.innerRight}>
 						<SelectedCountryList
 							compareToList={this.props.compareToList}
-							onClickSelectedCountry={this.onClickSelectedCountry}
 						/>
 					</div>
 				</div>
