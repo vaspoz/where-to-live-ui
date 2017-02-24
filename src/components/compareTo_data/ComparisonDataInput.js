@@ -47,7 +47,7 @@ class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
-		this.onClickAction = this.onClickAction.bind(this);
+		this.fetchChartData = this.fetchChartData.bind(this);
 	}
 
 	onCountrySelect(countryName) {
@@ -59,13 +59,14 @@ class ComparisonDataInput extends React.Component {
 		}
 	}
 
-	onClickAction() {
+	fetchChartData(event) {
+		event.preventDefault();
+		event.stopPropagation();
 		this.props.chartActions.fetchChartsForCountries(
 			this.props.baseCountry,
 			this.props.baseCity,
 			this.props.compareToList
 		);
-		return <Link to="/comparison-chart"/>;
 	}
 
 	render() {
@@ -85,7 +86,7 @@ class ComparisonDataInput extends React.Component {
 						/>
 						<RaisedButton
 							label="Submit"
-							containerElement={this.onClickAction()}
+							containerElement={<Link to="/comparison-chart" onClick={this.fetchChartData}/>}
 						/>
 					</div>
 				</div>
