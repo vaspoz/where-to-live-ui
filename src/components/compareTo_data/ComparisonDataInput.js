@@ -5,7 +5,7 @@ import SelectedCountryList from './SelectedCountries';
 import {bindActionCreators} from "redux";
 import * as countryActions from '../redux/actions/CountryActions';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 const styles = {
 	container: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 const styles = {
 	container: {

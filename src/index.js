@@ -8,7 +8,7 @@ import routes from './routes';
 import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fetchCountryListFromBE} from './components/redux/actions/CountryActions';
-import {syncHistoryWithStore} from 'react-router-redux'
+import {syncHistoryWithStore} from 'react-router-redux';
 
 const store = configureStore();
 store.dispatch(fetchCountryListFromBE());
