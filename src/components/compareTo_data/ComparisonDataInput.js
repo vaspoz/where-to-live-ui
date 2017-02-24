@@ -47,7 +47,6 @@ class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
-		this.fetchChartData = this.fetchChartData.bind(this);
 	}
 
 	onCountrySelect(countryName) {
@@ -57,16 +56,6 @@ class ComparisonDataInput extends React.Component {
 		} else {
 			actions.selectCompareToCountry(countryName);
 		}
-	}
-
-	fetchChartData(event) {
-		event.preventDefault();
-		event.stopPropagation();
-		this.props.chartActions.fetchChartsForCountries(
-			this.props.baseCountry,
-			this.props.baseCity,
-			this.props.compareToList
-		);
 	}
 
 	render() {
@@ -86,7 +75,7 @@ class ComparisonDataInput extends React.Component {
 						/>
 						<RaisedButton
 							label="Submit"
-							containerElement={<Link to="/comparison-chart" onClick={this.fetchChartData}/>}
+							containerElement={<Link to="/comparison-chart"/>}
 						/>
 					</div>
 				</div>
@@ -98,8 +87,6 @@ class ComparisonDataInput extends React.Component {
 }
 
 ComparisonDataInput.propTypes = {
-	baseCountry: React.PropTypes.string.isRequired,
-	baseCity: React.PropTypes.string.isRequired,
 	countryList: React.PropTypes.array.isRequired,
 	compareToList: React.PropTypes.array.isRequired,
 	countryActions: React.PropTypes.object.isRequired,
@@ -108,8 +95,6 @@ ComparisonDataInput.propTypes = {
 
 function mapStateToProps(state) {
 	return {
-		baseCountry: state.baseData.country,
-		baseCity: state.baseData.city,
 		countryList: state.countryList,
 		compareToList: state.compareTo
 	};
