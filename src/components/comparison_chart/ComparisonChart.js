@@ -1,14 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Chart from 'chart.js';
-import Paper from 'material-ui/Paper';
 import * as chartActions from '../redux/actions/ChartActions';
 import {bindActionCreators} from 'redux';
+import Paper from 'material-ui/Paper';
+import {Bar} from 'react-chartjs-2';
+import randomColor from 'randomcolor';
 
 const style = {
 	paper: {
-		height: 300,
-		width: 500,
+		width: 1000,
+		height: 500,
 		margin: 20,
 		textAlign: 'center',
 		display: 'inline-block'
@@ -22,89 +23,97 @@ const style = {
 class ComparisonChart extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-		this.state = {};
+		this.prepareCityRatesForChart = this.prepareCityRatesForChart.bind(this);
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.props.chartActions.fetchChartsForCountries(
 			this.props.baseCountry,
 			this.props.baseCity,
 			this.props.compareToList
 		);
+	}
 
-		const ctx = document.getElementById('myChart');
-		new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-				datasets: [{
-					label: '# of Votes',
-					data: [12, 19, 3, 5, 2, 3],
-					backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(255, 159, 64, 0.2)'
-					],
-					borderColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-					],
-					borderWidth: 1
-				}]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				},
-				layout: {
-					padding: 20
-				},
-				maintainAspectRatio: false
-			}
+	getRandomColors(amount, hue) {
+		return randomColor({
+			count: amount,
+			hue: hue,
+			luminosity: 'light'
 		});
 	}
 
+	prepareCityRatesForChart(cityRates) {
+		const labels = cityRates.map(singleCityRate => singleCityRate.city);
+		return {
+			labels: labels,
+			datasets: [
+				{
+					label: 'Salary',
+					data: cityRates.map(singleCityRate => singleCityRate.salary),
+					backgroundColor: this.getRandomColors(labels.length, 'green'),
+					borderWidth: 1
+				},
+				{
+					label: 'Expenses',
+					data: cityRates.map(singleCityRate => singleCityRate.expenses),
+					backgroundColor: this.getRandomColors(labels.length, 'red')
+				}
+			]
+		};
+	}
+
 	render() {
+		const options = {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			layout: {
+				padding: 20
+			},
+			maintainAspectRatio: false
+		};
 		return (
 			<div>
-				<h1>There will be a Charts soon</h1>
-
-				<Paper style={style.paper} zDepth={2}>
-					<div style={style.chart}>
-						<canvas id="myChart"/>
-					</div>
-				</Paper>
+				{this.props.calculatedRates.map(countryRate => {
+					const chartData = this.prepareCityRatesForChart(countryRate.cityRates);
+					return <Paper style={style.paper} zDepth={2}>
+						<div style={style.chart}>
+							<Bar data={chartData} options={options}/>
+						</div>
+					</Paper>
+				})}
 			</div>
 		);
 	}
 }
 
+
 ComparisonChart.propTypes = {
-	store: React.PropTypes.object.isRequired,
 	baseCountry: React.PropTypes.string.isRequired,
 	baseCity: React.PropTypes.string.isRequired,
 	compareToList: React.PropTypes.array.isRequired,
-	calculatedRates: React.PropTypes.object.isRequired,
+	calculatedRates: React.PropTypes.array.isRequired,
 	chartActions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(store) {
 	return {
-		store: store,
 		baseCountry: store.baseData.country,
 		baseCity: store.baseData.city,
 		compareToList: store.compareTo,
+		calculatedRates: store.calculatedRates
+	};
+}
+
+function tempMapStateToProps(store) {
+	return {
+		baseCountry: 'Poland',
+		baseCity: 'Gdansk',
+		compareToList: ['Australia', 'Argentina'],
 		calculatedRates: store.calculatedRates
 	};
 }
@@ -115,4 +124,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChart);
+export default connect(tempMapStateToProps, mapDispatchToProps)(ComparisonChart);
