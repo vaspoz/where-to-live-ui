@@ -8,14 +8,17 @@ import routes from './routes';
 import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fetchCountryListFromBE} from './components/redux/actions/CountryActions';
+import {syncHistoryWithStore} from 'react-router-redux'
 
 const store = configureStore();
 store.dispatch(fetchCountryListFromBE());
 
+const history = syncHistoryWithStore(browserHistory, store);
+
 render(
 	<Provider store={store}>
 		<MuiThemeProvider>
-			<Router history={browserHistory} routes={routes}/>
+			<Router history={history} routes={routes}/>
 		</MuiThemeProvider>
 	</Provider>,
 	document.getElementById('app')

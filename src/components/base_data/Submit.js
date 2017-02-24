@@ -1,5 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from 'react-router'
 
 const styles = {
 	container: {
@@ -12,8 +13,8 @@ const SubmitButton = ({disabled}) => {
 		<div style={styles.container}>
 			<RaisedButton
 				label="Submit"
-				href={"/dreams"}
 				disabled={disabled}
+				containerElement={<Link to="/dreams"/>}
 			/>
 		</div>
 	);

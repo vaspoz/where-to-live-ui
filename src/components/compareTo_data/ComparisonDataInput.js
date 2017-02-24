@@ -4,6 +4,8 @@ import CountryTable from './CountryTable';
 import SelectedCountryList from './SelectedCountries';
 import {bindActionCreators} from "redux";
 import * as countryActions from '../redux/actions/CountryActions';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from 'react-router'
 
 const styles = {
 	container: {
@@ -13,24 +15,24 @@ const styles = {
 	},
 	leftColumn: {
 		textAlign: 'center',
-		// border: 'solid black',
+		border: 'solid black',
 		width: '50%',
 		height: '200px',
 		float: 'left'
 	},
 	rightColumn: {
-		// border: 'solid black',
+		border: 'solid black',
 		marginLeft: '50%',
 		height: '200px'
 	},
 	innerLeft: {
-		// border: 'solid red',
+		border: 'solid red',
 		width: '50%',
 		height: '200px',
 		float: 'left'
 	},
 	innerRight: {
-		// border: 'solid red',
+		border: 'solid red',
 		marginLeft: '50%',
 		height: '200px'
 	},
@@ -70,6 +72,10 @@ class ComparisonDataInput extends React.Component {
 						<SelectedCountryList
 							compareToList={this.props.compareToList}
 						/>
+						<RaisedButton
+							label="Submit"
+							containerElement={<Link to="/comparison-chart"/>}
+						/>
 					</div>
 				</div>
 				<div style={styles.rightColumn}>
@@ -87,6 +93,7 @@ ComparisonDataInput.propTypes = {
 
 function mapStateToProps(state) {
 	return {
+		state,
 		countryList: state.countryList,
 		compareToList: state.compareTo
 	};
