@@ -4,6 +4,7 @@ import CountryTable from './CountryTable';
 import SelectedCountryList from './SelectedCountries';
 import {bindActionCreators} from "redux";
 import * as countryActions from '../redux/actions/CountryActions';
+import * as chartActions from '../redux/actions/ChartActions';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
@@ -46,6 +47,7 @@ class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
+		this.onClickAction = this.onClickAction.bind(this);
 	}
 
 	onCountrySelect(countryName) {
@@ -55,6 +57,15 @@ class ComparisonDataInput extends React.Component {
 		} else {
 			actions.selectCompareToCountry(countryName);
 		}
+	}
+
+	onClickAction() {
+		this.props.chartActions.fetchChartsForCountries(
+			this.props.baseCountry,
+			this.props.baseCity,
+			this.props.compareToList
+		);
+		return <Link to="/comparison-chart"/>;
 	}
 
 	render() {
@@ -74,7 +85,7 @@ class ComparisonDataInput extends React.Component {
 						/>
 						<RaisedButton
 							label="Submit"
-							containerElement={<Link to="/comparison-chart"/>}
+							containerElement={this.onClickAction()}
 						/>
 					</div>
 				</div>
@@ -86,14 +97,18 @@ class ComparisonDataInput extends React.Component {
 }
 
 ComparisonDataInput.propTypes = {
+	baseCountry: React.PropTypes.string.isRequired,
+	baseCity: React.PropTypes.string.isRequired,
 	countryList: React.PropTypes.array.isRequired,
 	compareToList: React.PropTypes.array.isRequired,
-	countryActions: React.PropTypes.object.isRequired
+	countryActions: React.PropTypes.object.isRequired,
+	chartActions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		state,
+		baseCountry: state.baseData.country,
+		baseCity: state.baseData.city,
 		countryList: state.countryList,
 		compareToList: state.compareTo
 	};
@@ -101,7 +116,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		countryActions: bindActionCreators(countryActions, dispatch)
+		countryActions: bindActionCreators(countryActions, dispatch),
+		chartActions: bindActionCreators(chartActions, dispatch)
 	};
 }
 

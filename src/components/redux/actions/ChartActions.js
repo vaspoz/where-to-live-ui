@@ -15,7 +15,7 @@ export function fetchChartsForCountries(baseCountry, baseCity, countryList) {
 
 function fetchChartsSuccess(chartsList) {
 	return {
-		type: types.BULK_ADD_CALCULATED_RATES,
+		type: types.BULK_ADD_CALCULATED_RATES_SUCCESS,
 		calculatedRates: chartsList
 	};
 }
