@@ -1,6 +1,12 @@
 import React from 'react';
 import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 
+const boolProps = {
+	selectable: true,
+	multiSelectable: true,
+	displayRowCheckbox: true,
+	deselectOnClickaway: false
+};
 class CountryTable extends React.Component {
 	constructor(props, context) {
 		super(props, context);
@@ -16,13 +22,13 @@ class CountryTable extends React.Component {
 	render() {
 		return (
 			<Table
-				selectable={true}
-				multiSelectable={true}
+				selectable={boolProps.selectable}
+				multiSelectable={boolProps.multiSelectable}
 				onCellClick={this.transformIndexToName(this.props.onCountrySelect)}
 			>
 				<TableBody
-					displayRowCheckbox={true}
-					deselectOnClickaway={false}
+					displayRowCheckbox={boolProps.displayRowCheckbox}
+					deselectOnClickaway={boolProps.deselectOnClickaway}
 				>
 					{this.props.countryList.map((countryName, index) => {
 						return (
