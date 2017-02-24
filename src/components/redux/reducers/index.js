@@ -5,6 +5,7 @@ import baseData from './BaseDataReducer';
 import calculatedRates from './CalculatedRatesReducer';
 import ajaxConnections from './AjaxStatusReducer';
 import compareTo from './CompareToReducer';
+import {routerReducer} from 'react-router-redux'
 
 const rootReducer = combineReducers({
 	countryList,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
 	baseData,
 	calculatedRates,
 	ajaxConnections,
-	compareTo
+	compareTo,
+	routing: routerReducer
 });
 
 export default rootReducer;
