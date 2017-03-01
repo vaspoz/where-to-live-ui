@@ -63,18 +63,24 @@ class ComparisonChart extends React.Component {
 	}
 
 	render() {
-		const options = {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
-				}]
-			},
-			layout: {
-				padding: 20
-			},
-			maintainAspectRatio: false
+		const getOptions = (title) => {
+			return {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				},
+				layout: {
+					padding: 20
+				},
+				maintainAspectRatio: false,
+				title: {
+					display: true,
+					text: title
+				}
+			};
 		};
 		return (
 			<div>
@@ -82,7 +88,7 @@ class ComparisonChart extends React.Component {
 					const chartData = this.prepareCityRatesForChart(countryRate.cityRates);
 					return <Paper style={style.paper} zDepth={2}>
 						<div style={style.chart}>
-							<Bar data={chartData} options={options}/>
+							<Bar data={chartData} options={getOptions(countryRate.country)}/>
 						</div>
 					</Paper>
 				})}
