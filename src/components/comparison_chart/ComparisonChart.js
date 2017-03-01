@@ -124,4 +124,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(tempMapStateToProps, mapDispatchToProps)(ComparisonChart);
+export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChart);

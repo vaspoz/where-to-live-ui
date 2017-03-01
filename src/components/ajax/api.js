@@ -1,10 +1,5 @@
 import fetch from 'isomorphic-fetch';
-
-const port = 8080;
-const baseURL = 'http://localhost:' + port;
-const countriesURL = baseURL + '/countries';
-const citiesURL = baseURL + '/cities/by/';
-const chartsURL = baseURL + '/compare';
+import {countriesURL,citiesURL,chartsURL, sortChartBy} from '../global';
 
 const BEapi = {
 	getCountryList: () => {
@@ -17,8 +12,22 @@ const BEapi = {
 	},
 	getCharts: (baseCountry, baseCity, countryList) => {
 		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with-all/${countryList.join(',')}`)
-			.then(response => response.json());
+			.then(response => response.json())
+			.then(allCountryRates => sortCountryRates(allCountryRates, sortChartBy));
 	}
+};
+
+const sortCountryRates = (countryRates = [], byWhat) => {
+	countryRates.forEach(singleCountryRates =>
+		singleCountryRates.cityRates.sort(
+			(cityA, cityB) => {
+				if (cityA[byWhat] > cityB[byWhat])
+					return 1;
+				return -1;
+			}
+		)
+	);
+	return countryRates;
 };
 
 export default BEapi;
