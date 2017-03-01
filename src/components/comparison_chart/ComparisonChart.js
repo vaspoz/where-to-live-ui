@@ -72,9 +72,11 @@ class ComparisonChart extends React.Component {
 			<div id="chart-container">
 				{this.props.calculatedRates.map(countryRate => {
 					const chartData = this.prepareCityRatesForChart(countryRate.cityRates);
-					return <Paper id="paper" zDepth={2}>
-						<Bar id="chart" data={chartData} options={getOptions(countryRate.country)}/>
-					</Paper>
+					return (
+						<Paper id="paper" zDepth={2}>
+							<Bar id="chart" data={chartData} options={getOptions(countryRate.country)}/>
+						</Paper>
+					);
 				})}
 			</div>
 		);
