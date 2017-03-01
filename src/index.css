@@ -37,6 +37,23 @@ main {
 	transform: translate(-50%, -50%);
 }
 
+#chart-container {
+	text-align: center;
+}
+
+#paper {
+	width: 1000px;
+	height: 500px;
+	margin: 20px;
+	text-align: center;
+	display: inline-block;
+}
+
+#chart {
+	width: inherit;
+	height: inherit;
+}
+
 #highlight-boarders {
 	border: solid darkgreen;
 }

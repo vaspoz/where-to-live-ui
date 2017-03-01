@@ -6,20 +6,6 @@ import Paper from 'material-ui/Paper';
 import {Bar} from 'react-chartjs-2';
 import randomColor from 'randomcolor';
 
-const style = {
-	paper: {
-		width: 1000,
-		height: 500,
-		margin: 20,
-		textAlign: 'center',
-		display: 'inline-block'
-	},
-	chart: {
-		width: 'inherit',
-		height: 'inherit'
-	}
-};
-
 class ComparisonChart extends React.Component {
 	constructor(props, context) {
 		super(props, context);
@@ -83,13 +69,11 @@ class ComparisonChart extends React.Component {
 			};
 		};
 		return (
-			<div>
+			<div id="chart-container">
 				{this.props.calculatedRates.map(countryRate => {
 					const chartData = this.prepareCityRatesForChart(countryRate.cityRates);
-					return <Paper style={style.paper} zDepth={2}>
-						<div style={style.chart}>
-							<Bar data={chartData} options={getOptions(countryRate.country)}/>
-						</div>
+					return <Paper id="paper" zDepth={2}>
+						<Bar id="chart" data={chartData} options={getOptions(countryRate.country)}/>
 					</Paper>
 				})}
 			</div>
