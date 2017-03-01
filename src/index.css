@@ -8,7 +8,6 @@ body {
 
 header {
 	height: 50px;
-	border: solid orange;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -17,7 +16,6 @@ header {
 
 footer {
 	height: 50px;
-	border: solid cadetblue;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -25,11 +23,20 @@ footer {
 }
 
 main {
-	border: solid darkgreen;
 	width: 100% - 30px;
 	height: 100%;
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
 
+#base-data-container {
+	text-align: center;
+	position: fixed;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
+#highlight-boarders {
+	border: solid darkgreen;
+}
