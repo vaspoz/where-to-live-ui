@@ -1,15 +1,9 @@
 import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
 
-const style = {
-	paper: {
-		height: 'inherit'
-	}
-};
-
 const Footer = () => {
 	return (
-		<Paper zDepth={5} style={style.paper}>
+		<Paper zDepth={5} className="header-footer-paper">
 			<div className="footer-text">
 				Made with ♥ by Vasilii Pozdeev in Gdansk 2017
 			</div>

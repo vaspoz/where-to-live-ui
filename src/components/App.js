@@ -7,13 +7,13 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<header>
+				<header className="header header-footer-common">
 					<Header loading={this.props.loading}/>
 				</header>
 				<main>
 					{this.props.children}
 				</main>
-				<footer>
+				<footer className="footer header-footer-common">
 					<Footer/>
 				</footer>
 			</div>

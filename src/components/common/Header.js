@@ -3,10 +3,6 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 import Paper from 'material-ui/Paper';
 
 const style = {
-	headerContainer: {
-		height: 'inherit',
-		textAlign: 'center'
-	},
 	refresh: {
 		display: 'inline-block',
 		position: 'relative'
@@ -15,7 +11,7 @@ const style = {
 
 const Header = ({loading}) => {
 	return (
-		<Paper zDepth={2} style={style.headerContainer}>
+		<Paper zDepth={2} className="header-footer-paper">
 			<RefreshIndicator
 				left={0}
 				top={0}

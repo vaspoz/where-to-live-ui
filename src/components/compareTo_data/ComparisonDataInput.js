@@ -9,37 +9,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
 const styles = {
-	container: {
-		textAlign: 'center',
-		paddingTop: 100,
-		top: 50
-	},
 	leftColumn: {
 		textAlign: 'center',
-		border: 'solid black',
 		width: '50%',
-		height: '200px',
 		float: 'left'
 	},
 	rightColumn: {
-		border: 'solid black',
-		marginLeft: '50%',
-		height: '200px'
+		marginLeft: '50%'
 	},
 	innerLeft: {
-		border: 'solid red',
 		width: '50%',
-		height: '200px',
 		float: 'left'
 	},
 	innerRight: {
-		border: 'solid red',
-		marginLeft: '50%',
-		height: '200px'
-	},
-	table: {
-		width: 200,
-		margin: 'auto'
+		marginLeft: '50%'
 	}
 };
 

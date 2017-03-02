@@ -1,29 +1,61 @@
-div {
-  font-family: 'Roboto', sans-serif;
+:root {
+	font-family: 'Roboto', sans-serif;
+	--header-footer-height: 55px;
+	/* Clean and Highlighted */
+	--color-sky: #caebf2;
+	--color-carbon: #a9a9a9;
+	--color-watermelon: #ff3b3f;
+	--color-neutral: #efefef;
+	/* Warm Tones */
+	/*--color-grain: #d7cec7;*/
+	/*--color-blackboard: #565656;*/
+	/*--color-oxblood: #76323f;*/
+	/*--color-tan: #c09f80;*/
+	/*!* Pretty Pastels *!*/
+	/*--color-powder: #bfd8d2;*/
+	/*--color-peach: #fedcd2;*/
+	/*--color-warm: #df744a;*/
+	/*--color-lemon: #dcb239;*/
+	/*!* Splash of Color *!*/
+	/*--color-cerulean: #4484ce;*/
+	/*--color-aluminium: #d9d9d9;*/
+	/*--color-light: #f9cf00;*/
+	/*--color-tangerine: #f19f4d;*/
+	/*!* Summer Inspired *!*/
+	/*--color-summer-sky: #286da8;*/
+	/*--color-warm-peach: #cd5360;*/
+	/*--color-field: #b37d4e;*/
+	/*--color-breeze: #438496;*/
+	/*!* Clean and Crisp *!*/
+	/*--color-ice: #99d3df;*/
+	/*--color-fresh-water: #88bbd6;*/
+	/*--color-plaster: #cdcdcd;*/
+	/*--color-linen: #e9e9e9;*/
+	/*!* Cool and Calm *!*/
+	/*--color-aqua: #6bbaa7;*/
+	/*--color-sunshine: #fba100;*/
+	/*--color-lavender: #6c648b;*/
+	/*--color-dusty-rose: #b6a19e;*/
+	/*!* Fu and Cheerful *!*/
+	/*--color-clean: #a7d2cb;*/
+	/*--color-butter: #f2d388;*/
+	/*--color-salmon: #c98474;*/
+	/*--color-eggplant: #875c62;*/
 }
 
-body {
-	margin: 0;
-}
-
-header {
-	height: 50px;
+.header-footer-common {
+	height: var(--header-footer-height);
 	position: fixed;
+	left: 0;
+	width: 100%;
+}
+
+.header {
 	top: 0;
-	left: 0;
-	width: 100%;
-}
-
-footer {
-	height: 55px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
 }
 
 .footer {
-	height: 20px;
+	bottom: 0;
 }
 
 .footer-text {
@@ -35,10 +67,17 @@ footer {
 }
 
 main {
-	width: 100% - 30px;
+	width: 100%;
 	height: 100%;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: var(--header-footer-height);
+	margin-bottom: var(--header-footer-height);
+}
+body {
+	background-color: var(--color-neutral);
+}
+
+h1 {
+	color: var(--color-carbon);
 }
 
 #base-data-container {
@@ -53,7 +92,7 @@ main {
 	text-align: center;
 }
 
-#paper {
+#chart-paper {
 	width: 1000px;
 	height: 500px;
 	margin: 20px;
@@ -68,4 +107,10 @@ main {
 
 #highlight-boarders {
 	border: solid darkgreen;
+}
+
+.header-footer-paper {
+	height: inherit;
+	text-align: center;
+	background-color: var(--color-sky) !important;
 }
