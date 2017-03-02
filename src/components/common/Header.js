@@ -11,7 +11,7 @@ const style = {
 
 const Header = ({loading}) => {
 	return (
-		<Paper zDepth={2} className="header-footer-paper">
+		<Paper zDepth={2} className="header-paper">
 			<RefreshIndicator
 				left={0}
 				top={0}

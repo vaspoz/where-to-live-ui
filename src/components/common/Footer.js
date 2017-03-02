@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper';
 
 const Footer = () => {
 	return (
-		<Paper zDepth={5} className="header-footer-paper">
+		<Paper zDepth={5} className="footer-paper">
 			<div className="footer-text">
 				Made with ♥ by Vasilii Pozdeev in Gdansk 2017
 			</div>

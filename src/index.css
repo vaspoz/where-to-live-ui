@@ -2,15 +2,15 @@
 	font-family: 'Roboto', sans-serif;
 	--header-footer-height: 55px;
 	/* Clean and Highlighted */
-	--color-sky: #caebf2;
-	--color-carbon: #a9a9a9;
-	--color-watermelon: #ff3b3f;
-	--color-neutral: #efefef;
+	/*--color-sky: #caebf2;*/
+	/*--color-carbon: #a9a9a9;*/
+	/*--color-watermelon: #ff3b3f;*/
+	/*--color-neutral: #efefef;*/
 	/* Warm Tones */
-	/*--color-grain: #d7cec7;*/
-	/*--color-blackboard: #565656;*/
-	/*--color-oxblood: #76323f;*/
-	/*--color-tan: #c09f80;*/
+	--color-grain: #d7cec7;
+	--color-blackboard: #565656;
+	--color-oxblood: #76323f;
+	--color-tan: #c09f80;
 	/*!* Pretty Pastels *!*/
 	/*--color-powder: #bfd8d2;*/
 	/*--color-peach: #fedcd2;*/
@@ -43,6 +43,9 @@
 	/*--color-eggplant: #875c62;*/
 }
 
+h1, h2 {
+	color: var(--color-blackboard);
+}
 .header-footer-common {
 	height: var(--header-footer-height);
 	position: fixed;
@@ -55,6 +58,7 @@
 }
 
 .footer {
+	height: 40px;
 	bottom: 0;
 }
 
@@ -64,6 +68,8 @@
 	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	color: var(--color-grain);
+	font-size: 14px;
 }
 
 main {
@@ -73,11 +79,7 @@ main {
 	margin-bottom: var(--header-footer-height);
 }
 body {
-	background-color: var(--color-neutral);
-}
-
-h1 {
-	color: var(--color-carbon);
+	background-color: var(--color-grain);
 }
 
 #base-data-container {
@@ -109,8 +111,14 @@ h1 {
 	border: solid darkgreen;
 }
 
-.header-footer-paper {
+.footer-paper {
 	height: inherit;
 	text-align: center;
-	background-color: var(--color-sky) !important;
+	background-color: var(--color-blackboard) !important;
+}
+
+.header-paper {
+	height: inherit;
+	text-align: center;
+	background-color: var(--color-oxblood) !important;
 }
