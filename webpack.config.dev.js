@@ -29,8 +29,7 @@ export default {
 			{test: /(\.css)$/, loaders: ['style', 'css']},
 			{
 				test: /\.(jpg|png|gif|svg)$/i, loaders: [
-				'file?hash=sha512&digest=hex&name=[hash].[ext]',
-				'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+				'file?hash=sha512&digest=hex&name=[hash].[ext]'
 			]
 			},
 			{test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},       // Remove it

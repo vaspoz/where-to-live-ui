@@ -1,3 +1,4 @@
+/*eslint-disable react-jsx-boolean-value*/
 import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -187,36 +188,90 @@ const mockCalculatedRates = [
 ];
 const table_entries = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+const backgrnd = 'var(--color-background)';
+const disabled = 'var(--color-disabled)';
+const important = 'var(--color-important)';
+const strong = 'var(--color-strong)';
+const secondary = 'var(--color-secondary)';
 
 class AboutPage extends React.Component {
 	render() {
 		return (
-			<div style={{marginTop: 200}}>
+			<div style={{marginTop: 100}}>
+				<div>
+					<div style={{
+						height: 100,
+						width: 100,
+						border: 'solid gray',
+						backgroundColor: backgrnd,
+						display: 'inline-block',
+						margin: 5
+					}}>backgrnd
+					</div>
+					<div style={{
+						height: 100,
+						width: 100,
+						border: 'solid gray',
+						backgroundColor: disabled,
+						display: 'inline-block',
+						margin: 5
+					}}>disabled
+					</div>
+					<div style={{
+						height: 100,
+						width: 100,
+						border: 'solid gray',
+						backgroundColor: important,
+						display: 'inline-block',
+						margin: 5
+					}}>important
+					</div>
+					<div style={{
+						height: 100,
+						width: 100,
+						border: 'solid gray',
+						backgroundColor: strong,
+						display: 'inline-block',
+						margin: 5
+					}}>strong
+					</div>
+					<div style={{
+						height: 100,
+						width: 100,
+						border: 'solid gray',
+						backgroundColor: secondary,
+						display: 'inline-block',
+						margin: 5
+					}}>secondary
+					</div>
+				</div>
 				<div style={styles.leftColumn}>
 					<div style={styles.innerLeft}>
-						<h1>H1 header</h1>
-						<h2>H2 header</h2>
-						<AutoComplete
-							floatingLabelText="Autocomplete"
-							filter={AutoComplete.caseInsensitiveFilter}
-							dataSource={['aaa', 'bbb', 'ccc']}
-						/>
-						<br/>
-						<AutoComplete
-							floatingLabelText="Autocomplete"
-							filter={AutoComplete.caseInsensitiveFilter}
-							disabled={true}
-							dataSource={[1, 2, 3, 4, 5]}
-						/>
-						<br/>
-						<RaisedButton
-							label="Submit enabled"
-						/>
-						<br/>
-						<RaisedButton
-							label="Submit disabled"
-							disabled={true}
-						/>
+						<Paper zDepth={4} style={{opacity: 0.8, width: 400}}>
+							<h1>H1 header</h1>
+							<h2>H2 header</h2>
+							<AutoComplete
+								floatingLabelText="Autocomplete"
+								filter={AutoComplete.caseInsensitiveFilter}
+								dataSource={['aaa', 'bbb', 'ccc']}
+							/>
+							<br/>
+							<AutoComplete
+								floatingLabelText="Autocomplete"
+								filter={AutoComplete.caseInsensitiveFilter}
+								disabled={true}
+								dataSource={[1, 2, 3, 4, 5]}
+							/>
+							<br/>
+							<RaisedButton
+								label="Submit enabled"
+							/>
+							<br/>
+							<RaisedButton
+								label="Submit disabled"
+								disabled={true}
+							/>
+						</Paper>
 					</div>
 					<div style={styles.innerRight}>
 						<Table selectable={true} multiSelectable={true}>
