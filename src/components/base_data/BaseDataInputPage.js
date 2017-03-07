@@ -6,6 +6,7 @@ import * as cityActions from '../redux/actions/CityActions';
 import CountryInput from './CountryInput';
 import CityInput from './CityInput';
 import SubmitButton from './Submit';
+import Paper from 'material-ui/Paper';
 
 class BaseDataInput extends React.Component {
 	constructor(props, context) {
@@ -36,12 +37,14 @@ class BaseDataInput extends React.Component {
 
 	render() {
 		return (
-			<div id="base-data-container">
-				<h1>Base Location</h1>
-				<CountryInput data={this.props.countries} onCountrySelect={this.onCountrySelect}/>
-				<CityInput data={this.props.cities} onCitySelect={this.onCitySelect} disable={this.state.cityInputDisable}/>
-				<SubmitButton disabled={this.state.submitDisable}/>
-			</div>
+			<Paper zDepth={2} className="base-data-container">
+				<div className="base-data-text-container">
+					<h1>Base Location</h1>
+					<CountryInput data={this.props.countries} onCountrySelect={this.onCountrySelect}/>
+					<CityInput data={this.props.cities} onCitySelect={this.onCitySelect} disable={this.state.cityInputDisable}/>
+					<SubmitButton disabled={this.state.submitDisable}/>
+				</div>
+			</Paper>
 		);
 	}
 }
