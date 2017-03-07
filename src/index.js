@@ -11,6 +11,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fetchCountryListFromBE} from './components/redux/actions/CountryActions';
 import {syncHistoryWithStore} from 'react-router-redux';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin  from 'react-tap-event-plugin';
+
+// Needed for onTouchTap (Material-UI)
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
 import {
 	palette, checkbox, textField, raisedButton,
 	table, tableFooter, tableHeader, tableHeaderColumn,
