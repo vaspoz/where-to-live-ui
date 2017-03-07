@@ -7,18 +7,18 @@ const color_secondary = 'var(--color-secondary)';
 
 export const palette = {
 	primary1Color: color_strong,
-	// primary2Color: _colors.cyan700,
-	// primary3Color: _colors.grey400,
-	// accent1Color: _colors.pinkA200,
+	// primary2Color: color_disabled,
+	// primary3Color: color_disabled,
+	// accent1Color: color_disabled,
 	// accent2Color: color_disabled,
-	// accent3Color: _colors.grey500,
-	textColor: color_strong,
-	// secondaryTextColor: (0, _colorManipulator.fade)(_colors.darkBlack, 0.54),
-	// alternateTextColor: tan,
+	// accent3Color: color_disabled,
+	textColor: '#3B746F', //strong
+	secondaryTextColor: color_secondary,
+	// alternateTextColor: color_disabled,
 	canvasColor: color_background,
 	borderColor: color_important,
-	disabledColor: color_disabled
-	// pickerHeaderColor: _colors.cyan500,
+	disabledColor: color_disabled,
+	pickerHeaderColor: color_disabled
 	// clockCircleColor: (0, _colorManipulator.fade)(_colors.darkBlack, 0.07),
 	// shadowColor: _colors.fullBlack
 };
@@ -28,12 +28,12 @@ export const checkbox = {
 };
 export const textField = {
 	// textColor: palette.textColor,
-	floatingLabelColor: color_important
+	floatingLabelColor: palette.secondaryTextColor,
 	// disabledTextColor: color_disabled,
 	// errorColor: _colors.red500,
 	// focusColor: palette.primary1Color,
 	// backgroundColor: 'transparent',
-	// borderColor: palette.borderColor
+	borderColor: palette.secondaryTextColor
 };
 export const raisedButton = {
 	color: color_strong,
@@ -66,7 +66,7 @@ export const tableHeaderColumn = {
 export const tableRow = {
 	// hoverColor: palette.accent2Color,
 	// stripeColor: (0, _colorManipulator.fade)((0, _colorManipulator.lighten)(palette.primary1Color, 0.5), 0.4),
-	selectedColor: 'rgba(232, 168, 100, 0.6)',
+	selectedColor: 'rgba(232, 168, 100, 0.6)'
 	// textColor: palette.textColor,
 	// borderColor: color_strong
 };

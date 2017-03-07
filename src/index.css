@@ -47,11 +47,21 @@ main {
 body {
 	background: no-repeat;
 	background-image: url('./images/back.jpg');
+	background-attachment: fixed;
 }
 
-#base-data-container {
-	text-align: center;
+.base-data-container{
 	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 320px;
+	height: 400px;
+	opacity: 0.9;
+}
+.base-data-text-container {
+	text-align: center;
+	position: relative;
 	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -89,3 +99,7 @@ body {
 	text-align: center;
 	background-color: var(--color-secondary) !important;
 }
+
+
+
+

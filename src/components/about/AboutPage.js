@@ -254,6 +254,7 @@ class AboutPage extends React.Component {
 								floatingLabelText="Autocomplete"
 								filter={AutoComplete.caseInsensitiveFilter}
 								dataSource={['aaa', 'bbb', 'ccc']}
+								openOnFocus={true}
 							/>
 							<br/>
 							<AutoComplete
