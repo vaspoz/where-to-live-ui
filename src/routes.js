@@ -8,8 +8,8 @@ import Chart from './components/comparison_chart/ComparisonChart';
 
 export default (
 	<Route path="/" component={App}>
-		<IndexRoute component={AboutPage}/>
-		<Route path="about" component={BaseDataInput}/>
+		<IndexRoute component={BaseDataInput}/>
+		<Route path="about" component={AboutPage}/>
 		<Route path="dreams" component={ComparisonDataInput}/>
 		<Route path="comparison-chart" component={Chart}/>
 	</Route>
