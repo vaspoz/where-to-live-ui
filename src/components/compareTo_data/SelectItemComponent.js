@@ -12,7 +12,8 @@ class SelectItemComponent extends React.Component {
 
 		this.state = {
 			chosenCountry: '',
-			inputDisabled: false
+			inputDisabled: false,
+			isError: false
 		};
 
 		this.onCountrySelect = this.onCountrySelect.bind(this);
@@ -20,9 +21,15 @@ class SelectItemComponent extends React.Component {
 	}
 
 	onCountrySelect(countryName) {
-		//todo: Add validation
+		if (!this.props.countryList.includes(countryName)) {
+			this.setState({
+				isError: true
+			});
+			return;
+		}
 		this.props.countryActions.selectCompareToCountry(countryName);
 		this.setState({
+			isError: false,
 			inputDisabled: true,
 			chosenCountry: countryName
 		})
@@ -36,8 +43,12 @@ class SelectItemComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<SelectItem onSelect={this.onCountrySelect} countryList={this.props.countryList}
-										inputDisabled={this.state.inputDisabled}/>
+				<SelectItem
+					onSelect={this.onCountrySelect}
+					countryList={this.props.countryList}
+					inputDisabled={this.state.inputDisabled}
+					isError={this.state.isError}
+				/>
 				<DeleteItem deleteHandler={this.onDelete}/>
 			</div>
 		);
