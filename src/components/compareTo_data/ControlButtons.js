@@ -1,6 +1,8 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from 'react-router';
 
-const ControlButtons = (addNewSelectionEventHandler) => {
+const ControlButtons = ({addNewSelectionEventHandler}) => {
 	return (
 		<div className="bottom-button">
 			<RaisedButton
@@ -13,7 +15,7 @@ const ControlButtons = (addNewSelectionEventHandler) => {
 				containerElement={<Link to="/comparison-chart"/>}
 			/>
 		</div>
-	)
+	);
 };
 
 ControlButtons.propTypes = {
