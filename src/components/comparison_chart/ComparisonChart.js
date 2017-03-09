@@ -13,6 +13,10 @@ class ComparisonChart extends React.Component {
 	}
 
 	componentWillMount() {
+		if (!this.props.baseCity || !this.props.baseCountry) {
+			alert('Base data is empty!');
+			return;
+		}
 		this.props.chartActions.fetchChartsForCountries(
 			this.props.baseCountry,
 			this.props.baseCity,
