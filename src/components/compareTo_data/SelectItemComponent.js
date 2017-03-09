@@ -2,9 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import * as countryActions from '../redux/actions/CountryActions';
-import * as chartActions from '../redux/actions/ChartActions';
-import SelectItem from './SelectItemField';
-import DeleteItem from './DeleteItemButton';
+import SelectItemField from './selectItemField';
+import DeleteItem from './deleteItemButton';
 
 class SelectItemComponent extends React.Component {
 	constructor(props, context) {
@@ -43,7 +42,7 @@ class SelectItemComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<SelectItem
+				<SelectItemField
 					onSelect={this.onCountrySelect}
 					countryList={this.props.countryList}
 					inputDisabled={this.state.inputDisabled}

@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as countryActions from '../redux/actions/CountryActions';
 import * as cityActions from '../redux/actions/CityActions';
-import CountryInput from './CountryInput';
-import CityInput from './CityInput';
-import SubmitButton from './Submit';
+import CountryInput from './countryInput';
+import CityInput from './cityInput';
+import SubmitButton from './submit';
 import Paper from 'material-ui/Paper';
 
 class BaseDataInput extends React.Component {

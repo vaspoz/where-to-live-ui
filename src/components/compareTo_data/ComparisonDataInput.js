@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import SelectItemComponent from './SelectItemComponent';
-import ControlButtons from './ControlButtons';
+import ControlButtons from './controlButtons';
 
 class ComparisonDataInput extends React.Component {
 	constructor(props, context) {
