@@ -5,11 +5,16 @@ const SelectedCountries = ({compareToList}) => {
 	return (
 		<List>
 			{compareToList.map((compareToElement, index) => {
-				return <ListItem key ={index} primaryText={compareToElement}/>;
+				return (
+					<div>
+						<ListItem key={index} primaryText={compareToElement}/>
+					</div>
+				)
 			})}
 		</List>
 	);
 };
+
 
 SelectedCountries.propTypes = {
 	compareToList: React.PropTypes.array.isRequired
