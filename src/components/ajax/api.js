@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {countriesURL,citiesURL,chartsURL, sortChartBy} from '../global';
+import {countriesURL, citiesURL, chartsURL, sortChartBy} from '../global';
 
 const BEapi = {
 	getCountryList: () => {
@@ -10,24 +10,34 @@ const BEapi = {
 	getCityList: (countryName) => {
 		return fetch(citiesURL + countryName).then(response => response.json());
 	},
+	getChart: (baseCountry, baseCity, country) => {
+		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with/${country}`)
+			.then(response => response.json())
+			.then(countryRates => sortCountryRates(countryRates))
+	},
 	getCharts: (baseCountry, baseCity, countryList) => {
 		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with-all/${countryList.join(',')}`)
 			.then(response => response.json())
-			.then(allCountryRates => sortCountryRates(allCountryRates, sortChartBy));
+			.then(allCountryRates => sortCountryRates(allCountryRates));
 	}
 };
 
-const sortCountryRates = (countryRates = [], byWhat) => {
-	countryRates.forEach(singleCountryRates =>
-		singleCountryRates.cityRates.sort(
-			(cityA, cityB) => {
-				if (cityA[byWhat] > cityB[byWhat])
-					return 1;
-				return -1;
-			}
-		)
-	);
+const sortCountryRates = (countryRates = []) => {
+	if (!Array.isArray(countryRates))
+		[countryRates].forEach(sortByCityName);
+	else
+		countryRates.forEach(sortByCityName);
 	return countryRates;
+};
+
+const sortByCityName = (singleCountryRates) => {
+	singleCountryRates.cityRates.sort(
+		(cityA, cityB) => {
+			if (cityA[sortChartBy] > cityB[sortChartBy])
+				return 1;
+			return -1;
+		}
+	);
 };
 
 export default BEapi;

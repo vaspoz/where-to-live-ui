@@ -13,9 +13,27 @@ export function fetchChartsForCountries(baseCountry, baseCity, countryList) {
 	};
 }
 
+export function fetchChartForCountry(baseCountry, baseCity, country) {
+	return (dispatch) => {
+		dispatch(beginAjaxCall());
+		return api.getChart(baseCountry, baseCity, country)
+			.then(chartSingleCountry => dispatch(fetchSingleChartSuccess(chartSingleCountry)))
+			.catch(error => {
+				throw(error);
+			}) ;
+	};
+}
+
 function fetchChartsSuccess(chartsList) {
 	return {
 		type: types.BULK_ADD_CALCULATED_RATES_SUCCESS,
 		calculatedRates: chartsList
+	};
+}
+
+function fetchSingleChartSuccess(chart) {
+	return {
+		type: types.ADD_CALCULATED_RATES_SUCCESS,
+		calculatedRates: chart
 	};
 }

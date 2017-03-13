@@ -17,11 +17,13 @@ class ComparisonChart extends React.Component {
 			alert('Base data is empty!');
 			return;
 		}
-		this.props.chartActions.fetchChartsForCountries(
-			this.props.baseCountry,
-			this.props.baseCity,
-			this.props.compareToList
-		);
+		this.props.compareToList.forEach(country => {
+			this.props.chartActions.fetchChartForCountry(
+				this.props.baseCountry,
+				this.props.baseCity,
+				country
+			);
+		});
 	}
 
 	getRandomColors(amount, hue) {
@@ -77,7 +79,7 @@ class ComparisonChart extends React.Component {
 				{this.props.calculatedRates.map(countryRate => {
 					const chartData = this.prepareCityRatesForChart(countryRate.cityRates);
 					return (
-						<Paper id="chart-paper" zDepth={2}>
+						<Paper key={countryRate.country} id="chart-paper" zDepth={2}>
 							<Bar id="chart" data={chartData} options={getOptions(countryRate.country)}/>
 						</Paper>
 					);
