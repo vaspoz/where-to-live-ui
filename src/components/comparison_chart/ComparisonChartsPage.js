@@ -2,11 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as chartActions from '../redux/actions/ChartActions';
 import {bindActionCreators} from 'redux';
-import Paper from 'material-ui/Paper';
-import {Bar} from 'react-chartjs-2';
 import randomColor from 'randomcolor';
+import SingleChart from './singleChart';
 
-class ComparisonChart extends React.Component {
+class ComparisonChartsPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.prepareCityRatesForChart = this.prepareCityRatesForChart.bind(this);
@@ -54,43 +53,27 @@ class ComparisonChart extends React.Component {
 		};
 	}
 
+	getChartDataIfExist(country) {
+		const countryRates = this.props.calculatedRates
+			.filter(rates => rates.country === country)[0];
+		if (!countryRates)
+			return null;
+		return this.prepareCityRatesForChart(countryRates.cityRates);
+	}
+
 	render() {
-		const getOptions = (title) => {
-			return {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				},
-				layout: {
-					padding: 20
-				},
-				maintainAspectRatio: false,
-				title: {
-					display: true,
-					text: title
-				}
-			};
-		};
 		return (
 			<div id="chart-container">
-				{this.props.calculatedRates.map(countryRate => {
-					const chartData = this.prepareCityRatesForChart(countryRate.cityRates);
-					return (
-						<Paper key={countryRate.country} id="chart-paper" zDepth={2}>
-							<Bar id="chart" data={chartData} options={getOptions(countryRate.country)}/>
-						</Paper>
-					);
+				{this.props.compareToList.map(country => {
+					const chartData = this.getChartDataIfExist(country);
+					return <SingleChart key={country} chartData={chartData} country={country}/>;
 				})}
 			</div>
 		);
 	}
 }
 
-
-ComparisonChart.propTypes = {
+ComparisonChartsPage.propTypes = {
 	baseCountry: React.PropTypes.string.isRequired,
 	baseCity: React.PropTypes.string.isRequired,
 	compareToList: React.PropTypes.array.isRequired,
@@ -122,4 +105,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChart);
+export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChartsPage);
