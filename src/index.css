@@ -50,7 +50,7 @@ body {
 	background-attachment: fixed;
 }
 
-.base-data-container{
+.base-data-container {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -59,6 +59,7 @@ body {
 	height: 400px;
 	opacity: 0.9;
 }
+
 .base-data-text-container {
 	text-align: center;
 	position: relative;
@@ -66,7 +67,8 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-.choose-country-container{
+
+.choose-country-container {
 	text-align: center;
 	position: fixed;
 	top: 50%;
@@ -76,6 +78,7 @@ body {
 	height: 400px;
 	opacity: 0.9;
 }
+
 .choose-country-text-container {
 	text-align: center;
 	position: relative;
@@ -83,7 +86,6 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-
 
 #chart-container {
 	text-align: center;
@@ -125,5 +127,12 @@ body {
 	transform: translate(-50%, -50%);
 }
 
-
+.left-column {
+	width: 310px;
+	height: 500px;
+	position: fixed;
+	top: 75px;
+	left: 20px;
+	padding: 0 25px 0 25px;
+}
 

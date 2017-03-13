@@ -1,14 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as chartActions from '../redux/actions/ChartActions';
+import * as globalSettingsActions from '../redux/actions/GlobalSettingsActions';
 import {bindActionCreators} from 'redux';
 import randomColor from 'randomcolor';
 import SingleChart from './singleChart';
+import SettingsPanel from './settingsPanel';
 
 class ComparisonChartsPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.prepareCityRatesForChart = this.prepareCityRatesForChart.bind(this);
+		this.onSortOrderChange = this.onSortOrderChange.bind(this);
 	}
 
 	componentWillMount() {
@@ -61,13 +64,20 @@ class ComparisonChartsPage extends React.Component {
 		return this.prepareCityRatesForChart(countryRates.cityRates);
 	}
 
+	onSortOrderChange(event, order) {
+		this.props.globalSettingsActions.changeSortOrder(order);
+	}
+
 	render() {
 		return (
-			<div id="chart-container">
-				{this.props.compareToList.map(country => {
-					const chartData = this.getChartDataIfExist(country);
-					return <SingleChart key={country} chartData={chartData} country={country}/>;
-				})}
+			<div>
+				<SettingsPanel onSortOrderChange={this.onSortOrderChange}/>
+				<div id="chart-container">
+					{this.props.compareToList.map(country => {
+						const chartData = this.getChartDataIfExist(country);
+						return <SingleChart key={country} chartData={chartData} country={country}/>;
+					})}
+				</div>
 			</div>
 		);
 	}
@@ -78,7 +88,8 @@ ComparisonChartsPage.propTypes = {
 	baseCity: React.PropTypes.string.isRequired,
 	compareToList: React.PropTypes.array.isRequired,
 	calculatedRates: React.PropTypes.array.isRequired,
-	chartActions: React.PropTypes.object.isRequired
+	chartActions: React.PropTypes.object.isRequired,
+	globalSettingsActions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(store) {
@@ -101,8 +112,9 @@ function tempMapStateToProps(store) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		chartActions: bindActionCreators(chartActions, dispatch)
+		chartActions: bindActionCreators(chartActions, dispatch),
+		globalSettingsActions: bindActionCreators(globalSettingsActions, dispatch)
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChartsPage);
+export default connect(tempMapStateToProps, mapDispatchToProps)(ComparisonChartsPage);
