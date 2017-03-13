@@ -30,5 +30,9 @@ const initialState = {
 	],
 
 	// Number of current open connections
-	ajaxConnections: 0
+	ajaxConnections: 0,
+
+	globalSettings: {
+		sortOrder: 'salary'
+	}
 };

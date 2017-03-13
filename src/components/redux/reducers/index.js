@@ -5,6 +5,7 @@ import baseData from './BaseDataReducer';
 import calculatedRates from './CalculatedRatesReducer';
 import ajaxConnections from './AjaxStatusReducer';
 import compareTo from './CompareToReducer';
+import globalSettings from './GlobalSettingsReducer';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
 	calculatedRates,
 	ajaxConnections,
 	compareTo,
+	globalSettings,
 	routing: routerReducer
 });
 
