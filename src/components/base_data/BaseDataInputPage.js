@@ -14,24 +14,40 @@ class BaseDataInput extends React.Component {
 
 		this.state = {
 			submitDisable: true,
-			cityInputDisable: true
+			cityInputDisable: true,
+			countryError: false,
+			cityError: false
 		};
 		this.onCitySelect = this.onCitySelect.bind(this);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
 	}
 
 	onCountrySelect(countryName) {
+		if (!this.props.countries.includes(countryName)) {
+			this.setState({
+				countryError: true
+			});
+			return;
+		}
 		this.props.countryActions.selectBaseCountry(countryName);
 		this.props.cityActions.fetchCityList(countryName);
 		this.setState({
-			cityInputDisable: false
+			cityInputDisable: false,
+			countryError: false
 		});
 	}
 
 	onCitySelect(cityName) {
+		if (!this.props.cities.includes(cityName)) {
+			this.setState({
+				cityError: true
+			});
+			return;
+		}
 		this.props.cityActions.selectBaseCity(cityName);
 		this.setState({
-			submitDisable: false
+			submitDisable: false,
+			cityError: false
 		});
 	}
 
@@ -40,8 +56,17 @@ class BaseDataInput extends React.Component {
 			<Paper zDepth={2} className="base-data-container">
 				<div className="base-data-text-container">
 					<h1>Base Location</h1>
-					<CountryInput data={this.props.countries} onCountrySelect={this.onCountrySelect}/>
-					<CityInput data={this.props.cities} onCitySelect={this.onCitySelect} disable={this.state.cityInputDisable}/>
+					<CountryInput
+						data={this.props.countries}
+						onCountrySelect={this.onCountrySelect}
+						isError={this.state.countryError}
+					/>
+					<CityInput
+						data={this.props.cities}
+						onCitySelect={this.onCitySelect}
+						disable={this.state.cityInputDisable}
+						isError={this.state.cityError}
+					/>
 					<SubmitButton disabled={this.state.submitDisable}/>
 				</div>
 			</Paper>
