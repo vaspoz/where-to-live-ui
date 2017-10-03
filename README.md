@@ -1,6 +1,13 @@
 # where-to-live-ui
 
-To kick it off, just console it:
+Install Node.js
+
+Run
+```
+npm install
+```
+
+Next just kick it off
 ```
 npm start
 ```
