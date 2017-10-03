@@ -103,9 +103,9 @@ function mapStateToProps(store) {
 
 function tempMapStateToProps(store) {
 	return {
-		baseCountry: 'Poland',
-		baseCity: 'Gdansk',
-		compareToList: ['Australia', 'Argentina'],
+		baseCountry: store.baseData.country,
+		baseCity: store.baseData.city,
+		compareToList: store.compareTo,
 		calculatedRates: store.calculatedRates
 	};
 }
