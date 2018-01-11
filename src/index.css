@@ -1,11 +1,11 @@
 :root {
 	font-family: 'Roboto', sans-serif;
 	--header-footer-height: 55px;
-	--color-strong: #3B746F;
-	--color-background: #A7B082;
-	--color-important: #E8A864;
-	--color-disabled: #FBE683;
-	--color-secondary: #6D967B;
+	--color-strong: #385FA2;
+	--color-background: #8886A8;
+	--color-important: #E9BFC0;
+	--color-disabled: #D2E9D7;
+	--color-secondary: #5ACBC8;
 }
 
 h1, h2 {
@@ -23,7 +23,6 @@ h1, h2 {
 }
 
 .footer {
-	height: 40px;
 	bottom: 0;
 }
 
@@ -33,8 +32,9 @@ h1, h2 {
 	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: var(--color-disabled);
+	color: #666666;
 	font-size: 14px;
+	font-weight: bold;
 }
 
 main {
@@ -46,7 +46,7 @@ main {
 
 body {
 	background: no-repeat;
-	background-image: url('./images/back.jpg');
+	background-image: url('./images/background.jpg');
 	background-attachment: fixed;
 }
 
@@ -57,7 +57,8 @@ body {
 	transform: translate(-50%, -50%);
 	width: 320px;
 	height: 400px;
-	opacity: 0.9;
+	opacity: 0.8;
+	background-image: url('./images/paper.png');
 }
 
 .base-data-text-container {
@@ -111,13 +112,13 @@ body {
 .footer-paper {
 	height: inherit;
 	text-align: center;
-	background-color: var(--color-strong) !important;
+	background-image: url('images/footer.png');
 }
 
 .header-paper {
 	height: inherit;
 	text-align: center;
-	background-color: var(--color-secondary) !important;
+	background-image: url('images/header.png');
 }
 
 .bottom-button {
