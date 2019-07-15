@@ -56,12 +56,35 @@ class ComparisonChartsPage extends React.Component {
 		};
 	}
 
+	prepareOverallChart(cityRates) {
+		const labels = cityRates.map(singleCityRate => singleCityRate.city);
+		return {
+			labels: labels,
+			datasets: [
+				{
+					label: 'Profit Value',
+					data: cityRates.map(singleCityRate => singleCityRate.overall),
+					backgroundColor: this.getRandomColors(labels.length, 'blue'),
+					borderWidth: 1
+				}
+			]
+		};
+	}
+
 	getChartDataIfExist(country) {
 		const countryRates = this.props.calculatedRates
 			.filter(rates => rates.country === country)[0];
 		if (!countryRates)
 			return null;
 		return this.prepareCityRatesForChart(countryRates.cityRates);
+	}
+
+	getOverallChartDataIfExist(country) {
+		const countryRates = this.props.calculatedRates
+			.filter(rates => rates.country === country)[0];
+		if (!countryRates)
+			return null;
+		return this.prepareOverallChart(countryRates.cityRates);
 	}
 
 	onSortOrderChange(event, order) {
@@ -71,10 +94,9 @@ class ComparisonChartsPage extends React.Component {
 	render() {
 		return (
 			<div>
-				<SettingsPanel onSortOrderChange={this.onSortOrderChange}/>
 				<div id="chart-container">
 					{this.props.compareToList.map(country => {
-						const chartData = this.getChartDataIfExist(country);
+						const chartData = this.getOverallChartDataIfExist(country);
 						return <SingleChart key={country} chartData={chartData} country={country}/>;
 					})}
 				</div>

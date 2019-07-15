@@ -4,4 +4,4 @@ export const countriesURL = baseURL + '/countries';
 export const citiesURL = baseURL + '/cities/by/';
 export const chartsURL = baseURL + '/compare';
 
-export const sortChartBy = 'salary';
+export const sortChartBy = 'overall';
