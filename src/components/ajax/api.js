@@ -13,7 +13,7 @@ const BEapi = {
 	getChart: (baseCountry, baseCity, country) => {
 		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with/${country}`)
 			.then(response => response.json())
-			.then(countryRates => sortCountryRates(countryRates))
+			.then(countryRates => sortCountryRates(countryRates));
 	},
 	getCharts: (baseCountry, baseCity, countryList) => {
 		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with-all/${countryList.join(',')}`)
