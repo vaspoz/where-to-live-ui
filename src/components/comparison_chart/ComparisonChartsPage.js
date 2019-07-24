@@ -6,13 +6,14 @@ import {bindActionCreators} from 'redux';
 import randomColor from 'randomcolor';
 import SingleChart from './singleChart';
 import CountryOverview from './countryOverview';
-import SettingsPanel from './settingsPanel';
 
 class ComparisonChartsPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.prepareCityRatesForChart = this.prepareCityRatesForChart.bind(this);
-		this.onSortOrderChange = this.onSortOrderChange.bind(this);
+		this.getNoOfCities = this.getNoOfCities.bind(this);
+		this.getAvgProfit = this.getAvgProfit.bind(this);
+		this.getOverallChartDataIfExist = this.getOverallChartDataIfExist.bind(this);
 	}
 
 	componentWillMount() {
@@ -88,28 +89,52 @@ class ComparisonChartsPage extends React.Component {
 		return this.prepareOverallChart(countryRates.cityRates);
 	}
 
-	onSortOrderChange(event, order) {
-		this.props.globalSettingsActions.changeSortOrder(order);
+	getNoOfCities(countryName) {
+		const calcRatesForCurrentCountry = this.props.calculatedRates.filter(countryRates => countryRates.country === countryName)[0];
+		let noOfCities;
+		if (calcRatesForCurrentCountry) {
+			noOfCities = calcRatesForCurrentCountry.cityRates.length;
+		}
+		return noOfCities || 0;
+	}
+
+	getAvgProfit(countryName) {
+		const calcRatesForCurrentCountry = this.props.calculatedRates.filter(countryRates => countryRates.country === countryName)[0];
+		let averageProfit;
+		if (calcRatesForCurrentCountry) {
+			let overallFlattened = 0;
+			calcRatesForCurrentCountry.cityRates.forEach(cityRate => overallFlattened += cityRate.overall);
+			averageProfit = (overallFlattened / this.getNoOfCities(countryName)).toFixed(2);
+		}
+		return parseFloat(averageProfit || 0);
 	}
 
 	render() {
 		const defaultChartData = this.getOverallChartDataIfExist("Netherlands");
+		console.log(defaultChartData);
 		return (
-			<div id="chart-container">
-				{this.props.compareToList.map(country => {
-					const overallChartData = this.getOverallChartDataIfExist(country.countryName);
-					return (
-						<CountryOverview
-							key={country.countryName}
-							chartData={overallChartData}
-							countryName={country.countryName}
-							countryCode={country.countryCode}/>
-					)
-				})}
-				<SingleChart
-					country="Netherlands"
-					chartData={defaultChartData}
-				/>
+			<div>
+				<div id="chart-container">
+					{this.props.compareToList.map(country => {
+						// const overallChartData = this.getOverallChartDataIfExist(country.countryName);
+						const noOfCities = this.getNoOfCities(country.countryName);
+						const averageProfit = this.getAvgProfit(country.countryName);
+						return (
+							<CountryOverview
+								key={country.countryName}
+								noOfCities={noOfCities}
+								avgProfit={averageProfit}
+								countryName={country.countryName}
+								countryCode={country.countryCode}/>
+						);
+					})}
+				</div>
+				<div id="chart-container">
+					<SingleChart
+						country="Netherlands"
+						chartData={defaultChartData}
+					/>
+				</div>
 			</div>
 		);
 	}

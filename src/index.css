@@ -16,6 +16,7 @@ h1, h2 {
 	position: fixed;
 	left: 0;
 	width: 100%;
+	z-index: 10;
 }
 
 .header {
@@ -106,6 +107,17 @@ body {
 	margin: 20px;
 	padding: 10px;
 	display: inline-block;
+}
+#overview-chart-header {
+	border-bottom: 1px solid #cccccc;
+	padding: 10px;
+	height: 50px;
+	text-align: left;
+}
+
+#overview-chart-header > * {
+	display: inline-block;
+	float: left;
 }
 
 #chart {
