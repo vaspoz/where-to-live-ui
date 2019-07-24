@@ -5,6 +5,7 @@ import Paper from 'material-ui/Paper';
 const style = {
 	refresh: {
 		display: 'inline-block',
+		visibility: false,
 		position: 'relative'
 	}
 };
