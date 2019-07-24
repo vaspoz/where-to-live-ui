@@ -93,18 +93,23 @@ class ComparisonChartsPage extends React.Component {
 	}
 
 	render() {
+		const defaultChartData = this.getOverallChartDataIfExist("Netherlands");
 		return (
 			<div id="chart-container">
 				{this.props.compareToList.map(country => {
-					const chartData = this.getOverallChartDataIfExist(country.countryName);
+					const overallChartData = this.getOverallChartDataIfExist(country.countryName);
 					return (
 						<CountryOverview
 							key={country.countryName}
-							chartData={chartData}
+							chartData={overallChartData}
 							countryName={country.countryName}
 							countryCode={country.countryCode}/>
-					);
+					)
 				})}
+				<SingleChart
+					country="Netherlands"
+					chartData={defaultChartData}
+				/>
 			</div>
 		);
 	}
