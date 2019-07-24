@@ -33,6 +33,5 @@ const initialState = {
 	ajaxConnections: 0,
 
 	globalSettings: {
-		sortOrder: 'salary'
 	}
 };

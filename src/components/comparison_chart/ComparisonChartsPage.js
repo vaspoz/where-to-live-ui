@@ -5,6 +5,7 @@ import * as globalSettingsActions from '../redux/actions/GlobalSettingsActions';
 import {bindActionCreators} from 'redux';
 import randomColor from 'randomcolor';
 import SingleChart from './singleChart';
+import CountryOverview from './countryOverview';
 import SettingsPanel from './settingsPanel';
 
 class ComparisonChartsPage extends React.Component {
@@ -19,11 +20,11 @@ class ComparisonChartsPage extends React.Component {
 			alert('Base data is empty!');
 			return;
 		}
-		this.props.compareToList.forEach(country => {
+		this.props.compareToList.forEach(countryInfo => {
 			this.props.chartActions.fetchChartForCountry(
 				this.props.baseCountry,
 				this.props.baseCity,
-				country
+				countryInfo.countryName
 			);
 		});
 	}
@@ -93,13 +94,17 @@ class ComparisonChartsPage extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<div id="chart-container">
-					{this.props.compareToList.map(country => {
-						const chartData = this.getOverallChartDataIfExist(country);
-						return <SingleChart key={country} chartData={chartData} country={country}/>;
-					})}
-				</div>
+			<div id="chart-container">
+				{this.props.compareToList.map(country => {
+					const chartData = this.getOverallChartDataIfExist(country.countryName);
+					return (
+						<CountryOverview
+							key={country.countryName}
+							chartData={chartData}
+							countryName={country.countryName}
+							countryCode={country.countryCode}/>
+					);
+				})}
 			</div>
 		);
 	}
@@ -125,8 +130,8 @@ function mapStateToProps(store) {
 
 function tempMapStateToProps(store) {
 	return {
-		baseCountry: store.baseData.country,
-		baseCity: store.baseData.city,
+		baseCountry: 'Poland',
+		baseCity: 'Gdansk',
 		compareToList: store.compareTo,
 		calculatedRates: store.calculatedRates
 	};

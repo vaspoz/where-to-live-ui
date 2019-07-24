@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {countriesURL, citiesURL, chartsURL, sortChartBy} from '../global';
+import {countriesURL, citiesURL, chartsURL, sortChartBy, countryCodesAPI} from '../global';
 
 const BEapi = {
 	getCountryList: () => {
@@ -19,7 +19,12 @@ const BEapi = {
 		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with-all/${countryList.join(',')}`)
 			.then(response => response.json())
 			.then(allCountryRates => sortCountryRates(allCountryRates));
-	}
+	},
+	getCountryCode: (country) => {
+		return fetch(`${countryCodesAPI}/${country}`)
+			.then(response => response.json())
+			.then(countryInfo => countryInfo[0].alpha2Code);
+}
 };
 
 const sortCountryRates = (countryRates = []) => {

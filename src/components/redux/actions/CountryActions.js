@@ -15,12 +15,34 @@ export function fetchCountryListFromBE() {
 	};
 }
 
+export function fetchCountryCode(countryName) {
+	return (dispatch) => {
+		return api.getCountryCode(countryName)
+			.then(code => {
+				dispatch(fetchCountryCodeSuccess(countryName, code))
+			})
+			.catch(error => {
+				console.error("Country's flag is not supported");
+				dispatch(fetchCountryCodeSuccess("Netherlands", "NL"))
+			});
+	};
+}
+
 export function fetchCountrySuccess(countryList) {
 	return {
 		type: types.FETCH_COUNTRY_LIST_SUCCESS,
 		countryList
 	};
 }
+
+export function fetchCountryCodeSuccess(countryName, countryCode) {
+	return {
+		type: types.FETCH_COUNTRY_CODE,
+		countryName,
+		countryCode
+	};
+}
+
 export function selectBaseCountry(countryName) {
 	return {
 		type: types.SELECT_BASE_COUNTRY,
