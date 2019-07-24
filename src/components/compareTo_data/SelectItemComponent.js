@@ -10,8 +10,8 @@ class SelectItemComponent extends React.Component {
 		super(props, context);
 
 		this.state = {
-			chosenCountry: '',
-			inputDisabled: false,
+			chosenCountry: this.props.value || '',
+			inputDisabled: !!this.props.value,
 			isError: false
 		};
 
@@ -27,16 +27,18 @@ class SelectItemComponent extends React.Component {
 			return;
 		}
 		this.props.countryActions.selectCompareToCountry(countryName);
+		this.props.countryActions.fetchCountryCode(countryName);
 		this.setState({
 			isError: false,
 			inputDisabled: true,
 			chosenCountry: countryName
-		})
+		});
+		this.props.onAddItem(countryName);
 	}
 
 	onDelete() {
 		this.props.countryActions.deselectCompareToCountry(this.state.chosenCountry);
-		this.props.onDeleteItem();
+		this.props.onDeleteItem(this.state.chosenCountry);
 	}
 
 	render() {
@@ -47,6 +49,7 @@ class SelectItemComponent extends React.Component {
 					countryList={this.props.countryList}
 					inputDisabled={this.state.inputDisabled}
 					isError={this.state.isError}
+					value={this.state.chosenCountry}
 				/>
 				<DeleteItem deleteHandler={this.onDelete}/>
 			</div>
@@ -56,6 +59,8 @@ class SelectItemComponent extends React.Component {
 
 SelectItemComponent.propTypes = {
 	onDeleteItem: React.PropTypes.func.isRequired,
+	onAddItem: React.PropTypes.func.isRequired,
+	value: React.PropTypes.string.isRequired,
 	countryActions: React.PropTypes.object,
 	compareToList: React.PropTypes.array,
 	countryList: React.PropTypes.array
