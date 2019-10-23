@@ -59,7 +59,8 @@ class ComparisonDataInput extends React.Component {
 					);
 				})}
 				<br/>
-				<ControlButtons addNewSelectionEventHandler={this.addNewSelection}/>
+				<ControlButtons addNewSelectionEventHandler={this.addNewSelection}
+												addButtonDisabled={this.state.items.length >= 3}/>
 			</Paper>
 		);
 	}
