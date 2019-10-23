@@ -1,12 +1,9 @@
 import React from 'react';
-import Paper from "material-ui/Paper";
-import Flag from "./flag";
-import RefreshIndicator from "material-ui/RefreshIndicator";
 
 const style = {
 	bigNumbers: {
-		height: "125px",
-		paddingTop: "25px"
+		height: "100px",
+		paddingTop: "15px"
 	},
 	number: {
 		fontSize: "50pt",

@@ -1,11 +1,15 @@
 import React from 'react';
 import RefreshIndicator from "material-ui/RefreshIndicator";
 import StatsNumber from './statsNumber';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
 	refresh: {
 		display: 'inline-block',
 		position: 'relative'
+	},
+	button: {
+		marginTop: "25px"
 	}
 };
 
@@ -16,6 +20,11 @@ const overviewBody = ({noOfCities, avgProfit}) => {
 				<div>
 					<StatsNumber description="No of cities" number={noOfCities}/>
 					<StatsNumber description="Median Profit" number={avgProfit}/>
+					<RaisedButton
+						label="Details"
+						style={style.button}
+						disabled={true}
+						/>
 				</div> :
 				<RefreshIndicator
 					left={0}
