@@ -33,5 +33,6 @@ const initialState = {
 	ajaxConnections: 0,
 
 	globalSettings: {
+		jwt: ""
 	}
 };

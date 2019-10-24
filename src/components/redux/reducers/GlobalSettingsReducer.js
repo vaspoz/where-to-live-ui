@@ -8,8 +8,19 @@ export default function globalSettingsReducer(state = {}, action) {
 				state,
 				{sortOrder: action.sortOrder}
 			);
+		case types.SIGNUP_USER_SUCCESS:
+			return Object.assign(
+				{},
+				state,
+				{jwt: action.jwt}
+			);
+		case types.LOGIN_USER_SUCCESS:
+			return Object.assign(
+				{},
+				state,
+				{jwt: action.jwt}
+			);
 		default:
 			return state;
 	}
 }
-

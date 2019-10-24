@@ -8,4 +8,3 @@ export default function cityListReducer(state = [], action) {
 			return state;
 	}
 }
-

@@ -11,8 +11,8 @@ export default function compareToReducer(state = [], action) {
 		}
 		case types.FETCH_COUNTRY_CODE: {
 			const ar = [...state];
-			const currentCountry = ar.filter(countryInfo => countryInfo.countryName == action.countryName);
-			const updatedState = ar.filter(countryInfo => countryInfo.countryName != action.countryName);
+			const currentCountry = ar.filter(countryInfo => countryInfo.countryName === action.countryName);
+			const updatedState = ar.filter(countryInfo => countryInfo.countryName !== action.countryName);
 			const updatedCountry = {
 				countryName: currentCountry[0].countryName,
 				countryCode: action.countryCode
@@ -21,7 +21,7 @@ export default function compareToReducer(state = [], action) {
 			return updatedState;
 		}
 		case types.DESELECT_COMPARETO_COUNTRY:
-			return state.filter(countryInfo => countryInfo.countryName != action.countryName);
+			return state.filter(countryInfo => countryInfo.countryName !== action.countryName);
 		default:
 			return state;
 	}
