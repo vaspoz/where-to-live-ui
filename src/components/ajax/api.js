@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {countriesURL, citiesURL, chartsURL, sortChartBy, countryCodesAPI} from '../global';
+import {countriesURL, citiesURL, chartsURL, sortChartBy, countryCodesAPI, signupURL, loginURL} from '../global';
 
 const BEapi = {
 	getCountryList: () => {
@@ -24,7 +24,35 @@ const BEapi = {
 		return fetch(`${countryCodesAPI}/${country}`)
 			.then(response => response.json())
 			.then(countryInfo => countryInfo[0].alpha2Code);
-}
+	},
+	signUp: (username, password, email, countryOrigin) => {
+		return fetch(`${signupURL}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				username: "vaspoz",
+				password: "123321",
+				email: "vaspoz@vas.poz",
+				countryOrigin: "Timberland"
+			})
+		})
+			.then(response => response.json())
+	},
+	login: (username, password) => {
+		return fetch(`${loginURL}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				username: 'vaspoz',
+				password: '123321'
+			})
+		})
+			.then(response => response.json())
+	}
 };
 
 const sortCountryRates = (countryRates = []) => {
