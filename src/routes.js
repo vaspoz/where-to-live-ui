@@ -9,7 +9,8 @@ import LoginPage from "./components/login_page/LoginPage";
 
 export default (
 	<Route path="/" component={App}>
-		<IndexRoute component={BaseDataInput}/>
+		<IndexRoute component={LoginPage}/>
+		<Route path="base-data-input" component={BaseDataInput}/>
 		<Route path="about" component={AboutPage}/>
 		<Route path="dreams" component={ComparisonDataInput}/>
 		<Route path="comparison-chart" component={Chart}/>
