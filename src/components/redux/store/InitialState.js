@@ -5,7 +5,7 @@ const initialState = {
 	// City list loaded after country chosen
 	cityList: [],
 
-	// Selecter pair Country-City from the list
+	// Selected pair Country-City from the list
 	baseData: {
 		country: "",
 		city: ""
