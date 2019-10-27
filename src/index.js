@@ -23,8 +23,6 @@ import {
 	tableRow
 } from './colors';
 const store = configureStore();
-store.dispatch(fetchCountryListFromBE());
-
 
 const muiTheme = getMuiTheme({
 	palette,

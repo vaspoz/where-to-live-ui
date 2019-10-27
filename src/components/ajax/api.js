@@ -1,27 +1,42 @@
 import fetch from 'isomorphic-fetch';
 import {countriesURL, citiesURL, chartsURL, sortChartBy, countryCodesAPI, signupURL, loginURL} from '../global';
 
+// Use a fetch wrapper to inject headers in all requests
+let fetchWrap = function(url, options) {
+	if (!options) options = {};
+	let jwttoken = localStorage.getItem('jwttoken');
+
+	// attach Authorization header if jwt token exists:
+	if (jwttoken) {
+		options.headers = Object.assign({}, options.headers, {
+			'Authorization': `Bearer ${jwttoken}`
+		});
+	}
+
+	return fetch.apply(this, [url, options]);
+};
+
 const BEapi = {
 	getCountryList: () => {
-		return fetch(countriesURL)
+		return fetchWrap(countriesURL)
 			.then(response => response.json())
 			.then(countryList => countryList.sort());
 	},
 	getCityList: (countryName) => {
-		return fetch(citiesURL + countryName).then(response => response.json());
+		return fetchWrap(citiesURL + countryName).then(response => response.json());
 	},
 	getChart: (baseCountry, baseCity, country) => {
-		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with/${country}`)
+		return fetchWrap(`${chartsURL}/${baseCountry}/${baseCity}/with/${country}`)
 			.then(response => response.json())
 			.then(countryRates => sortCountryRates(countryRates));
 	},
 	getCharts: (baseCountry, baseCity, countryList) => {
-		return fetch(`${chartsURL}/${baseCountry}/${baseCity}/with-all/${countryList.join(',')}`)
+		return fetchWrap(`${chartsURL}/${baseCountry}/${baseCity}/with-all/${countryList.join(',')}`)
 			.then(response => response.json())
 			.then(allCountryRates => sortCountryRates(allCountryRates));
 	},
 	getCountryCode: (country) => {
-		return fetch(`${countryCodesAPI}/${country}`)
+		return fetchWrap(`${countryCodesAPI}/${country}`)
 			.then(response => response.json())
 			.then(countryInfo => countryInfo[0].alpha2Code);
 	},
