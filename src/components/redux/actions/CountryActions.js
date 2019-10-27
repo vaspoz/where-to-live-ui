@@ -28,14 +28,14 @@ export function fetchCountryCode(countryName) {
 	};
 }
 
-export function fetchCountrySuccess(countryList) {
+function fetchCountrySuccess(countryList) {
 	return {
 		type: types.FETCH_COUNTRY_LIST_SUCCESS,
 		countryList
 	};
 }
 
-export function fetchCountryCodeSuccess(countryName, countryCode) {
+function fetchCountryCodeSuccess(countryName, countryCode) {
 	return {
 		type: types.FETCH_COUNTRY_CODE,
 		countryName,

@@ -6,7 +6,7 @@ export function signUpUser(username, password, email, countryOrigin) {
 	return (dispatch) => {
 		dispatch(beginAjaxCall());
 		return api.signUp(username, password, email, countryOrigin)
-			.then(token => dispatch(signUpUserSuccess(token)))
+			.then(authResponse => dispatch(signUpUserSuccess(authResponse)))
 			.catch(error => {
 				throw(error);
 			});
@@ -31,16 +31,16 @@ function changeSortOrder(newOrder) {
 	};
 }
 
-function signUpUserSuccess(token) {
+function signUpUserSuccess(authResponse) {
 	return {
 		type: types.SIGNUP_USER_SUCCESS,
-		jwt: token
+		authResponse
 	};
 }
 
-function loginUserSuccess(token) {
+function loginUserSuccess(authResponse) {
 	return {
 		type: types.LOGIN_USER_SUCCESS,
-		jwt: token
+		authResponse
 	};
 }
