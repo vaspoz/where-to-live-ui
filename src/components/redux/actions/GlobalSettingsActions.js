@@ -24,6 +24,14 @@ export function loginUser(username, password) {
 	};
 }
 
+export function logout() {
+	return (dispatch) => {
+		dispatch({
+			type: types.LOGOUT_USER
+		})
+	}
+}
+
 function changeSortOrder(newOrder) {
 	return {
 		type: types.CHANGE_SORT_ORDER,
