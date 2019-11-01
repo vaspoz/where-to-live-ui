@@ -15,6 +15,7 @@ const SubmitButton = ({disabled, clickEvent, label}) => {
 				label={label}
 				disabled={disabled}
 				onMouseDown={clickEvent}
+				containerElement={<Link to="/base-data"/>}
 			/>
 		</div>
 	);
