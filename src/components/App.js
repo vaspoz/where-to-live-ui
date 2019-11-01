@@ -8,7 +8,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<header className="header header-footer-common">
-					<Header loading={this.props.loading}/>
+					<Header/>
 				</header>
 				<main>
 					{this.props.children}
@@ -22,13 +22,11 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-	children: PropTypes.object.isRequired,
-	loading: PropTypes.bool.isRequired
+	children: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		loading: state.ajaxConnections > 0
 	};
 }
 

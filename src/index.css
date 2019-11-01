@@ -2,10 +2,12 @@
 	font-family: 'Roboto', sans-serif;
 	--header-footer-height: 55px;
 	--color-strong: #385FA2;
-	--color-background: #8886A8;
+	--color-background: #FFF;
 	--color-important: #E9BFC0;
 	--color-disabled: #D2E9D7;
-	--color-secondary: #5ACBC8;
+	--color-secondary: #FFF;
+	--color-white: #FFF;
+	--color-black: #000;
 }
 
 h1, h2 {
@@ -47,7 +49,6 @@ main {
 
 body {
 	background: no-repeat;
-	background-image: url('./images/background.jpg');
 	background-attachment: fixed;
 }
 
@@ -59,7 +60,6 @@ body {
 	width: 320px;
 	height: 400px;
 	opacity: 0.8;
-	background-image: url('./images/paper.png');
 }
 
 .base-data-text-container {
@@ -132,13 +132,12 @@ body {
 .footer-paper {
 	height: inherit;
 	text-align: center;
-	background-image: url('images/footer.png');
 }
 
 .header-paper {
+	padding: 9px;
 	height: inherit;
 	text-align: center;
-	background-image: url('images/header.png');
 }
 
 .bottom-button {

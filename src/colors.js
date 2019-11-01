@@ -3,6 +3,8 @@ const color_background = 'var(--color-background)';
 const color_important = 'var(--color-important)';
 const color_disabled = 'var(--color-disabled)';
 const color_secondary = 'var(--color-secondary)';
+const color_white = 'var(--color-white)';
+const color_black = 'var(--color-black)';
 
 
 export const palette = {
@@ -12,7 +14,7 @@ export const palette = {
 	// accent1Color: color_disabled,
 	// accent2Color: color_disabled,
 	// accent3Color: color_disabled,
-	textColor: '#3B746F', //strong
+	textColor: color_black, //strong
 	secondaryTextColor: color_secondary,
 	// alternateTextColor: color_disabled,
 	canvasColor: color_background,
