@@ -36,7 +36,7 @@ const BEapi = {
 			.then(allCountryRates => sortCountryRates(allCountryRates));
 	},
 	getCountryCode: (country) => {
-		return fetchWrap(`${countryCodesAPI}/${country}`)
+		return fetch(`${countryCodesAPI}/${country}`)
 			.then(response => response.json())
 			.then(countryInfo => countryInfo[0].alpha2Code);
 	},
