@@ -33,6 +33,15 @@ export default function globalSettingsReducer(state = {}, action) {
 				return handleErrorLogin(state, action.authResponse);
 			}
 			return handleSignupLoginSuccess(state, action.authResponse);
+		case types.LOGOUT_USER:
+			return Object.assign(
+				{},
+				state,
+				{
+					currentUser: {},
+					loginError: "",
+					signupError: ""
+				});
 		default:
 			return state;
 	}
