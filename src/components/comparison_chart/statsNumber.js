@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const style = {
 	bigNumbers: {
@@ -24,8 +25,8 @@ const statsNumber = ({number, description}) => {
 };
 
 statsNumber.propTypes = {
-	number: React.PropTypes.number.isRequired,
-	description: React.PropTypes.string.isRequired
+	number: PropTypes.number.isRequired,
+	description: PropTypes.string.isRequired
 };
 
 export default statsNumber;

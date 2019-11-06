@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
@@ -20,8 +21,8 @@ const ControlButtons = ({addNewSelectionEventHandler, addButtonDisabled}) => {
 };
 
 ControlButtons.propTypes = {
-	addNewSelectionEventHandler: React.PropTypes.func.isRequired,
-	addButtonDisabled: React.PropTypes.bool.isRequired
+	addNewSelectionEventHandler: PropTypes.func.isRequired,
+	addButtonDisabled: PropTypes.bool.isRequired
 };
 
 export default ControlButtons;

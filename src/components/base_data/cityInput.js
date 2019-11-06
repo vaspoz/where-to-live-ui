@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import AutoComplete from 'material-ui/AutoComplete';
 
 const CityInput = ({data, disable, onCitySelect, isError}) => {
@@ -22,10 +23,10 @@ const CityInput = ({data, disable, onCitySelect, isError}) => {
 };
 
 CityInput.propTypes = {
-	data: React.PropTypes.array.isRequired,
-	onCitySelect: React.PropTypes.func.isRequired,
-	disable: React.PropTypes.bool.isRequired,
-	isError: React.PropTypes.bool.isRequired
+	data: PropTypes.array.isRequired,
+	onCitySelect: PropTypes.func.isRequired,
+	disable: PropTypes.bool.isRequired,
+	isError: PropTypes.bool.isRequired
 };
 
 export default CityInput;

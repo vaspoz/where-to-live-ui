@@ -13,11 +13,16 @@ export function signUpUser(username, password, email, countryOrigin) {
 	};
 }
 
-export function loginUser(username, password) {
+export function loginUser(username, password, history) {
 	return (dispatch) => {
 		dispatch(beginAjaxCall());
 		return api.login(username, password)
-			.then(token => dispatch(loginUserSuccess(token)))
+			.then(token => {
+				if (!!history) history.push('/');
+				console.log('token: ' + JSON.stringify(token));
+				console.log('history: ' + JSON.stringify(history));
+				dispatch(loginUserSuccess(token));
+			})
 			.catch(error => {
 				throw(error);
 			});

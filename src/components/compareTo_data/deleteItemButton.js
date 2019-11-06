@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import IconButton from 'material-ui/IconButton';
 
@@ -18,7 +19,7 @@ const DeleteItemButton = ({deleteHandler}) => {
 };
 
 DeleteItemButton.propTypes = {
-	deleteHandler: React.PropTypes.func.isRequired
+	deleteHandler: PropTypes.func.isRequired
 };
 
 export default DeleteItemButton;

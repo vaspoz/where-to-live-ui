@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const flag = ({countryCode}) => {
 	const src = `https://www.countryflags.io/${countryCode}/flat/64.png`;
@@ -12,7 +13,7 @@ const flag = ({countryCode}) => {
 };
 
 flag.propTypes = {
-	countryCode: React.PropTypes.string.isRequired
+	countryCode: PropTypes.string.isRequired
 };
 
 export default flag;

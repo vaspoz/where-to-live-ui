@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Flag from "./flag";
 
 const style = {
@@ -27,8 +28,8 @@ const overviewHeader = ({countryCode, countryName}) => {
 };
 
 overviewHeader.propTypes = {
-	countryCode: React.PropTypes.string.isRequired,
-	countryName: React.PropTypes.string.isRequired
+	countryCode: PropTypes.string.isRequired,
+	countryName: PropTypes.string.isRequired
 };
 
 export default overviewHeader;

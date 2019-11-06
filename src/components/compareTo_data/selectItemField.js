@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import AutoComplete from 'material-ui/AutoComplete';
 
 const SelectItemField = ({countryList, onSelect, inputDisabled, isError, value}) => {
@@ -21,11 +22,11 @@ const SelectItemField = ({countryList, onSelect, inputDisabled, isError, value})
 };
 
 SelectItemField.propTypes = {
-	onSelect: React.PropTypes.func.isRequired,
-	countryList: React.PropTypes.array.isRequired,
-	inputDisabled: React.PropTypes.bool.isRequired,
-	isError: React.PropTypes.bool.isRequired,
-	value: React.PropTypes.string
+	onSelect: PropTypes.func.isRequired,
+	countryList: PropTypes.array.isRequired,
+	inputDisabled: PropTypes.bool.isRequired,
+	isError: PropTypes.bool.isRequired,
+	value: PropTypes.string
 };
 
 export default SelectItemField;

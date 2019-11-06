@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import SelectItemComponent from './SelectItemComponent';
@@ -67,7 +68,7 @@ class ComparisonDataInput extends React.Component {
 }
 
 ComparisonDataInput.propTypes = {
-	compareToList: React.PropTypes.array
+	compareToList: PropTypes.array
 };
 
 function mapStateToProps(store) {

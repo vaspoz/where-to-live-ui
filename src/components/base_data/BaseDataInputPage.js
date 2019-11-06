@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as countryActions from '../redux/actions/CountryActions';
@@ -75,10 +76,10 @@ class BaseDataInput extends React.Component {
 }
 
 BaseDataInput.propTypes = {
-	cityActions: React.PropTypes.object.isRequired,
-	countryActions: React.PropTypes.object.isRequired,
-	countries: React.PropTypes.array.isRequired,
-	cities: React.PropTypes.array.isRequired
+	cityActions: PropTypes.object.isRequired,
+	countryActions: PropTypes.object.isRequired,
+	countries: PropTypes.array.isRequired,
+	cities: PropTypes.array.isRequired
 };
 
 function mapDispatchToProps(dispatch) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Paper from 'material-ui/Paper';
 import OverviewHeader from './overviewHeader';
 import OverviewBody from './overviewBody';
@@ -13,10 +14,10 @@ const countryOverview = ({countryName, countryCode, noOfCities, avgProfit}) => {
 };
 
 countryOverview.propTypes = {
-	noOfCities: React.PropTypes.number,
-	avgProfit: React.PropTypes.number,
-	countryName: React.PropTypes.string.isRequired,
-	countryCode: React.PropTypes.string.isRequired
+	noOfCities: PropTypes.number,
+	avgProfit: PropTypes.number,
+	countryName: PropTypes.string.isRequired,
+	countryCode: PropTypes.string.isRequired
 };
 
 export default countryOverview;

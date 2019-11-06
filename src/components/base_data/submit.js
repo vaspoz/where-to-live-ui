@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
@@ -21,7 +22,7 @@ const SubmitButton = ({disabled}) => {
 };
 
 SubmitButton.propTypes = {
-	disabled: React.PropTypes.bool.isRequired
+	disabled: PropTypes.bool.isRequired
 };
 
 export default SubmitButton;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import AutoComplete from 'material-ui/AutoComplete';
 
 const CountryInput = ({data, onCountrySelect, isError}) => {
@@ -20,9 +21,9 @@ const CountryInput = ({data, onCountrySelect, isError}) => {
 		);
 };
 CountryInput.propTypes = {
-	data: React.PropTypes.array.isRequired,
-	onCountrySelect: React.PropTypes.func.isRequired,
-	isError: React.PropTypes.bool.isRequired
+	data: PropTypes.array.isRequired,
+	onCountrySelect: PropTypes.func.isRequired,
+	isError: PropTypes.bool.isRequired
 };
 
 

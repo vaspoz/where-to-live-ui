@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Paper from 'material-ui/Paper';
 import {Bar} from 'react-chartjs-2';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -47,8 +48,8 @@ const singleChart = ({country, chartData}) => {
 };
 
 singleChart.propTypes = {
-	chartData: React.PropTypes.object,
-	country: React.PropTypes.string.isRequired
+	chartData: PropTypes.object,
+	country: PropTypes.string.isRequired
 };
 
 export default singleChart;

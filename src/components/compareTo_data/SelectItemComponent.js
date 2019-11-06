@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import * as countryActions from '../redux/actions/CountryActions';
@@ -58,12 +59,12 @@ class SelectItemComponent extends React.Component {
 }
 
 SelectItemComponent.propTypes = {
-	onDeleteItem: React.PropTypes.func.isRequired,
-	onAddItem: React.PropTypes.func.isRequired,
-	value: React.PropTypes.string.isRequired,
-	countryActions: React.PropTypes.object,
-	compareToList: React.PropTypes.array,
-	countryList: React.PropTypes.array
+	onDeleteItem: PropTypes.func.isRequired,
+	onAddItem: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired,
+	countryActions: PropTypes.object,
+	compareToList: PropTypes.array,
+	countryList: PropTypes.array
 };
 
 function mapStateToProps(store) {

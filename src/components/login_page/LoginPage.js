@@ -1,51 +1,46 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import Paper from 'material-ui/Paper';
-import SubmitButton from "./submit";
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import {Paper} from "@material-ui/core";
+import PropTypes from "prop-types";
 import * as globalActions from "../redux/actions/GlobalSettingsActions";
 import * as countryActions from "../redux/actions/CountryActions";
+import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
+import LoginForm from './loginForm';
+import {withRouter} from 'react-router';
 
 class LoginPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-		this.state = {};
+		this.state = {
+			loading: false
+		};
 
 		this.onClickLogin = this.onClickLogin.bind(this);
-		this.onClickSignup = this.onClickSignup.bind(this);
-		this.onClickLogout = this.onClickLogout.bind(this);
 	}
 
 	onClickLogin() {
-		this.props.countryActions.fetchCountryListFromBE();
-		this.props.globalActions.loginUser('a','aa');
-	}
-
-	onClickSignup() {
-		this.props.globalActions.signUpUser('a','aa');
-	}
-
-	onClickLogout() {
-		this.props.globalActions.logout();
+		this.props.globalActions.loginUser('a', 'aa', this.props.history);
+		this.setState({
+			loading: true
+		});
 	}
 
 	render() {
 		return (
-			<Paper zDepth={2} className="base-data-container">
-				<div className="base-data-text-container">
-					<SubmitButton disabled={false} clickEvent={this.onClickLogin} label="Login"/>
-					<SubmitButton disabled={false} clickEvent={this.onClickSignup} label="Sign up"/>
-					<SubmitButton disabled={false} clickEvent={this.onClickLogout} label="Logout"/>
-				</div>
+			<Paper className="base-data-container" elevation={5}>
+				<CssBaseline/>
+				<LoginForm onClick={this.onClickLogin} loading={this.state.loading}/>
 			</Paper>
 		);
 	}
 }
 
 LoginPage.propTypes = {
-	globalActions: React.PropTypes.object.isRequired
+	globalActions: PropTypes.object.isRequired
 };
-
 
 function mapDispatchToProps(dispatch) {
 	return {
@@ -56,8 +51,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		state: state
+		isAuthorized: !!state.globalSettings.currentUser && Object.keys(state.globalSettings.currentUser).length > 0
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginPage));

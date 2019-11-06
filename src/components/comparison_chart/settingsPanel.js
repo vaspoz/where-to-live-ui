@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
@@ -32,7 +33,7 @@ const settingsPanel = ({onSortOrderChange}) => {
 };
 
 settingsPanel.propTypes = {
-	onSortOrderChange: React.PropTypes.func.isRequired
+	onSortOrderChange: PropTypes.func.isRequired
 };
 
 export default settingsPanel;

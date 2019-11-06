@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Header from './common/Header';
 import Footer from './common/Footer';
-import {connect} from 'react-redux';
+import AppRoutes from "./AppRoutes";
 
 class App extends React.Component {
 	render() {
@@ -11,23 +11,14 @@ class App extends React.Component {
 					<Header/>
 				</header>
 				<main>
-					{this.props.children}
+					<AppRoutes />
 				</main>
 				<footer className="footer header-footer-common">
-					<Footer/>
+					{/*<Footer/>*/}
 				</footer>
 			</div>
 		);
 	}
 }
 
-App.propTypes = {
-	children: PropTypes.object.isRequired
-};
-
-function mapStateToProps(state) {
-	return {
-	};
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

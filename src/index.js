@@ -2,46 +2,23 @@
 import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, browserHistory} from 'react-router';
+import {BrowserRouter} from 'react-router-dom';
 import configureStore from './components/redux/store/CofigureStore.dev';
 import {Provider} from 'react-redux';
-import routes from './routes';
 import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {fetchCountryListFromBE} from './components/redux/actions/CountryActions';
-import {syncHistoryWithStore} from 'react-router-redux';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import injectTapEventPlugin  from 'react-tap-event-plugin';
+import App from "./components/App";
 
-// Needed for onTouchTap (Material-UI)
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
-
-import {
-	palette, checkbox, textField, raisedButton,
-	table, tableFooter, tableHeader, tableHeaderColumn,
-	tableRow
-} from './colors';
 const store = configureStore();
-
-const muiTheme = getMuiTheme({
-	palette,
-	checkbox,
-	textField,
-	raisedButton,
-	table,
-	tableFooter,
-	tableHeader,
-	tableHeaderColumn,
-	tableRow
-});
-
-const history = syncHistoryWithStore(browserHistory, store);
+const muiTheme = getMuiTheme();
 
 render(
 	<Provider store={store}>
 		<MuiThemeProvider muiTheme={muiTheme}>
-			<Router history={history} routes={routes}/>
+			<BrowserRouter>
+				<App/>
+			</BrowserRouter>
 		</MuiThemeProvider>
 	</Provider>,
 	document.getElementById('app')

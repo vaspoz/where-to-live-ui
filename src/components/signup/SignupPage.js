@@ -1,23 +1,31 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Paper from 'material-ui/Paper';
-import RaisedButton from "material-ui/RaisedButton";
-import {Link} from "react-router";
+import Paper from '@material-ui/core/Paper';
+import Button from "@material-ui/core/Button";
+import * as globalActions from "../redux/actions/GlobalSettingsActions";
+import {bindActionCreators} from "redux";
+import PropTypes from "prop-types";
 
 class SignupPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {};
+
+		this.onClickSignup = this.onClickSignup.bind(this);
+
+	}
+
+	onClickSignup() {
+		this.props.globalActions.signUpUser('aa', 'aa', 'aa', 'aa');
 	}
 
 	render() {
 		return (
-			<Paper zDepth={2} className="base-data-container">
+			<Paper className="base-data-container">
 				<div className="base-data-text-container">
-					<RaisedButton
-						label="Base Data"
-						containerElement={<Link to="/base-data"/>}
-					/>
+					<Button variant="contained" color="primary" onClick={this.onClickSignup}>
+						Signup
+					</Button>
 				</div>
 			</Paper>
 		);
@@ -25,16 +33,19 @@ class SignupPage extends React.Component {
 }
 
 SignupPage.propTypes = {
+	globalActions: PropTypes.object.isRequired
 };
 
 
 function mapDispatchToProps(dispatch) {
 	return {
+		globalActions: bindActionCreators(globalActions, dispatch)
 	};
 }
 
 function mapStateToProps(state) {
 	return {
+		state: state
 	};
 }
 

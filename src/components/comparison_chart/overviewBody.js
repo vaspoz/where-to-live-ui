@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import RefreshIndicator from "material-ui/RefreshIndicator";
 import StatsNumber from './statsNumber';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -38,8 +39,8 @@ const overviewBody = ({noOfCities, avgProfit}) => {
 };
 
 overviewBody.propTypes = {
-	noOfCities: React.PropTypes.number,
-	avgProfit: React.PropTypes.number
+	noOfCities: PropTypes.number,
+	avgProfit: PropTypes.number
 };
 
 export default overviewBody;

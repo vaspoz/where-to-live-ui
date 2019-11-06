@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import * as chartActions from '../redux/actions/ChartActions';
 import * as globalSettingsActions from '../redux/actions/GlobalSettingsActions';
@@ -131,12 +132,12 @@ class ComparisonChartsPage extends React.Component {
 }
 
 ComparisonChartsPage.propTypes = {
-	baseCountry: React.PropTypes.string.isRequired,
-	baseCity: React.PropTypes.string.isRequired,
-	compareToList: React.PropTypes.array.isRequired,
-	calculatedRates: React.PropTypes.array.isRequired,
-	chartActions: React.PropTypes.object.isRequired,
-	globalSettingsActions: React.PropTypes.object.isRequired
+	baseCountry: PropTypes.string.isRequired,
+	baseCity: PropTypes.string.isRequired,
+	compareToList: PropTypes.array.isRequired,
+	calculatedRates: PropTypes.array.isRequired,
+	chartActions: PropTypes.object.isRequired,
+	globalSettingsActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(store) {
