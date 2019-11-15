@@ -1,23 +1,36 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router';
+import Button from '@material-ui/core/Button';
+import {makeStyles} from '@material-ui/core/styles';
+import {Link as RouterLink} from "react-router-dom";
+import {blue, green} from "@material-ui/core/colors";
 
-const styles = {
-	container: {
-		paddingTop: 50
+const useStyles = makeStyles(theme => ({
+	submit: {
+		margin: theme.spacing(0),
+		backgroundColor: blue[500],
+		'&:hover': {
+			backgroundColor: blue[700]
+		}
 	}
-};
+}));
+
+const CompareToLink = React.forwardRef((props, ref) => <RouterLink innerRef={ref} to="/compare-with" {...props} />);
 
 const SubmitButton = ({disabled}) => {
+	const classes = useStyles();
+
 	return (
-		<div style={styles.container}>
-			<RaisedButton
-				label="Submit"
-				disabled={disabled}
-				containerElement={<Link to="/dreams"/>}
-			/>
-		</div>
+		<Button
+			fullWidth
+			variant="contained"
+			color="primary"
+			disabled={disabled}
+			className={classes.submit}
+			component={CompareToLink}
+		>
+			Submit
+		</Button>
 	);
 };
 

@@ -1,20 +1,14 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
-import {Paper} from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import PropTypes from "prop-types";
-import * as globalActions from "../redux/actions/GlobalSettingsActions";
-import * as countryActions from "../redux/actions/CountryActions";
-import {connect} from "react-redux";
-import {bindActionCreators} from 'redux';
-import {green, blue} from '@material-ui/core/colors';
+import {blue} from '@material-ui/core/colors';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {Paper} from "@material-ui/core";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(theme => ({
 	'@global': {
@@ -31,18 +25,21 @@ const useStyles = makeStyles(theme => ({
 		marginLeft: -12,
 	},
 	paper: {
-		margin: theme.spacing(4),
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center'
+		alignItems: 'center',
+		padding: theme.spacing(4,3),
+		margin: theme.spacing(15, 3),
+		height: '400px',
+		width: '350px',
+		transition: 'box-shadow .3s',
+		"&:hover": {
+			boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'
+		}
 	},
 	avatar: {
 		margin: theme.spacing(1),
 		backgroundColor: theme.palette.secondary.main
-	},
-	form: {
-		width: '100%', // Fix IE 11 issue.
-		marginTop: theme.spacing(1)
 	},
 	wrapper: {
 		marginTop: theme.spacing(3),
@@ -57,27 +54,31 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const LoginForm = ({onClick, loading}) => {
+const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, errorMessage}) => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.paper}>
+		<Paper className={classes.paper}>
 			<Avatar className={classes.avatar}>
 				<LockOutlinedIcon/>
 			</Avatar>
 			<Typography component="h1" variant="h5">
 				Log In
 			</Typography>
-			<form className={classes.form} noValidate>
+			<form>
 				<TextField
 					variant="outlined"
 					margin="normal"
 					required
 					fullWidth
-					id="email"
-					label="Email Address"
-					name="email"
-					autoComplete="email"
+					id="username"
+					label="Username"
+					name="username"
+					onChange={onUsernameEnter}
+					onKeyDown={(event) => {
+						if (event.keyCode === 13)
+							onSubmitClick(event);
+					}}
 				/>
 				<TextField
 					variant="outlined"
@@ -88,7 +89,11 @@ const LoginForm = ({onClick, loading}) => {
 					label="Password"
 					type="password"
 					id="password"
-					autoComplete="current-password"
+					onChange={onPasswordEnter}
+					onKeyDown={(event) => {
+						if (event.keyCode === 13)
+							onSubmitClick(event);
+					}}
 				/>
 				<div className={classes.wrapper}>
 					<Button
@@ -97,15 +102,24 @@ const LoginForm = ({onClick, loading}) => {
 						color="primary"
 						disabled={loading}
 						className={classes.submit}
-						onClick={onClick}
+						onClick={onSubmitClick}
 					>
 						Sign In
 					</Button>
 					{loading && <CircularProgress size={24} className={classes.circularProgress}/>}
 				</div>
+				{errorMessage}
 			</form>
-		</div>
+		</Paper>
 	)
+};
+
+LoginForm.propTypes = {
+	loading: PropTypes.bool.isRequired,
+	onSubmitClick: PropTypes.func.isRequired,
+	onUsernameEnter: PropTypes.func.isRequired,
+	onPasswordEnter: PropTypes.func.isRequired,
+	errorMessage: PropTypes.string.isRequired
 };
 
 export default LoginForm;

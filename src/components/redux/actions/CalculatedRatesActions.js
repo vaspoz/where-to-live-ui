@@ -2,7 +2,7 @@ import * as types from './ActionTypes';
 
 export function addCalculatedRates(calculatedRates) {
 	return {
-		type: types.BULK_ADD_CALCULATED_RATES_SUCCESS,
+		type: types.BULK_ADD_CALCULATED_RATES_AJAXEND,
 		calculatedRates
 	};
 }

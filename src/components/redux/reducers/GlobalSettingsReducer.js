@@ -8,7 +8,8 @@ import * as types from '../actions/ActionTypes';
 			username,
 			password,
 			email,
-			countryOrigin
+			countryOrigin,
+			...
 		}
 		error,
 		errorCode
@@ -23,32 +24,25 @@ export default function globalSettingsReducer(state = {}, action) {
 				state,
 				{sortOrder: action.sortOrder}
 			);
-		case types.SIGNUP_USER_SUCCESS:
+		case types.SIGNUP_SUCCESS_AJAXEND:
 			if (action.authResponse.error) {
 				return handleErrorSignup(state, action.authResponse);
 			}
 			return handleSignupLoginSuccess(state, action.authResponse);
-		case types.LOGIN_USER_SUCCESS:
-			if (action.authResponse.error) {
-				return handleErrorLogin(state, action.authResponse);
-			}
+		case types.LOGIN_SUCCESS_AJAXEND:
 			return handleSignupLoginSuccess(state, action.authResponse);
+		case types.LOGIN_FAILRE_AJAXEND:
+			return handleErrorLogin(state, action.errorMessage);
+		case types.CLEAR_LOGIN_ERRORS:
+			return cleanupGlobalAuthSettings(state);
 		case types.LOGOUT_USER:
-			return Object.assign(
-				{},
-				state,
-				{
-					currentUser: {},
-					loginError: "",
-					signupError: ""
-				});
+			return cleanupGlobalAuthSettings(state);
 		default:
 			return state;
 	}
 }
 
 function handleErrorSignup(state, authResponse) {
-
 	return Object.assign(
 		{},
 		state,
@@ -60,20 +54,19 @@ function handleErrorSignup(state, authResponse) {
 	)
 }
 
-function handleErrorLogin(state, authResponse) {
+function handleErrorLogin(state, errorMessage) {
 	return Object.assign(
 		{},
 		state,
 		{
 			currentUser: {},
-			loginError: authResponse.error,
+			loginError: errorMessage,
 			signupError: ""
 		}
 	)
 }
 
 function handleSignupLoginSuccess(state, authResponse) {
-	localStorage.setItem('jwttoken', authResponse.jwttoken);
 	return Object.assign(
 		{},
 		state,
@@ -85,6 +78,13 @@ function handleSignupLoginSuccess(state, authResponse) {
 	);
 }
 
-function cleanupGlobalAuthSettings() {
-
+function cleanupGlobalAuthSettings(state) {
+	return Object.assign(
+		{},
+		state,
+		{
+			currentUser: {},
+			loginError: "",
+			signupError: ""
+		});
 }

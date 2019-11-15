@@ -30,7 +30,7 @@ export function fetchCountryCode(countryName) {
 
 function fetchCountrySuccess(countryList) {
 	return {
-		type: types.FETCH_COUNTRY_LIST_SUCCESS,
+		type: types.FETCH_COUNTRY_LIST_AJAXEND,
 		countryList
 	};
 }

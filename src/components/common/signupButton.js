@@ -7,23 +7,19 @@ import {makeStyles} from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1)
-	},
-	input: {
-		display: 'none'
 	}
 }));
 
-const Link1 = React.forwardRef((props, ref) => <RouterLink innerRef={ref} to="/signup" {...props} />);
-
+const SignupLink = React.forwardRef((props, ref) => <RouterLink innerRef={ref} to="/signup" {...props} />);
 
 const SignupButton = ({isVisible}) => {
 	const classes = useStyles();
 
 	return (
-		<div style={isVisible ? {} : {display: "none"}}>
-			<Button variant="contained" color="secondary" className={classes.button} component={Link1}>
+		<div>
+			{isVisible && <Button variant="contained" color="secondary" className={classes.button} component={SignupLink}>
 				Sing Up
-			</Button>
+			</Button>}
 		</div>
 	);
 };

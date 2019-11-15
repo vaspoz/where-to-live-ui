@@ -2,26 +2,32 @@ import * as types from './ActionTypes';
 import beginAjaxCall from '../actions/AjaxStatusActions';
 import api from '../../ajax/api';
 
-export function signUpUser(username, password, email, countryOrigin) {
+export function signUpUser(firstName, lastName, username, password, email, countryOrigin) {
 	return (dispatch) => {
 		dispatch(beginAjaxCall());
-		return api.signUp(username, password, email, countryOrigin)
-			.then(authResponse => dispatch(signUpUserSuccess(authResponse)))
+		return api.signUp(firstName, lastName, username, password, email, countryOrigin)
+			.then(authResponse => {
+				localStorage.setItem('jwttoken', authResponse.jwttoken);
+				dispatch(loginUserSuccess(authResponse));
+			})
 			.catch(error => {
 				throw(error);
 			});
 	};
 }
 
-export function loginUser(username, password, history) {
+export function loginUser(username, password) {
 	return (dispatch) => {
 		dispatch(beginAjaxCall());
+		dispatch(clearLoginErrors());
 		return api.login(username, password)
-			.then(token => {
-				if (!!history) history.push('/');
-				console.log('token: ' + JSON.stringify(token));
-				console.log('history: ' + JSON.stringify(history));
-				dispatch(loginUserSuccess(token));
+			.then(authResponse => {
+				if (authResponse.error) {
+					dispatch(loginUserFailure(authResponse.error));
+				} else {
+					localStorage.setItem('jwttoken', authResponse.jwttoken);
+					dispatch(loginUserSuccess(authResponse));
+				}
 			})
 			.catch(error => {
 				throw(error);
@@ -31,6 +37,7 @@ export function loginUser(username, password, history) {
 
 export function logout() {
 	return (dispatch) => {
+		localStorage.removeItem('jwttoken');
 		dispatch({
 			type: types.LOGOUT_USER
 		})
@@ -46,14 +53,28 @@ function changeSortOrder(newOrder) {
 
 function signUpUserSuccess(authResponse) {
 	return {
-		type: types.SIGNUP_USER_SUCCESS,
+		type: types.SIGNUP_SUCCESS_AJAXEND,
 		authResponse
 	};
 }
 
 function loginUserSuccess(authResponse) {
 	return {
-		type: types.LOGIN_USER_SUCCESS,
+		type: types.LOGIN_SUCCESS_AJAXEND,
 		authResponse
 	};
+}
+
+function loginUserFailure(errorMessage) {
+	return {
+		type: types.LOGIN_FAILRE_AJAXEND,
+		errorMessage
+	}
+}
+
+function clearLoginErrors() {
+	return {
+		type: types.CLEAR_LOGIN_ERRORS
+	}
+
 }

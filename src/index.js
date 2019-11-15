@@ -6,20 +6,21 @@ import {BrowserRouter} from 'react-router-dom';
 import configureStore from './components/redux/store/CofigureStore.dev';
 import {Provider} from 'react-redux';
 import './index.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import App from "./components/App";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const store = configureStore();
-const muiTheme = getMuiTheme();
+const muiTheme = createMuiTheme();
 
 render(
 	<Provider store={store}>
-		<MuiThemeProvider muiTheme={muiTheme}>
+		<ThemeProvider theme={muiTheme}>
 			<BrowserRouter>
+				<CssBaseline/>
 				<App/>
 			</BrowserRouter>
-		</MuiThemeProvider>
+		</ThemeProvider>
 	</Provider>,
 	document.getElementById('app')
 );

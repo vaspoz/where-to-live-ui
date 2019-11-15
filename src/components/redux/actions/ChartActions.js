@@ -26,14 +26,14 @@ export function fetchChartForCountry(baseCountry, baseCity, country) {
 
 function fetchChartsSuccess(chartsList) {
 	return {
-		type: types.BULK_ADD_CALCULATED_RATES_SUCCESS,
+		type: types.BULK_ADD_CALCULATED_RATES_AJAXEND,
 		calculatedRates: chartsList
 	};
 }
 
 function fetchSingleChartSuccess(chart) {
 	return {
-		type: types.ADD_CALCULATED_RATES_SUCCESS,
+		type: types.ADD_CALCULATED_RATES_AJAXEND,
 		calculatedRates: chart
 	};
 }

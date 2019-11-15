@@ -23,6 +23,7 @@ const BEapi = {
 			.then(countryList => countryList.sort());
 	},
 	getCityList: (countryName) => {
+		console.log('start fetching cities');
 		return fetchWrap(citiesURL + countryName).then(response => response.json());
 	},
 	getChart: (baseCountry, baseCity, country) => {
@@ -40,17 +41,19 @@ const BEapi = {
 			.then(response => response.json())
 			.then(countryInfo => countryInfo[0].alpha2Code);
 	},
-	signUp: (username, password, email, countryOrigin) => {
+	signUp: (firstName, lastName, username, password, email, countryOrigin) => {
 		return fetch(`${signupURL}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				username: "vaspoz",
-				password: "123321",
-				email: "vaspoz@vas.poz",
-				countryOrigin: "Timberland"
+				firstName,
+				lastName,
+				username,
+				password,
+				email,
+				countryOrigin
 			})
 		})
 			.then(response => response.json())
@@ -62,8 +65,8 @@ const BEapi = {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				username: 'vaspoz',
-				password: '123321'
+				username,
+				password
 			})
 		})
 			.then(response => response.json())

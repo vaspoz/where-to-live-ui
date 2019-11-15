@@ -2,36 +2,37 @@ import React from 'react';
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import {makeStyles} from "@material-ui/core";
+import {Link as RouterLink} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1)
-	},
-	input: {
-		display: 'none'
 	}
 }));
 
-const Avatar = ({clickEvent, isVisible}) => {
+const LogoutLink = React.forwardRef((props, ref) => <RouterLink innerRef={ref} to="/" {...props} />);
+
+const Avatar = ({isVisible, onClickAction}) => {
 	const classes = useStyles();
 
 	return (
-		<div style={isVisible ? {} : {display: "none"}}>
-			<Button
+		<div>
+			{isVisible && <Button
 				variant="contained"
 				color="primary"
 				className={classes.button}
-				href="/logout"
-				onClick={clickEvent}
+				component={LogoutLink}
+				onClick={onClickAction}
 			>
 				Logout
-			</Button>
+			</Button>}
 		</div>
 	);
 };
 
 Avatar.propTypes = {
-	isVisible: PropTypes.bool.isRequired
+	isVisible: PropTypes.bool.isRequired,
+	onClickAction: PropTypes.func.isRequired
 };
 
 export default Avatar;

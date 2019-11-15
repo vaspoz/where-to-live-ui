@@ -14,7 +14,7 @@ export function fetchCityList(countryName) {
 }
 export function fetchCityListSuccess(cityList) {
 	return {
-		type: types.FETCH_CITY_LIST_SUCCESS,
+		type: types.FETCH_CITY_LIST_AJAXEND,
 		cityList
 	};
 }

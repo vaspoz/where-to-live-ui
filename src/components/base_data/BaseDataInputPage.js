@@ -7,7 +7,26 @@ import * as cityActions from '../redux/actions/CityActions';
 import CountryInput from './countryInput';
 import CityInput from './cityInput';
 import SubmitButton from './submit';
-import Paper from 'material-ui/Paper';
+import {Paper} from "@material-ui/core";
+
+const styles = {
+	paper: {
+		position: 'fixed',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		width: '320px',
+		height: '400px',
+		opacity: '0.8'
+	},
+	others: {
+		textAlign: "center",
+		position: "relative",
+		top: '45%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)'
+	}
+};
 
 class BaseDataInput extends React.Component {
 	constructor(props, context) {
@@ -24,12 +43,12 @@ class BaseDataInput extends React.Component {
 	}
 
 	onCountrySelect(countryName) {
-		if (!this.props.countries.includes(countryName)) {
-			this.setState({
-				countryError: true
-			});
-			return;
-		}
+		// if (!this.props.countries.includes(countryName)) {
+		// 	this.setState({
+		// 		countryError: true
+		// 	});
+		// 	return;
+		// }
 		this.props.countryActions.selectBaseCountry(countryName);
 		this.props.cityActions.fetchCityList(countryName);
 		this.setState({
@@ -54,7 +73,7 @@ class BaseDataInput extends React.Component {
 
 	render() {
 		return (
-			<Paper zDepth={2} className="base-data-container">
+			<Paper className="base-data-container" elevation={5}>
 				<div className="base-data-text-container">
 					<h1>Base Location</h1>
 					<CountryInput

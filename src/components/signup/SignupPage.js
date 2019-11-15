@@ -1,33 +1,67 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import Paper from '@material-ui/core/Paper';
-import Button from "@material-ui/core/Button";
-import * as globalActions from "../redux/actions/GlobalSettingsActions";
-import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
+import SignupForm from "./signupForm";
 import PropTypes from "prop-types";
+import * as globalActions from "../redux/actions/GlobalSettingsActions";
+import {withRouter} from "react-router";
 
 class SignupPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-		this.state = {};
+		this.state = {
+			loading: false,
+			firstName: "",
+			lastName: "",
+			username: "",
+			password: "",
+			countryOrigin: "",
+			authorized: false
+		};
 
 		this.onClickSignup = this.onClickSignup.bind(this);
+		this.onTextFieldChange = this.onTextFieldChange.bind(this);
+	}
 
+	componentWillReceiveProps(nextProps, nextContext) {
+		if (this.state.authorized) return;
+		if (nextProps.loginError)
+			this.setState({
+				loginErrorMessage: nextProps.loginError,
+				loading: false
+			});
+		if (nextProps.isAuthorized) {
+			this.setState({
+				loading: false,
+				authorized: true
+			});
+			this.props.history.push('/base-data');
+		}
 	}
 
 	onClickSignup() {
-		this.props.globalActions.signUpUser('aa', 'aa', 'aa', 'aa');
+		event.preventDefault();
+		this.props.globalActions.signUpUser(this.state.firstName, this.state.lastName, this.state.username, this.state.password, this.state.email, this.state.countryOrigin);
+		this.setState({
+			loading: true
+		});
+	}
+
+	onTextFieldChange(event) {
+		event.persist();
+		this.setState({
+			[event.target.name]: event.target.value
+		});
 	}
 
 	render() {
 		return (
-			<Paper className="base-data-container">
-				<div className="base-data-text-container">
-					<Button variant="contained" color="primary" onClick={this.onClickSignup}>
-						Signup
-					</Button>
-				</div>
-			</Paper>
+			<SignupForm
+				onSubmitClick={this.onClickSignup}
+				errorMessage={'errorMessage'}
+				loading={this.state.loading}
+				onInputChange={this.onTextFieldChange}
+			/>
 		);
 	}
 }
@@ -35,7 +69,6 @@ class SignupPage extends React.Component {
 SignupPage.propTypes = {
 	globalActions: PropTypes.object.isRequired
 };
-
 
 function mapDispatchToProps(dispatch) {
 	return {
@@ -45,8 +78,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		state: state
+		isAuthorized: !!state.globalSettings.currentUser && Object.keys(state.globalSettings.currentUser).length > 0,
+		loginError: state.globalSettings.loginError
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupPage));
