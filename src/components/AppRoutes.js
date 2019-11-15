@@ -16,6 +16,7 @@ const AppRoutes = () => {
 		<TransitionGroup>
 			<CSSTransition
 				key={location.key}
+				appear={true}
 				classNames="fade"
 				timeout={300}
 			>
@@ -37,7 +38,7 @@ const AppRoutes = () => {
 					</Route>
 					<Route path="/">
 						<AboutPageMock/>
-					</Route>
+					</Route >
 				</Switch>
 			</CSSTransition>
 		</TransitionGroup>

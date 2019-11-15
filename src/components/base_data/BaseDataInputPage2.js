@@ -7,9 +7,8 @@ import * as cityActions from '../redux/actions/CityActions';
 import CountryInput from './countryInput';
 import CityInput from './cityInput';
 import SubmitButton from './submit';
-import {Container, Paper} from "@material-ui/core";
+import {Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 const styles = {
 	paper: {
@@ -77,10 +76,23 @@ class BaseDataInput extends React.Component {
 
 	render() {
 		return (
-			<Container maxWidth={'xs'}>
-				<CssBaseline/>
-				<div style={{backgroundColor: 'yellow'}}>aaa</div>
-			</Container>
+			<Paper className="base-data-container" elevation={5}>
+				<div className="base-data-text-container">
+					<Typography color="primary" variant="h4">Base Location</Typography>
+					<CountryInput
+						data={this.props.countries}
+						onCountrySelect={this.onCountrySelect}
+						isError={this.state.countryError}
+					/>
+					<CityInput
+						data={this.props.cities}
+						onCitySelect={this.onCitySelect}
+						disable={this.state.cityInputDisable}
+						isError={this.state.cityError}
+					/>
+					<SubmitButton disabled={this.state.submitDisable}/>
+				</div>
+			</Paper>
 		);
 	}
 }

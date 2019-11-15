@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 		margin: theme.spacing(15, 3),
 		height: '400px',
 		width: '350px',
+		position: "absolute",
 		transition: 'box-shadow .3s',
 		"&:hover": {
 			boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'

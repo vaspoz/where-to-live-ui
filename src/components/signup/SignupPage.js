@@ -5,6 +5,8 @@ import SignupForm from "./signupForm";
 import PropTypes from "prop-types";
 import * as globalActions from "../redux/actions/GlobalSettingsActions";
 import {withRouter} from "react-router";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 class SignupPage extends React.Component {
 	constructor(props, context) {
@@ -56,12 +58,15 @@ class SignupPage extends React.Component {
 
 	render() {
 		return (
-			<SignupForm
-				onSubmitClick={this.onClickSignup}
-				errorMessage={'errorMessage'}
-				loading={this.state.loading}
-				onInputChange={this.onTextFieldChange}
-			/>
+			<Container maxWidth="xs">
+				<CssBaseline/>
+				<SignupForm
+					onSubmitClick={this.onClickSignup}
+					errorMessage={'errorMessage'}
+					loading={this.state.loading}
+					onInputChange={this.onTextFieldChange}
+				/>
+			</Container>
 		);
 	}
 }
