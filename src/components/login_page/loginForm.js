@@ -72,6 +72,7 @@ const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, er
 					margin="normal"
 					required
 					fullWidth
+					autoFocus
 					id="username"
 					label="Username"
 					name="username"

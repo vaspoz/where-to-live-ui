@@ -8,8 +8,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import CircularProgress from "@material-ui/core/CircularProgress";
-import {blue} from "@material-ui/core/colors";
+import {blue, green} from "@material-ui/core/colors";
 import {Paper} from "@material-ui/core";
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 const useStyles = makeStyles(theme => ({
 	'@global': {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	avatar: {
 		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main
+		backgroundColor: green[500]
 	},
 	form: {
 		width: '100%', // Fix IE 11 issue.
@@ -57,7 +58,7 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 	return (
 		<Paper className={classes.paper}>
 			<Avatar className={classes.avatar}>
-				<LockOutlinedIcon/>
+				<PersonAddIcon />
 			</Avatar>
 			<Typography component="h1" variant="h5">
 				Sign up
