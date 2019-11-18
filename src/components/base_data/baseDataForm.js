@@ -57,6 +57,7 @@ const BaseDataForm = ({
 												cityList,
 												onCountrySelect,
 												onCitySelect,
+												onSubmit,
 												countryInputDisabled,
 												cityInputDisabled,
 												submitDisabled,
@@ -100,11 +101,10 @@ const BaseDataForm = ({
 						variant="contained"
 						color="primary"
 						disabled={submitDisabled}
-						className={classes.submit}
-						onClick={() => {
-						}}
+						className={classes.reset}
+						onClick={onReset}
 					>
-						Submit
+						Reset
 					</Button>
 				</Grid>
 				<Grid key={2} item>
@@ -113,10 +113,10 @@ const BaseDataForm = ({
 						variant="contained"
 						color="primary"
 						disabled={submitDisabled}
-						className={classes.reset}
-						onClick={onReset}
+						className={classes.submit}
+						onClick={onSubmit}
 					>
-						Reset
+						Submit
 					</Button>
 				</Grid>
 			</Grid>
@@ -130,6 +130,7 @@ BaseDataForm.propTypes = {
 	cityList: PropTypes.array.isRequired,
 	onCountrySelect: PropTypes.func.isRequired,
 	onCitySelect: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 	onReset: PropTypes.func.isRequired,
 	countryInputDisabled: PropTypes.bool.isRequired,
 	cityInputDisabled: PropTypes.bool.isRequired

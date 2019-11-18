@@ -22,6 +22,7 @@ class BaseDataPage extends React.Component {
 		this.onCitySelect = this.onCitySelect.bind(this);
 		this.onCountrySelect = this.onCountrySelect.bind(this);
 		this.onReset = this.onReset.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 
 		this.props.countryActions.fetchCountryListFromBE();
 
@@ -58,8 +59,12 @@ class BaseDataPage extends React.Component {
 		})
 	}
 
+	onSubmit() {
+		console.log('sdfsf');
+		this.props.history.push('/compare-with');
+	}
+
 	render() {
-		console.log('new key: '+ this.state.innerKey);
 		return (
 			<Container maxWidth={'xs'}>
 				<CssBaseline/>
@@ -73,6 +78,7 @@ class BaseDataPage extends React.Component {
 					countryInputDisabled={this.state.countryInputDisabled}
 					cityInputDisabled={this.state.cityInputDisabled}
 					onReset={this.onReset}
+					onSubmit={this.onSubmit}
 				/>
 			</Container>
 		);
