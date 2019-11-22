@@ -60,7 +60,6 @@ class BaseDataPage extends React.Component {
 	}
 
 	onSubmit() {
-		console.log('sdfsf');
 		this.props.history.push('/compare-with');
 	}
 

@@ -11,11 +11,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
-	'@global': {
-		body: {
-			backgroundColor: theme.palette.common.white
-		}
-	},
 	paper: {
 		display: 'flex',
 		flexDirection: 'column',

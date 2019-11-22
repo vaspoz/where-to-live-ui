@@ -11,11 +11,6 @@ import {Paper} from "@material-ui/core";
 import PropTypes from "prop-types";
 
 const useStyles = makeStyles(theme => ({
-	'@global': {
-		body: {
-			backgroundColor: theme.palette.common.white
-		}
-	},
 	circularProgress: {
 		color: blue[500],
 		position: 'absolute',
@@ -72,7 +67,6 @@ const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, er
 					margin="normal"
 					required
 					fullWidth
-					autoFocus
 					id="username"
 					label="Username"
 					name="username"

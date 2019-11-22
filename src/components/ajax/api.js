@@ -23,7 +23,6 @@ const BEapi = {
 			.then(countryList => countryList.sort());
 	},
 	getCityList: (countryName) => {
-		console.log('start fetching cities');
 		return fetchWrap(citiesURL + countryName).then(response => response.json());
 	},
 	getChart: (baseCountry, baseCity, country) => {
