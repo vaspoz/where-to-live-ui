@@ -21,6 +21,9 @@ const styles = theme => {
 			width: '350px',
 			position: "absolute",
 			transition: 'box-shadow .3s'
+		},
+		countryListItem: {
+			margin: theme.spacing(0)
 		}
 	}
 };
@@ -28,7 +31,7 @@ const styles = theme => {
 class CompareToFormComponent extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-		let selectedCountries = ['a', 'b', 'c'];
+		let selectedCountries = [''];
 
 		for (let i = 0; i < this.props.compareToList.length; i++) {
 			selectedCountries[i] = this.props.compareToList[i];
@@ -82,10 +85,14 @@ class CompareToFormComponent extends React.Component {
 								onDeleteItem={this.onDeleteItem}
 								onAddItem={this.onAddItem}
 								value={selectedCountry}
+								className={classes.countryListItem}
 							/>
 						);
 					})}
-					<ControlButtonsElement/>
+					<ControlButtonsElement
+						addButtonDisabled={this.state.selectedCountries.length >= 3}
+						addNewSelectionEventHandler={this.addNewSelection}
+					/>
 				</Paper>
 			</Container>
 		);

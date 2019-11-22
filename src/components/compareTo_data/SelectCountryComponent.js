@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
+import * as countryActions from "../redux/actions/CountryActions";
+import {connect} from "react-redux";
+import SelectItemField from "./selectItemField";
+import DeleteItem from "./deleteItemButton";
 import {bindActionCreators} from "redux";
-import * as countryActions from '../redux/actions/CountryActions';
-import SelectItemField from './selectItemField';
-import DeleteItem from './deleteItemButton';
 
-class SelectItemComponent extends React.Component {
+class SelectCountryComponent extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 
@@ -20,7 +20,7 @@ class SelectItemComponent extends React.Component {
 		this.onDelete = this.onDelete.bind(this);
 	}
 
-	onCountrySelect(countryName) {
+	onCountrySelect(event, countryName) {
 		if (!this.props.countryList.includes(countryName)) {
 			this.setState({
 				isError: true
@@ -44,7 +44,7 @@ class SelectItemComponent extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className={this.props.className}>
 				<SelectItemField
 					onSelect={this.onCountrySelect}
 					countryList={this.props.countryList}
@@ -54,17 +54,18 @@ class SelectItemComponent extends React.Component {
 				/>
 				<DeleteItem deleteHandler={this.onDelete}/>
 			</div>
-		);
+		)
 	}
 }
 
-SelectItemComponent.propTypes = {
+SelectCountryComponent.propTypes = {
 	onDeleteItem: PropTypes.func.isRequired,
 	onAddItem: PropTypes.func.isRequired,
 	value: PropTypes.string.isRequired,
 	countryActions: PropTypes.object,
 	compareToList: PropTypes.array,
-	countryList: PropTypes.array
+	countryList: PropTypes.array,
+	className: PropTypes.string
 };
 
 function mapStateToProps(store) {
@@ -80,4 +81,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectItemComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectCountryComponent);

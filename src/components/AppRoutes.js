@@ -7,7 +7,7 @@ import LoginPage from "./login_page/LoginPage";
 import AboutPage from "./about/AboutPage";
 import AboutPageMock from "./about/AboutPageMock";
 import BaseDataPage from "./base_data/BaseDataPage";
-import CompareToForm from "./compareTo_data/v2/CompareToFormComponent";
+import CompareToFormComponent from "./compareTo_data/CompareToFormComponent";
 
 const AppRoutes = () => {
 	let location = useLocation();
@@ -31,7 +31,7 @@ const AppRoutes = () => {
 						<BaseDataPage />
 					</Route>
 					<Route path="/compare-with">
-						<CompareToForm/>
+						<CompareToFormComponent/>
 					</Route>
 					<Route path="/comparison-chart">
 						<Chart/>

@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import IconButton from 'material-ui/IconButton';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import {makeStyles} from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+	icon: {
+		verticalAlign: "bottom"
+	}
+}));
 
 const DeleteItemButton = ({deleteHandler}) => {
+	const classes = useStyles();
 	return (
-		<IconButton
-			tooltip="Delete"
-			tooltipPosition="bottom-center"
-			onClick={deleteHandler}
-			style={{
-				display: 'inline-block'
-			}}
-		>
-			<DeleteIcon/>
+		<IconButton onClick={deleteHandler} className={classes.icon}>
+			<DeleteIcon fontSize="small"/>
 		</IconButton>
 	)
 };
