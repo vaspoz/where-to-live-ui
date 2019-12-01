@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme => ({
 		margin: theme.spacing(1),
 		backgroundColor: theme.palette.primary.main
 	},
-	wrapper: {
-		marginTop: theme.spacing(0)
+	buttonsWrapper: {
+		marginTop: theme.spacing(3)
 	},
 	submit: {
 		backgroundColor: theme.palette.primary.main,
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 		}
 	},
 	autocomplete: {
-		width: '100%',
+		width: '250px',
 		marginTop: theme.spacing(3)
 	}
 }));
@@ -56,7 +56,9 @@ const BaseDataForm = ({
 												countryInputDisabled,
 												cityInputDisabled,
 												submitDisabled,
-												onReset
+												onReset,
+												countryValue,
+												cityValue
 											}) => {
 	const classes = useStyles();
 	return (
@@ -71,25 +73,27 @@ const BaseDataForm = ({
 				id="base-country"
 				options={countryList}
 				getOptionLabel={country => country}
-				disabled={countryInputDisabled}
+				disabled={countryInputDisabled || !!countryValue}
+				value={countryValue}
 				className={classes.autocomplete}
 				onChange={onCountrySelect}
 				renderInput={params => (
-					<TextField {...params} label="Country" variant="outlined" fullWidth/>
+					<TextField {...params} label="Country" fullWidth/>
 				)}
 			/>
 			<Autocomplete
 				id="base-city"
 				options={cityList}
-				disabled={cityInputDisabled}
+				disabled={cityInputDisabled || !!cityValue}
+				value={cityValue}
 				getOptionLabel={city => city}
 				className={classes.autocomplete}
 				onChange={onCitySelect}
 				renderInput={params => (
-					<TextField {...params} label="City" variant="outlined" fullWidth/>
+					<TextField {...params} label="City" fullWidth/>
 				)}
 			/>
-			<Grid container justify="center" spacing={6} className={classes.wrapper}>
+			<Grid container justify="center" spacing={6} className={classes.buttonsWrapper}>
 				<Grid key={1} item>
 					<Button
 						fullWidth
@@ -128,7 +132,9 @@ BaseDataForm.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 	onReset: PropTypes.func.isRequired,
 	countryInputDisabled: PropTypes.bool.isRequired,
-	cityInputDisabled: PropTypes.bool.isRequired
+	cityInputDisabled: PropTypes.bool.isRequired,
+	countryValue: PropTypes.string,
+	cityValue: PropTypes.string
 };
 
 export default BaseDataForm;

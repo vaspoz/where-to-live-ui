@@ -1,39 +1,68 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import RefreshIndicator from "material-ui/RefreshIndicator";
-import StatsNumber from './statsNumber';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import {makeStyles, Typography} from "@material-ui/core";
+import {blue, green} from "@material-ui/core/colors";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const style = {
-	refresh: {
-		display: 'inline-block',
-		position: 'relative'
+const useStyles = makeStyles(theme => ({
+	stats: {
+		marginTop: theme.spacing(3)
+	},
+	cityNumber: {
+		fontWeight: 500,
+		color: blue[300]
+	},
+	avgProfit: {
+		fontWeight: 500,
+		color: green[300]
 	},
 	button: {
-		marginTop: "25px"
+		marginTop: theme.spacing(3)
+	},
+	circularProgress: {
+		color: blue[500],
+		marginTop: theme.spacing(16),
 	}
-};
+}));
 
 const overviewBody = ({noOfCities, avgProfit}) => {
+	const classes = useStyles();
+
 	return (
 		<div>
 			{noOfCities > 0 ?
-				<div>
-					<StatsNumber description="No of cities" number={noOfCities}/>
-					<StatsNumber description="Median Profit" number={avgProfit}/>
-					<RaisedButton
-						label="Details"
-						style={style.button}
-						disabled={true}
-						/>
-				</div> :
-				<RefreshIndicator
-					left={0}
-					top={130}
-					size={40}
-					style={style.refresh}
-					status="loading"
-				/>}
+				<Grid container direction='column' alignItems="center" justify="space-between">
+					<Grid item>
+						<Box className={classes.stats}>
+							<Typography variant={'h2'} className={classes.cityNumber}>{noOfCities}</Typography>
+							<Typography variant={'overline'}>Number of Cities</Typography>
+						</Box>
+					</Grid>
+					<Grid item>
+						<Box className={classes.stats}>
+							<Typography variant={'h2'} className={classes.avgProfit}>{avgProfit}</Typography>
+							<Typography variant={'overline'}>Average Profit</Typography>
+						</Box>
+					</Grid>
+					<Grid item>
+						<Button
+							className={classes.button}
+							fullWidth
+							variant="contained"
+							color="primary"
+							disabled={false}
+							onClick={() => {
+							}}
+						>
+							Details
+						</Button>
+					</Grid>
+				</Grid>
+				:
+				<CircularProgress  className={classes.circularProgress}/>}
 		</div>
 	)
 };

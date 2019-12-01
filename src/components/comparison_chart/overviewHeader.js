@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import Flag from "./flag";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 const style = {
-	divCountryName: {
-		float: 'left'
-	},
-	h1: {
-		marginBottom: '0px',
-		marginTop: '0px'
-	},
-	span: {
-		fontSize: 'small'
+	inner: {
+		margin: 'auto'
 	}
 };
 
+
 const overviewHeader = ({countryCode, countryName}) => {
 	return (
-		<div id="overview-chart-header">
-			<Flag countryCode={countryCode}/>
-			<div style={style.divCountryName}>
-				<h1 style={style.h1}>{countryName}</h1>
-				<span style={style.span}>Country Overview</span>
-			</div>
-		</div>
+		<Grid container style={{borderBottom: '1px solid lightgray'}}>
+			<Grid item style={style.inner}>
+				<Flag countryCode={countryCode}/>
+			</Grid>
+			<Grid item xs container direction={'column'} justify={'flex-start'}>
+				<Grid item style={style.inner}>
+					<Typography variant="h5">{countryName}</Typography>
+					<Typography variant="caption" color="textSecondary">Country Overview</Typography>
+				</Grid>
+			</Grid>
+		</Grid>
 	);
 };
 

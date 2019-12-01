@@ -8,6 +8,7 @@ import ControlButtonsElement from "./controlButtonsElement";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {Container, Paper} from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import {withRouter} from 'react-router';
 
 const styles = theme => {
 	return {
@@ -44,6 +45,7 @@ class CompareToFormComponent extends React.Component {
 		this.addNewSelection = this.addNewSelection.bind(this);
 		this.onDeleteItem = this.onDeleteItem.bind(this);
 		this.onAddItem = this.onAddItem.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 
 	}
 
@@ -70,6 +72,10 @@ class CompareToFormComponent extends React.Component {
 		});
 	}
 
+	onSubmit() {
+		this.props.history.push('/comparison-chart');
+	}
+
 	render() {
 		const {classes} = this.props;
 		return (
@@ -92,6 +98,7 @@ class CompareToFormComponent extends React.Component {
 					<ControlButtonsElement
 						addButtonDisabled={this.state.selectedCountries.length >= 3}
 						addNewSelectionEventHandler={this.addNewSelection}
+						onSubmit={this.onSubmit}
 					/>
 				</Paper>
 			</Container>
@@ -111,4 +118,4 @@ function mapStateToProps(store) {
 	};
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(CompareToFormComponent));
+export default withRouter(connect(mapStateToProps)(withStyles(styles)(CompareToFormComponent)));

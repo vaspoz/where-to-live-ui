@@ -1,12 +1,15 @@
-import Button from "@material-ui/core/Button";
 import React from "react";
-import PropTypes from "prop-types";
 import {makeStyles} from '@material-ui/core/styles';
 import {Link as RouterLink} from "react-router-dom";
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1)
+	},
+	icon: {
+		backgroundColor: theme.palette.primary.main
 	}
 }));
 
@@ -17,9 +20,9 @@ const AboutPageButton = () => {
 
 	return (
 		<div>
-			<Button color="primary" className={classes.button} component={AboutPageLink}>
-				About Page
-			</Button>
+			<IconButton onClick={()=>{}} component={AboutPageLink}>
+				<FlightTakeoffIcon/>
+			</IconButton>
 		</div>
 	);
 };

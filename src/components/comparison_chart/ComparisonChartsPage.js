@@ -7,6 +7,9 @@ import {bindActionCreators} from 'redux';
 import randomColor from 'randomcolor';
 import SingleChart from './singleChart';
 import CountryOverview from './countryOverview';
+import Grid from '@material-ui/core/Grid';
+import {Container} from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 class ComparisonChartsPage extends React.Component {
 	constructor(props, context) {
@@ -112,21 +115,25 @@ class ComparisonChartsPage extends React.Component {
 
 	render() {
 		return (
-			<div id="chart-container">
-				{this.props.compareToList.map(country => {
-					// const overallChartData = this.getOverallChartDataIfExist(country.countryName);
-					const noOfCities = this.getNoOfCities(country.countryName);
-					const averageProfit = this.getAvgProfit(country.countryName);
-					return (
-						<CountryOverview
-							key={country.countryName}
-							noOfCities={noOfCities}
-							avgProfit={averageProfit}
-							countryName={country.countryName}
-							countryCode={country.countryCode}/>
-					);
-				})}
-			</div>
+			<Container maxWidth="lg">
+				<CssBaseline/>
+				<Grid container style={{minHeight: '90vh', marginTop: '0px'}} alignItems="center"
+							justify="space-around" spacing={4}>
+					{this.props.compareToList.map((country, index) => {
+						// const overallChartData = this.getOverallChartDataIfExist(country.countryName);
+						const noOfCities = this.getNoOfCities(country.countryName);
+						const averageProfit = this.getAvgProfit(country.countryName);
+						return (
+							<CountryOverview
+								key={country.countryName + "_" + index}
+								noOfCities={noOfCities}
+								avgProfit={averageProfit}
+								countryName={country.countryName}
+								countryCode={country.countryCode}/>
+						);
+					})}
+				</Grid>
+			</Container>
 		);
 	}
 }
@@ -153,7 +160,29 @@ function tempMapStateToProps(store) {
 	return {
 		baseCountry: 'Poland',
 		baseCity: 'Gdansk',
-		compareToList: store.compareTo,
+		// compareToList: store.compareTo,
+		compareToList: [
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			// {
+			// 	countryName: 'Netherlands',
+			// 	countryCode: 'NL'
+			// }
+		],
 		calculatedRates: store.calculatedRates
 	};
 }
@@ -165,4 +194,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(tempMapStateToProps, mapDispatchToProps)(ComparisonChartsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChartsPage);

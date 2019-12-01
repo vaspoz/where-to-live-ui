@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ControlButtonsElement = ({addNewSelectionEventHandler, addButtonDisabled}) => {
+const ControlButtonsElement = ({addNewSelectionEventHandler, addButtonDisabled, onSubmit}) => {
 	const classes = useStyles();
 	return (
 		<Grid container justify="center" spacing={6} className={classes.wrapper}>
@@ -47,8 +47,7 @@ const ControlButtonsElement = ({addNewSelectionEventHandler, addButtonDisabled})
 					variant="contained"
 					color="primary"
 					className={classes.submit}
-					onClick={() => {
-					}}
+					onClick={onSubmit}
 				>
 					Submit
 				</Button>
@@ -59,6 +58,7 @@ const ControlButtonsElement = ({addNewSelectionEventHandler, addButtonDisabled})
 
 ControlButtonsElement.propTypes = {
 	addNewSelectionEventHandler: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 	addButtonDisabled: PropTypes.bool.isRequired
 };
 

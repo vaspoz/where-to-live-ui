@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './common/Header';
+import Footer from './common/Footer';
 import AppRoutes from "./AppRoutes";
 
 const App = () => {
@@ -7,7 +8,7 @@ const App = () => {
 		<div>
 			<Header/>
 			<AppRoutes/>
-			{/*<Footer/>*/}
+			<Footer/>
 		</div>
 	)
 };

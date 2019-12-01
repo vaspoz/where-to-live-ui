@@ -1,7 +1,7 @@
 import React from 'react';
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import SignupPage from "./signup/SignupPage";
-import Chart from "./comparison_chart/ComparisonChartsPage";
+import ComparisonChartsPage from "./comparison_chart/ComparisonChartsPage";
 import {Switch, Route, useLocation} from "react-router-dom";
 import LoginPage from "./login_page/LoginPage";
 import AboutPage from "./about/AboutPage";
@@ -34,7 +34,7 @@ const AppRoutes = () => {
 						<CompareToFormComponent/>
 					</Route>
 					<Route path="/comparison-chart">
-						<Chart/>
+						<ComparisonChartsPage />
 					</Route>
 					<Route path="/">
 						<AboutPageMock/>

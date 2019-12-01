@@ -17,13 +17,13 @@ const useStyles = makeStyles(theme => ({
 		top: '50%',
 		left: '50%',
 		marginTop: -12,
-		marginLeft: -12,
+		marginLeft: -12
 	},
 	paper: {
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		padding: theme.spacing(4,3),
+		padding: theme.spacing(4, 3),
 		margin: theme.spacing(15, 3),
 		height: '400px',
 		width: '350px',
@@ -33,12 +33,15 @@ const useStyles = makeStyles(theme => ({
 			boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'
 		}
 	},
+	form: {
+		width: '250px'
+	},
 	avatar: {
 		margin: theme.spacing(1),
 		backgroundColor: theme.palette.secondary.main
 	},
 	wrapper: {
-		marginTop: theme.spacing(3),
+		marginTop: theme.spacing(5),
 		position: 'relative'
 	},
 	submit: {
@@ -49,6 +52,13 @@ const useStyles = makeStyles(theme => ({
 		}
 	}
 }));
+
+const handleEnterKey = (functionHandler) => {
+	return (event) => {
+		if (event.keyCode === 13)
+			functionHandler(event);
+	}
+};
 
 const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, errorMessage}) => {
 	const classes = useStyles();
@@ -61,9 +71,8 @@ const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, er
 			<Typography component="h1" variant="h5">
 				Log In
 			</Typography>
-			<form>
+			<form className={classes.form}>
 				<TextField
-					variant="outlined"
 					margin="normal"
 					required
 					fullWidth
@@ -71,13 +80,9 @@ const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, er
 					label="Username"
 					name="username"
 					onChange={onUsernameEnter}
-					onKeyDown={(event) => {
-						if (event.keyCode === 13)
-							onSubmitClick(event);
-					}}
+					onKeyDown={handleEnterKey(onSubmitClick)}
 				/>
 				<TextField
-					variant="outlined"
 					margin="normal"
 					required
 					fullWidth
@@ -86,10 +91,7 @@ const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, er
 					type="password"
 					id="password"
 					onChange={onPasswordEnter}
-					onKeyDown={(event) => {
-						if (event.keyCode === 13)
-							onSubmitClick(event);
-					}}
+					onKeyDown={handleEnterKey(onSubmitClick)}
 				/>
 				<div className={classes.wrapper}>
 					<Button

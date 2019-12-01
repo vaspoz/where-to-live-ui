@@ -12,11 +12,14 @@ import BaseDataForm from "./baseDataForm";
 class BaseDataPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
+		let isBaseDateHere = this.props.baseCountry && this.props.baseCountry;
 		this.state = {
 			innerKey: 1,
 			countryInputDisabled: false,
 			cityInputDisabled: true,
-			submitDisabled: true
+			submitDisabled: !isBaseDateHere,
+			baseCountry: isBaseDateHere ? this.props.baseCountry : "",
+			baseCity: isBaseDateHere ? this.props.baseCity : ""
 		};
 
 		this.onCitySelect = this.onCitySelect.bind(this);
@@ -55,7 +58,9 @@ class BaseDataPage extends React.Component {
 			countryInputDisabled: false,
 			cityInputDisabled: true,
 			submitDisabled: true,
-			innerKey: ++this.state.innerKey
+			innerKey: ++this.state.innerKey,
+			baseCountry: "",
+			baseCity: ""
 		})
 	}
 
@@ -78,6 +83,8 @@ class BaseDataPage extends React.Component {
 					cityInputDisabled={this.state.cityInputDisabled}
 					onReset={this.onReset}
 					onSubmit={this.onSubmit}
+					countryValue={this.state.baseCountry}
+					cityValue={this.state.baseCity}
 				/>
 			</Container>
 		);
@@ -102,7 +109,9 @@ function mapStateToProps(state) {
 	return {
 		state: state,
 		countries: state.countryList,
-		cities: state.cityList
+		cities: state.cityList,
+		baseCountry: state.baseData.country,
+		baseCity: state.baseData.city,
 	};
 }
 
