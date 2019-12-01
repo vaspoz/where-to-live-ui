@@ -14,17 +14,6 @@
 h1, h2 {
 	color: var(--color-strong);
 }
-.header-footer-common {
-	height: var(--header-footer-height);
-	position: fixed;
-	left: 0;
-	width: 100%;
-	z-index: 10;
-}
-
-.footer {
-	bottom: 0;
-}
 
 .footer-text {
 	text-align: center;
@@ -87,25 +76,6 @@ h1, h2 {
 	display: inline-block;
 }
 
-#chart-country-overview-paper {
-	width: 300px;
-	height: 400px;
-	margin: 20px;
-	padding: 10px;
-	display: inline-block;
-}
-#overview-chart-header {
-	border-bottom: 1px solid #cccccc;
-	padding: 10px;
-	height: 50px;
-	text-align: left;
-}
-
-#overview-chart-header > * {
-	display: inline-block;
-	float: left;
-}
-
 #chart {
 	width: inherit;
 	height: inherit;
@@ -128,36 +98,6 @@ h1, h2 {
 	left: 20px;
 	padding: 0 25px 0 25px;
 }
-/*
-.fade-appear {
-	opacity: 0;
-	z-index: 1;
-}
-.fade-appear.fade-appear-active {
-	opacity: 1;
-	transition: opacity 300ms linear;
-}
-
-.fade-enter {
-	opacity: 0;
-	z-index: 1;
-}
-.fade-enter.fade-enter-active {
-	opacity: 1;
-	transition: opacity 300ms linear;
-}
-
-.fade-exit {
-	opacity: 1;
-}
-.fade-exit.fade-exit-active {
-	opacity: 0;
-	transition: opacity 300ms linear;
-}
-.fade-exit-done {
-	opacity: 0;
-}
-*/
 
 .fade-enter {
 	opacity: 0;
