@@ -12,7 +12,12 @@ const initialState = {
 	},
 
 	// Array of countries to compare with
-	compareTo: [],
+	compareTo: [
+		{
+			countryName: "",
+			countryCode: ""
+		}
+	],
 
 	// Calculated rates for chosen countries
 	calculatedRates: [

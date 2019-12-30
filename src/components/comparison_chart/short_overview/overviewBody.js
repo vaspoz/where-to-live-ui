@@ -47,19 +47,6 @@ const overviewBody = ({noOfCities, avgProfit}) => {
 							<Typography variant={'overline'}>Average Profit</Typography>
 						</Box>
 					</Grid>
-					<Grid item>
-						<Button
-							className={classes.button}
-							fullWidth
-							variant="contained"
-							color="primary"
-							disabled={false}
-							onClick={() => {
-							}}
-						>
-							Details
-						</Button>
-					</Grid>
 				</Grid>
 				:
 				<CircularProgress  className={classes.circularProgress}/>}

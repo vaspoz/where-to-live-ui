@@ -1,13 +1,13 @@
 import React from 'react';
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import SignupPage from "./signup/SignupPage";
-import ComparisonChartsPage from "./comparison_chart/ComparisonChartsPage";
 import {Switch, Route, useLocation} from "react-router-dom";
 import LoginPage from "./login_page/LoginPage";
 import AboutPage from "./about/AboutPage";
 import AboutPageMock from "./about/AboutPageMock";
 import BaseDataPage from "./base_data/BaseDataPage";
 import CompareToFormComponent from "./compareTo_data/CompareToFormComponent";
+import ComparisonChartsWrapper from "./comparison_chart/ComparisonChartsWrapper";
 
 const AppRoutes = () => {
 	let location = useLocation();
@@ -34,7 +34,7 @@ const AppRoutes = () => {
 						<CompareToFormComponent/>
 					</Route>
 					<Route path="/comparison-chart">
-						<ComparisonChartsPage />
+						<ComparisonChartsWrapper />
 					</Route>
 					<Route path="/">
 						<AboutPageMock/>

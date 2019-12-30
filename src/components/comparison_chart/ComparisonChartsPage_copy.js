@@ -5,8 +5,9 @@ import * as chartActions from '../redux/actions/ChartActions';
 import * as globalSettingsActions from '../redux/actions/GlobalSettingsActions';
 import {bindActionCreators} from 'redux';
 import randomColor from 'randomcolor';
-import SingleChart from './singleChart';
-import CountryOverview from './countryOverview';
+import SingleChart from './detailed_overview/DetailedCountryChart';
+import CountryOverview from './short_overview/ShortCountryOverview';
+import SingleCountryComponent from './SingleCountryComponent';
 import Grid from '@material-ui/core/Grid';
 import {Container} from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -124,7 +125,7 @@ class ComparisonChartsPage extends React.Component {
 						const noOfCities = this.getNoOfCities(country.countryName);
 						const averageProfit = this.getAvgProfit(country.countryName);
 						return (
-							<CountryOverview
+							<SingleCountryComponent
 								key={country.countryName + "_" + index}
 								noOfCities={noOfCities}
 								avgProfit={averageProfit}
@@ -133,6 +134,7 @@ class ComparisonChartsPage extends React.Component {
 						);
 					})}
 				</Grid>
+				{/*<SingleChart country={'Netherlands'} chartData={this.getOverallChartDataIfExist('Netherlands')}/>*/}
 			</Container>
 		);
 	}
@@ -166,18 +168,18 @@ function tempMapStateToProps(store) {
 				countryName: 'Netherlands',
 				countryCode: 'NL'
 			},
-			{
-				countryName: 'Netherlands',
-				countryCode: 'NL'
-			},
-			{
-				countryName: 'Netherlands',
-				countryCode: 'NL'
-			},
-			{
-				countryName: 'Netherlands',
-				countryCode: 'NL'
-			},
+			// {
+			// 	countryName: 'Netherlands',
+			// 	countryCode: 'NL'
+			// },
+			// {
+			// 	countryName: 'Netherlands',
+			// 	countryCode: 'NL'
+			// },
+			// {
+			// 	countryName: 'Netherlands',
+			// 	countryCode: 'NL'
+			// },
 			// {
 			// 	countryName: 'Netherlands',
 			// 	countryCode: 'NL'
@@ -194,4 +196,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComparisonChartsPage);
+export default connect(tempMapStateToProps, mapDispatchToProps)(ComparisonChartsPage);

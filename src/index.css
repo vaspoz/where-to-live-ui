@@ -15,17 +15,6 @@ h1, h2 {
 	color: var(--color-strong);
 }
 
-.footer-text {
-	text-align: center;
-	position: relative;
-	top: 45%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: #666666;
-	font-size: 14px;
-	font-weight: bold;
-}
-
 .base-data-container {
 	position: fixed;
 	top: 50%;

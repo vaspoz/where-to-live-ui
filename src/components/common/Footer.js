@@ -4,20 +4,17 @@ import BaseDataButton from "./baseDataButton";
 import CompareToButton from "./compareToButton";
 import Box from "@material-ui/core/Box";
 import CountriesOverviewButton from "./countriesOverviewButton";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 const useStyles = makeStyles(theme => ({
-	footer: {
-		bottom: '0px',
-		position: 'absolute',
-		left: '0px',
-		width: '100%',
-		height: '50px',
-		marginBottom: '0px'
+	appBar: {
+		top: 'auto',
+		bottom: 0
 	},
-	box: {
-		display: 'flex',
-		// this is Paper default box-shadow.
-		boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12)'
+	toolbar: {
+		justifyContent: 'center'
 	}
 }));
 
@@ -26,24 +23,19 @@ const Footer = () => {
 
 	return (
 		<div>
-			<Box className={classes.footer}>
-				<Box className={classes.box} justifyContent="center">
+			<CssBaseline/>
+			<AppBar position="fixed" color="default" className={classes.appBar}>
+				<Toolbar className={classes.toolbar}>
 					<BaseDataButton/>
 					<CompareToButton/>
-					<CountriesOverviewButton />
-				</Box>
-			</Box>
+					<CountriesOverviewButton/>
+				</Toolbar>
+			</AppBar>
 		</div>
 	);
 };
-
-/*			<Paper zDepth={5} className="footer-paper">
-            <div className="footer-text">
-                Made with ♥ by Vasilii Pozdeev in Gdansk 2017
-            </div>
-        </Paper>
-    );
-};
+/*
+Made with ♥ by Vasilii Pozdeev in Gdansk 2017
 */
 
 
