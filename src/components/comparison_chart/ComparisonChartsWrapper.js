@@ -5,7 +5,10 @@ import ChartList from "./ChartList";
 
 const ComparisonChartsWrapper = () => {
 	return (
-		<Container maxWidth={'lg'} style={{position: 'absolute'}}>
+		<Container
+			maxWidth={'xl'}
+			style={{position: 'absolute'}}
+		>
 			<CssBaseline/>
 			<ChartList/>
 		</Container>

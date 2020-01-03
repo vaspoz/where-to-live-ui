@@ -35,7 +35,7 @@ class SingleCountryComponent extends React.Component {
 		console.log(this.state.showFullChart);
 		return (
 			<Grid item>
-				{this.state.showFullChart ?
+				{!this.state.showFullChart ?
 					<DetailedCountryChart countryName={this.props.countryName} onDetailsClick={this.changeView}/>
 					:
 					<ShortCountryOverview

@@ -9,6 +9,33 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 import randomColor from "randomcolor";
 import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
+import {Card} from "@material-ui/core";
+import CardHeader from "@material-ui/core/CardHeader";
+import MinimizeIcon from '@material-ui/icons/Minimize';
+import IconButton from "@material-ui/core/IconButton";
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
+import CardContent from "@material-ui/core/CardContent";
+
+const styles = theme => {
+	return {
+		paper: {
+			margin: '20px',
+			textAlign: 'center',
+			display: 'inline-block',
+			// display: 'flex',
+			// flexDirection: 'column',
+			// textAlign: 'center',
+			// padding: theme.spacing(2),
+			height: '500px',
+			width: '1000px',
+			// transition: 'box-shadow .3s',
+			// "&:hover": {
+			// 	boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'
+			// }
+		}
+	}
+};
 
 class DetailedCountryChart extends React.Component {
 	constructor(props, context) {
@@ -27,6 +54,15 @@ class DetailedCountryChart extends React.Component {
 	static getOptions(title) {
 		return {
 			scales: {
+				xAxes: [{
+					ticks: {
+						callback: function(value, index, values) {
+							if (value.length > 10)
+								value = value.substr(0, 9) + "...";
+							return value;
+						}
+					}
+				}],
 				yAxes: [{
 					ticks: {
 						beginAtZero: true
@@ -34,12 +70,11 @@ class DetailedCountryChart extends React.Component {
 				}]
 			},
 			layout: {
-				padding: 20
+				// padding: 20
 			},
 			maintainAspectRatio: false,
 			title: {
-				display: true,
-				text: title
+				display: false,
 			}
 		};
 	};
@@ -99,19 +134,28 @@ class DetailedCountryChart extends React.Component {
 		const chartDataOverall = this.getOverallChartDataIfExist(this.props.countryName);
 		const chartDataDetailed = this.getChartDataIfExist(this.props.countryName);
 		let chartData = chartDataDetailed;
+		const {classes} = this.props;
+
+
 		return (
-			<Paper key={this.props.countryName} id="chart-paper" elevation={5}>
-				{chartData ?
-					<Bar id="chart" data={chartData} options={DetailedCountryChart.getOptions(this.props.countryName)}/>
-					:
-					"No data yet"}
-				<Button variant="contained"
-								color="primary"
-								onClick={this.props.onDetailsClick}
+			<Card className={classes.paper}>
+				<CardHeader
+					title={this.props.countryName}
+					subheader="High level chart"
+					action={
+						<IconButton>
+							<FullscreenExitIcon onClick={this.props.onDetailsClick}/>
+						</IconButton>
+					}
 				>
-					Details
-				</Button>
-			</Paper>
+				</CardHeader>
+				<CardContent>
+					<Bar
+						width={500}
+						height={400}
+						data={chartData} options={DetailedCountryChart.getOptions(this.props.countryName)}/>
+				</CardContent>
+			</Card>
 		);
 	}
 }
@@ -135,7 +179,7 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailedCountryChart);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(DetailedCountryChart));
 
 /*
 				<RefreshIndicator
