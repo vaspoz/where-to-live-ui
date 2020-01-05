@@ -17,8 +17,8 @@ class ChartList extends React.Component {
 						justify="space-around"
 						style={{
 							// minHeight: '90%',
-							marginTop: '0px',
-							marginBottom: '50px'
+							marginTop: '60px',
+							marginBottom: '60px'
 						}}
 
 			>
@@ -74,4 +74,4 @@ function tempMapStateToProps(store) {
 	};
 }
 
-export default connect(tempMapStateToProps, null)(ChartList);
+export default connect(mapStateToProps, null)(ChartList);

@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		padding: theme.spacing(4,3),
-		marginTop: theme.spacing(5),
+		marginTop: theme.spacing(12),
 		width: '400px',
 		position: "absolute",
 		transition: 'box-shadow .3s',

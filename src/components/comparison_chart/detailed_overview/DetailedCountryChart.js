@@ -143,8 +143,8 @@ class DetailedCountryChart extends React.Component {
 					title={this.props.countryName}
 					subheader="High level chart"
 					action={
-						<IconButton>
-							<FullscreenExitIcon onClick={this.props.onDetailsClick}/>
+						<IconButton onClick={this.props.onDetailsClick}>
+							<FullscreenExitIcon />
 						</IconButton>
 					}
 				>

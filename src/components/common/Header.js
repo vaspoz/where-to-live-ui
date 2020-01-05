@@ -34,7 +34,7 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<AppBar position="sticky" color="default">
+			<AppBar position="fixed" color="default">
 				<ToolBar>
 					{this.props.loading && <CircularProgress color="secondary" value={100} size={30}/>}
 					<div style={{flex: 1}}/>

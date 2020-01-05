@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	circularProgress: {
 		color: blue[500],
-		marginTop: theme.spacing(16),
+		marginTop: theme.spacing(12),
 	}
 }));
 
