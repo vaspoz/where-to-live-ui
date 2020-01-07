@@ -1,12 +1,9 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core";
-import BaseDataButton from "./baseDataButton";
-import CompareToButton from "./compareToButton";
-import Box from "@material-ui/core/Box";
-import CountriesOverviewButton from "./countriesOverviewButton";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import FooterButtons from "./FooterButtons";
 
 const useStyles = makeStyles(theme => ({
 	appBar: {
@@ -26,9 +23,7 @@ const Footer = () => {
 			<CssBaseline/>
 			<AppBar position="fixed" color="default" className={classes.appBar}>
 				<Toolbar className={classes.toolbar}>
-					<BaseDataButton/>
-					<CompareToButton/>
-					<CountriesOverviewButton/>
+					<FooterButtons/>
 				</Toolbar>
 			</AppBar>
 		</div>

@@ -7,7 +7,7 @@ import SignupButton from './signupButton';
 import Avatar from './avatar';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
-import * as globalActions from "../redux/actions/GlobalSettingsActions";
+import * as globalActions from "../../redux/actions/GlobalSettingsActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AboutPageButton from "./aboutPageButton";
 

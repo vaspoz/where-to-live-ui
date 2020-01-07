@@ -49,7 +49,8 @@ function handleErrorSignup(state, authResponse) {
 		{
 			currentUser: {},
 			loginError: "",
-			signupError: authResponse.error
+			signupError: authResponse.error,
+			authorized: false
 		}
 	)
 }
@@ -61,7 +62,8 @@ function handleErrorLogin(state, errorMessage) {
 		{
 			currentUser: {},
 			loginError: errorMessage,
-			signupError: ""
+			signupError: "",
+			authorized: false
 		}
 	)
 }
@@ -73,7 +75,8 @@ function handleSignupLoginSuccess(state, authResponse) {
 		{
 			currentUser: authResponse.userDTO,
 			loginError: "",
-			signupError: ""
+			signupError: "",
+			authorized: true
 		}
 	);
 }
@@ -85,6 +88,7 @@ function cleanupGlobalAuthSettings(state) {
 		{
 			currentUser: {},
 			loginError: "",
-			signupError: ""
+			signupError: "",
+			authorized: false
 		});
 }

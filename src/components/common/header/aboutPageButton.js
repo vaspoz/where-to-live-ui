@@ -16,8 +16,6 @@ const useStyles = makeStyles(theme => ({
 const AboutPageLink = React.forwardRef((props, ref) => <RouterLink innerRef={ref} to="/" {...props} />);
 
 const AboutPageButton = () => {
-	const classes = useStyles();
-
 	return (
 		<div>
 			<IconButton onClick={()=>{}} component={AboutPageLink}>
