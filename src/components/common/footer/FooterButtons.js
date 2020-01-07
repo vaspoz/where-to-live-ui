@@ -3,6 +3,7 @@ import BaseDataButton from "./baseDataButton";
 import CompareToButton from "./compareToButton";
 import CountriesOverviewButton from "./countriesOverviewButton";
 import {connect} from "react-redux";
+import AboutPageButton from "./aboutPageButton";
 
 export var testvar = "";
 
@@ -20,6 +21,7 @@ class FooterButtons extends React.Component {
 	render() {
 		return (
 			<div style={{display: 'flex'}}>
+				<AboutPageButton/>
 				<BaseDataButton isDisabled={this.props.baseDataButtonDisabled}/>
 				<CompareToButton isDisabled={this.props.compareToButtonDisabled}/>
 				<CountriesOverviewButton isDisabled={this.props.countriesOverviewButtonDisabled}/>

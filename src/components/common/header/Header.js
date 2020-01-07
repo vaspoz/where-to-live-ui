@@ -9,7 +9,6 @@ import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as globalActions from "../../redux/actions/GlobalSettingsActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import AboutPageButton from "./aboutPageButton";
 
 class Header extends React.Component {
 	constructor(props, context) {
@@ -38,7 +37,6 @@ class Header extends React.Component {
 				<ToolBar>
 					{this.props.loading && <CircularProgress color="secondary" value={100} size={30}/>}
 					<div style={{flex: 1}}/>
-					<AboutPageButton />
 					<LoginButton isVisible={!this.state.authorized}/>
 					<SignupButton isVisible={!this.state.authorized}/>
 					<Avatar isVisible={this.state.authorized} onClickAction={this.onClickLogout}/>
