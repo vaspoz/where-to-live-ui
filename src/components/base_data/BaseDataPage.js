@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {Container} from "@material-ui/core";
 import PropTypes from "prop-types";
 import * as countryActions from "../redux/actions/CountryActions";
+import * as calculatedRatesActions from '../redux/actions/CalculatedRatesActions';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router';
@@ -54,6 +55,8 @@ class BaseDataPage extends React.Component {
 	onReset() {
 		this.props.countryActions.selectBaseCountry("");
 		this.props.cityActions.selectBaseCity("");
+		this.props.calculatedRatesActions.cleanUpCalculatedRates();
+
 		this.setState({
 			countryInputDisabled: false,
 			cityInputDisabled: true,
@@ -101,7 +104,8 @@ BaseDataPage.propTypes = {
 function mapDispatchToProps(dispatch) {
 	return {
 		countryActions: bindActionCreators(countryActions, dispatch),
-		cityActions: bindActionCreators(cityActions, dispatch)
+		cityActions: bindActionCreators(cityActions, dispatch),
+		calculatedRatesActions: bindActionCreators(calculatedRatesActions, dispatch)
 	};
 }
 

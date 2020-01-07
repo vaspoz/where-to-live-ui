@@ -9,6 +9,8 @@ export default function calculatedRatesReducer(state = [], action) {
 			curState.push(action.calculatedRates);
 			return curState;
 		}
+		case types.CLEANUP_CALCULATED_RATES:
+			return [];
 		default:
 			return state;
 	}

@@ -6,3 +6,9 @@ export function addCalculatedRates(calculatedRates) {
 		calculatedRates
 	};
 }
+
+export function cleanUpCalculatedRates() {
+	return {
+		type: types.CLEANUP_CALCULATED_RATES
+	};
+}
