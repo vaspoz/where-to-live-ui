@@ -6,6 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import {Avatar} from "@material-ui/core";
 import {grey, amber} from "@material-ui/core/colors";
 import FlightLandIcon from '@material-ui/icons/FlightLand';
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles(theme => ({
 	icon: {
@@ -26,13 +27,13 @@ const CompareToButton = ({isDisabled}) => {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<Tooltip title={'Destinations'}>
 			<IconButton component={LoginLink} disabled={isDisabled}>
 				<Avatar className={isDisabled ? classes.iconDisabled : classes.icon} variant="rounded" sizes={'small'}>
 					<FlightLandIcon fontSize={'small'}/>
 				</Avatar>
 			</IconButton>
-		</div>
+		</Tooltip>
 	);
 };
 

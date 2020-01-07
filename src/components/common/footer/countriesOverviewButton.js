@@ -6,6 +6,7 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import IconButton from "@material-ui/core/IconButton";
 import {Avatar} from "@material-ui/core";
 import {grey, deepPurple} from "@material-ui/core/colors";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles(theme => ({
 	icon: {
@@ -26,13 +27,13 @@ const CountriesOverviewButton = ({isDisabled}) => {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<Tooltip title={'Charts'}>
 			<IconButton component={ChartLink} disabled={isDisabled}>
 				<Avatar className={isDisabled ? classes.iconDisabled : classes.icon} variant="rounded" sizes={'small'}>
 					<EqualizerIcon fontSize={'small'}/>
 				</Avatar>
 			</IconButton>
-		</div>
+		</Tooltip>
 	);
 };
 

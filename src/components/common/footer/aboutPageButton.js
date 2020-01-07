@@ -5,6 +5,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import IconButton from "@material-ui/core/IconButton";
 import {pink} from "@material-ui/core/colors";
 import {Avatar} from "@material-ui/core";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles(theme => ({
 	icon: {
@@ -20,13 +21,13 @@ const AboutPageButton = () => {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<Tooltip title={'Home'}>
 			<IconButton component={AboutPageLink}>
 				<Avatar className={classes.icon} variant="rounded" sizes={'small'}>
 					<HomeIcon fontSize={'small'}/>
 				</Avatar>
 			</IconButton>
-		</div>
+		</Tooltip>
 	);
 };
 
