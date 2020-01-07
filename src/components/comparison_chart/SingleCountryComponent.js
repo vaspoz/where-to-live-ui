@@ -17,11 +17,17 @@ class SingleCountryComponent extends React.Component {
 
 		this.changeView = this.changeView.bind(this);
 
-		this.props.chartActions.fetchChartForCountry(
-			this.props.baseCountry,
-			this.props.baseCity,
-			this.props.countryName
-		);
+		let countryAlreadyCalculated = this.props.calculatedRates.some((elt) => {
+			return elt.country === this.props.countryName
+		});
+
+		if (!countryAlreadyCalculated) {
+			this.props.chartActions.fetchChartForCountry(
+				this.props.baseCountry,
+				this.props.baseCity,
+				this.props.countryName
+			);
+		}
 	}
 
 	changeView() {
@@ -56,10 +62,11 @@ SingleCountryComponent.propTypes = {
 
 function mapStateToProps(store) {
 	return {
-		// baseCountry: store.baseData.country,
-		// baseCity: store.baseData.city,
-		baseCountry: "Poland",
-		baseCity: "Gdansk"
+		baseCountry: store.baseData.country,
+		baseCity: store.baseData.city,
+		calculatedRates: store.calculatedRates
+		// baseCountry: "Poland",
+		// baseCity: "Gdansk"
 	};
 }
 
