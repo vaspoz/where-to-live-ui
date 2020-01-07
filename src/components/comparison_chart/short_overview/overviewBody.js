@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import {makeStyles, Typography} from "@material-ui/core";
-import {blue, green} from "@material-ui/core/colors";
+import {blue, green, red, amber} from "@material-ui/core/colors";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
@@ -13,11 +13,19 @@ const useStyles = makeStyles(theme => ({
 	},
 	cityNumber: {
 		fontWeight: 500,
-		color: blue[300]
+		color: blue[500]
 	},
-	avgProfit: {
+	avgProfitGreen: {
 		fontWeight: 500,
-		color: green[300]
+		color: green[500]
+	},
+	avgProfitAmber: {
+		fontWeight: 500,
+		color: amber[500]
+	},
+	avgProfitRed: {
+		fontWeight: 500,
+		color: red[500]
 	},
 	button: {
 		marginTop: theme.spacing(3)
@@ -31,6 +39,10 @@ const useStyles = makeStyles(theme => ({
 const overviewBody = ({noOfCities, avgProfit}) => {
 	const classes = useStyles();
 
+	const coloredClass = avgProfit < 0 ? 'avgProfitRed' :
+												avgProfit < 50 ? 'avgProfitAmber' :
+													'avgProfitGreen';
+
 	return (
 		<div>
 			{noOfCities > 0 ?
@@ -43,7 +55,7 @@ const overviewBody = ({noOfCities, avgProfit}) => {
 					</Grid>
 					<Grid item>
 						<Box className={classes.stats}>
-							<Typography variant={'h2'} className={classes.avgProfit}>{avgProfit}</Typography>
+							<Typography variant={'h2'} className={classes[coloredClass]}>{avgProfit}</Typography>
 							<Typography variant={'overline'}>Average Profit</Typography>
 						</Box>
 					</Grid>
