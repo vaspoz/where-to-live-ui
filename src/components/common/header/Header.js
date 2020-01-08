@@ -11,6 +11,12 @@ import * as globalActions from "../../redux/actions/GlobalSettingsActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 class Header extends React.Component {
+	static getDerivedStateFromProps(props) {
+		return {
+			authorized: !!props.currentUser && Object.keys(props.currentUser).length > 0
+		};
+	}
+
 	constructor(props, context) {
 		super(props, context);
 
@@ -19,12 +25,6 @@ class Header extends React.Component {
 		};
 
 		this.onClickLogout = this.onClickLogout.bind(this);
-	}
-
-	static getDerivedStateFromProps(props) {
-		return {
-			authorized: !!props.currentUser && Object.keys(props.currentUser).length > 0
-		};
 	}
 
 	onClickLogout() {
@@ -48,7 +48,9 @@ class Header extends React.Component {
 
 Header.propTypes = {
 	loading: PropTypes.bool,
-	authorized: PropTypes.bool
+	authorized: PropTypes.bool,
+	currentUser: PropTypes.object,
+	globalActions: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch) {

@@ -6,7 +6,7 @@ const LabelElement = () => {
 			<Typography component="h1" variant="h5">
 				Select Countries
 			</Typography>
-	)
+	);
 };
 
 export default LabelElement;

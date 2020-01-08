@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 		marginTop: theme.spacing(12),
 		width: '400px',
 		position: "absolute",
-		transition: 'box-shadow .3s',
+		transition: 'box-shadow .3s'
 	},
 	avatar: {
 		margin: theme.spacing(1),

@@ -16,7 +16,7 @@ const DeleteItemButton = ({deleteHandler}) => {
 		<IconButton onClick={deleteHandler} className={classes.icon}>
 			<DeleteIcon fontSize="small"/>
 		</IconButton>
-	)
+	);
 };
 
 DeleteItemButton.propTypes = {

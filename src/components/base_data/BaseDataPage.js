@@ -13,7 +13,7 @@ import BaseDataForm from "./baseDataForm";
 class BaseDataPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-		let isBaseDateHere = this.props.baseCountry && this.props.baseCountry;
+		let isBaseDateHere = this.props.baseCountry && this.props.baseCity;
 		this.state = {
 			innerKey: 1,
 			countryInputDisabled: false,
@@ -64,7 +64,7 @@ class BaseDataPage extends React.Component {
 			innerKey: ++this.state.innerKey,
 			baseCountry: "",
 			baseCity: ""
-		})
+		});
 	}
 
 	onSubmit() {
@@ -95,10 +95,14 @@ class BaseDataPage extends React.Component {
 }
 
 BaseDataPage.propTypes = {
+	baseCountry: PropTypes.string,
+	baseCity: PropTypes.string,
 	cityActions: PropTypes.object.isRequired,
 	countryActions: PropTypes.object.isRequired,
 	countries: PropTypes.array.isRequired,
-	cities: PropTypes.array.isRequired
+	cities: PropTypes.array.isRequired,
+	calculatedRatesActions: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
@@ -115,7 +119,7 @@ function mapStateToProps(state) {
 		countries: state.countryList,
 		cities: state.cityList,
 		baseCountry: state.baseData.country,
-		baseCity: state.baseData.city,
+		baseCity: state.baseData.city
 	};
 }
 

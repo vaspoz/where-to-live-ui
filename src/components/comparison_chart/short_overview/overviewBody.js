@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	circularProgress: {
 		color: blue[500],
-		marginTop: theme.spacing(12),
+		marginTop: theme.spacing(12)
 	}
 }));
 
@@ -46,7 +46,7 @@ const overviewBody = ({noOfCities, avgProfit}) => {
 	return (
 		<div>
 			{noOfCities > 0 ?
-				<Grid container direction='column' alignItems="center" justify="space-between">
+				<Grid container direction="column" alignItems="center" justify="space-between">
 					<Grid item>
 						<Box className={classes.stats}>
 							<Typography variant={'h2'} className={classes.cityNumber}>{noOfCities}</Typography>
@@ -63,7 +63,7 @@ const overviewBody = ({noOfCities, avgProfit}) => {
 				:
 				<CircularProgress  className={classes.circularProgress}/>}
 		</div>
-	)
+	);
 };
 
 overviewBody.propTypes = {

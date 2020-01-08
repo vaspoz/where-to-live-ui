@@ -40,8 +40,8 @@ export function logout() {
 		localStorage.removeItem('jwttoken');
 		dispatch({
 			type: types.LOGOUT_USER
-		})
-	}
+		});
+	};
 }
 
 function changeSortOrder(newOrder) {
@@ -69,12 +69,12 @@ function loginUserFailure(errorMessage) {
 	return {
 		type: types.LOGIN_FAILRE_AJAXEND,
 		errorMessage
-	}
+	};
 }
 
 function clearLoginErrors() {
 	return {
 		type: types.CLEAR_LOGIN_ERRORS
-	}
+	};
 
 }

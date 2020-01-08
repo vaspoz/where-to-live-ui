@@ -19,11 +19,10 @@ export function fetchCountryCode(countryName) {
 	return (dispatch) => {
 		return api.getCountryCode(countryName)
 			.then(code => {
-				dispatch(fetchCountryCodeSuccess(countryName, code))
+				dispatch(fetchCountryCodeSuccess(countryName, code));
 			})
 			.catch(error => {
-				console.error("Country's flag is not supported");
-				dispatch(fetchCountryCodeSuccess("Netherlands", "NL"))
+				dispatch(fetchCountryCodeSuccess("Netherlands", "NL"));
 			});
 	};
 }

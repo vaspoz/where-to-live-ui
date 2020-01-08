@@ -26,7 +26,7 @@ const styles = theme => {
 		countryListItem: {
 			margin: theme.spacing(0)
 		}
-	}
+	};
 };
 
 class CompareToFormComponent extends React.Component {
@@ -107,7 +107,9 @@ class CompareToFormComponent extends React.Component {
 }
 
 CompareToFormComponent.propTypes = {
-	compareToList: PropTypes.array
+	compareToList: PropTypes.array,
+	history: PropTypes.object,
+	classes: PropTypes.object
 };
 
 function mapStateToProps(store) {

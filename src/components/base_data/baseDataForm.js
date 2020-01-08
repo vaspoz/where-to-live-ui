@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -120,7 +121,7 @@ const BaseDataForm = ({
 				</Grid>
 			</Grid>
 		</Paper>
-	)
+	);
 };
 
 BaseDataForm.propTypes = {

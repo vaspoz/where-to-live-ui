@@ -24,7 +24,7 @@ const styles = theme => {
 				boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'
 			}
 		}
-	}
+	};
 };
 
 class ShortCountryOverview extends React.Component {
@@ -75,7 +75,7 @@ class ShortCountryOverview extends React.Component {
 					<OverviewBody avgProfit={averageProfit} noOfCities={noOfCities}/>
 				</Paper>
 			</ButtonBase>
-		)
+		);
 	}
 }
 
@@ -94,7 +94,9 @@ function mapDispatchToProps(dispatch) {
 ShortCountryOverview.propTypes = {
 	countryName: PropTypes.string.isRequired,
 	countryCode: PropTypes.string.isRequired,
-	onDetailsClick: PropTypes.func.isRequired
+	onDetailsClick: PropTypes.func.isRequired,
+	calculatedRates: PropTypes.object,
+	classes: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ShortCountryOverview));

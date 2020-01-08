@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import PropTypes from "prop-types";
 import {makeStyles, TextField} from "@material-ui/core";
@@ -25,8 +26,7 @@ const SelectItemField = ({countryList, onSelect, inputDisabled, isError, value})
 				<TextField {...params} label="Country" fullWidth/>
 			)}
 		/>
-
-	)
+	);
 };
 
 SelectItemField.propTypes = {

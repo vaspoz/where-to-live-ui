@@ -81,7 +81,8 @@ class LoginPage extends React.Component {
 }
 
 LoginPage.propTypes = {
-	globalActions: PropTypes.object.isRequired
+	globalActions: PropTypes.object.isRequired,
+	history: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch) {

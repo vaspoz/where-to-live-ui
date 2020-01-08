@@ -16,7 +16,7 @@ const AvatarElement = () => {
 			<Avatar className={classes.avatar}>
 				<FlightLandIcon/>
 			</Avatar>
-	)
+	);
 };
 
 export default AvatarElement;

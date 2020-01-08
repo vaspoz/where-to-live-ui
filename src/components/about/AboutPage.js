@@ -254,13 +254,13 @@ class AboutPage extends React.Component {
 								floatingLabelText="Autocomplete"
 								filter={AutoComplete.caseInsensitiveFilter}
 								dataSource={['aaa', 'bbb', 'ccc']}
-								openOnFocus={true}
+								openOnFocus
 							/>
 							<br/>
 							<AutoComplete
 								floatingLabelText="Autocomplete"
 								filter={AutoComplete.caseInsensitiveFilter}
-								disabled={true}
+								disabled
 								dataSource={[1, 2, 3, 4, 5]}
 							/>
 							<br/>
@@ -270,13 +270,13 @@ class AboutPage extends React.Component {
 							<br/>
 							<RaisedButton
 								label="Submit disabled"
-								disabled={true}
+								disabled
 							/>
 						</Paper>
 					</div>
 					<div style={styles.innerRight}>
-						<Table selectable={true} multiSelectable={true}>
-							<TableBody displayRowCheckbox={true} deselectOnClickaway={false}>
+						<Table selectable multiSelectable>
+							<TableBody displayRowCheckbox deselectOnClickaway={false}>
 								{table_entries.map(elt => {
 									return (
 										<TableRow key={elt} selected={Math.random() > 0.5}>
@@ -292,7 +292,7 @@ class AboutPage extends React.Component {
 					{mockCalculatedRates.map(countryRate => {
 						const chartData = prepareCityRatesForChart(countryRate.cityRates);
 						return (
-							<Paper id="chart-paper" zDepth={2}>
+							<Paper id="chart-paper" zDepth={2} key={countryRate.country + "-001"}>
 								<Bar id="chart" data={chartData} options={getOptions(countryRate.country)}/>
 							</Paper>
 						);

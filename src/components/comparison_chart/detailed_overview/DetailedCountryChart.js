@@ -23,24 +23,46 @@ const styles = theme => {
 			margin: '20px',
 			textAlign: 'center',
 			display: 'inline-block',
-			// display: 'flex',
-			// flexDirection: 'column',
-			// textAlign: 'center',
-			// padding: theme.spacing(2),
 			height: '500px',
-			width: '1000px',
-			// transition: 'box-shadow .3s',
-			// "&:hover": {
-			// 	boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'
-			// }
+			width: '1000px'
 		}
-	}
+	};
 };
 
 class DetailedCountryChart extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-		this.getOverallChartDataIfExist = this.getOverallChartDataIfExist.bind(this);
+	static prepareOverallChart(cityRates) {
+		const labels = cityRates.map(singleCityRate => singleCityRate.city);
+		return {
+			labels: labels,
+			datasets: [
+				{
+					label: 'Profit Value',
+					data: cityRates.map(singleCityRate => singleCityRate.overall),
+					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'blue'),
+					borderWidth: 1
+				}
+			]
+		};
+	}
+
+	static prepareCityRatesForChart(cityRates) {
+		const labels = cityRates.map(singleCityRate => singleCityRate.city);
+		return {
+			labels: labels,
+			datasets: [
+				{
+					label: 'Salary',
+					data: cityRates.map(singleCityRate => singleCityRate.salary),
+					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'green'),
+					borderWidth: 1
+				},
+				{
+					label: 'Expenses',
+					data: cityRates.map(singleCityRate => singleCityRate.expenses),
+					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'red')
+				}
+			]
+		};
 	}
 
 	static getRandomColors(amount, hue) {
@@ -74,45 +96,17 @@ class DetailedCountryChart extends React.Component {
 			},
 			maintainAspectRatio: false,
 			title: {
-				display: false,
+				display: false
 			}
 		};
-	};
-
-	static prepareCityRatesForChart(cityRates) {
-		const labels = cityRates.map(singleCityRate => singleCityRate.city);
-		return {
-			labels: labels,
-			datasets: [
-				{
-					label: 'Salary',
-					data: cityRates.map(singleCityRate => singleCityRate.salary),
-					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'green'),
-					borderWidth: 1
-				},
-				{
-					label: 'Expenses',
-					data: cityRates.map(singleCityRate => singleCityRate.expenses),
-					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'red')
-				}
-			]
-		};
 	}
 
-	static prepareOverallChart(cityRates) {
-		const labels = cityRates.map(singleCityRate => singleCityRate.city);
-		return {
-			labels: labels,
-			datasets: [
-				{
-					label: 'Profit Value',
-					data: cityRates.map(singleCityRate => singleCityRate.overall),
-					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'blue'),
-					borderWidth: 1
-				}
-			]
-		};
+	constructor(props, context) {
+		super(props, context);
+		this.getOverallChartDataIfExist = this.getOverallChartDataIfExist.bind(this);
 	}
+
+
 
 	getChartDataIfExist(country) {
 		const countryRates = this.props.calculatedRates
@@ -147,8 +141,7 @@ class DetailedCountryChart extends React.Component {
 							<FullscreenExitIcon />
 						</IconButton>
 					}
-				>
-				</CardHeader>
+				/>
 				<CardContent>
 					<Bar
 						width={500}
@@ -162,7 +155,9 @@ class DetailedCountryChart extends React.Component {
 
 DetailedCountryChart.propTypes = {
 	countryName: PropTypes.string.isRequired,
-	onDetailsClick: PropTypes.func.isRequired
+	onDetailsClick: PropTypes.func.isRequired,
+	calculatedRates: PropTypes.object,
+	classes: PropTypes.object
 };
 
 function mapStateToProps(store) {
@@ -180,13 +175,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(DetailedCountryChart));
-
-/*
-				<RefreshIndicator
-					left={0}
-					top={230}
-					size={40}
-					style={style.refresh}
-					status="loading"
-				/>
- */

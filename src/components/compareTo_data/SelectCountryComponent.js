@@ -54,7 +54,7 @@ class SelectCountryComponent extends React.Component {
 				/>
 				<DeleteItem deleteHandler={this.onDelete}/>
 			</div>
-		)
+		);
 	}
 }
 

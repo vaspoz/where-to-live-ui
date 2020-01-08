@@ -55,7 +55,7 @@ const BEapi = {
 				countryOrigin
 			})
 		})
-			.then(response => response.json())
+			.then(response => response.json());
 	},
 	login: (username, password) => {
 		return fetch(`${loginURL}`, {
@@ -68,7 +68,7 @@ const BEapi = {
 				password
 			})
 		})
-			.then(response => response.json())
+			.then(response => response.json());
 	}
 };
 

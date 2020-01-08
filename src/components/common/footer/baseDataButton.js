@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
 	icon: {
 		backgroundColor: green[500],
 		height: '30px',
-		width: '30px',
+		width: '30px'
 	},
 	iconDisabled: {
 		backgroundColor: grey[500],
 		height: '30px',
-		width: '30px',
+		width: '30px'
 	}
 }));
 

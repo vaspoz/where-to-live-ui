@@ -18,7 +18,7 @@ class SingleCountryComponent extends React.Component {
 		this.changeView = this.changeView.bind(this);
 
 		let countryAlreadyCalculated = this.props.calculatedRates.some((elt) => {
-			return elt.country === this.props.countryName
+			return elt.country === this.props.countryName;
 		});
 
 		if (!countryAlreadyCalculated) {
@@ -38,7 +38,6 @@ class SingleCountryComponent extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.showFullChart);
 		return (
 			<Grid item>
 				{this.state.showFullChart ?
@@ -51,13 +50,17 @@ class SingleCountryComponent extends React.Component {
 					/>
 				}
 			</Grid>
-		)
+		);
 	}
 }
 
 SingleCountryComponent.propTypes = {
 	countryName: PropTypes.string.isRequired,
-	countryCode: PropTypes.string.isRequired
+	countryCode: PropTypes.string.isRequired,
+	calculatedRates: PropTypes.object,
+	chartActions: PropTypes.object,
+	baseCity: PropTypes.string,
+	baseCountry: PropTypes.string
 };
 
 function mapStateToProps(store) {

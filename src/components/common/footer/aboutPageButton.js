@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
 	icon: {
 		backgroundColor: pink[500],
 		height: '30px',
-		width: '30px',
+		width: '30px'
 	}
 }));
 

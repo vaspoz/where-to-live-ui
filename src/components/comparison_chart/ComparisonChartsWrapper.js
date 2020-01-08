@@ -12,7 +12,7 @@ const ComparisonChartsWrapper = () => {
 			<CssBaseline/>
 			<ChartList/>
 		</Container>
-	)
+	);
 };
 
 export default ComparisonChartsWrapper;

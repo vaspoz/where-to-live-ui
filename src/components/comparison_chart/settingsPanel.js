@@ -13,23 +13,23 @@ const styles = {
 };
 
 const settingsPanel = ({onSortOrderChange}) => {
-    return (
-			<Paper className="left-column">
-				<h3>Sort charts by</h3>
-				<RadioButtonGroup name="SortOrder" defaultSelected="salary" onChange={onSortOrderChange}>
-					<RadioButton
-						label="Salary"
-						value="salary"
-						style={styles.radioButton}
-					/>
-					<RadioButton
-						label="Expenses"
-						value="expenses"
-						style={styles.radioButton}
-					/>
-				</RadioButtonGroup>
-			</Paper>
-    )
+	return (
+		<Paper className="left-column">
+			<h3>Sort charts by</h3>
+			<RadioButtonGroup name="SortOrder" defaultSelected="salary" onChange={onSortOrderChange}>
+				<RadioButton
+					label="Salary"
+					value="salary"
+					style={styles.radioButton}
+				/>
+				<RadioButton
+					label="Expenses"
+					value="expenses"
+					style={styles.radioButton}
+				/>
+			</RadioButtonGroup>
+		</Paper>
+	);
 };
 
 settingsPanel.propTypes = {

@@ -36,7 +36,7 @@ class ChartList extends React.Component {
 }
 
 ChartList.propTypes = {
-	compareToList: PropTypes.array.isRequired,
+	compareToList: PropTypes.array.isRequired
 };
 
 function mapStateToProps(store) {
@@ -53,22 +53,22 @@ function tempMapStateToProps(store) {
 				countryName: 'Netherlands',
 				countryCode: 'NL'
 			},
-			// {
-			// 	countryName: 'Netherlands',
-			// 	countryCode: 'NL'
-			// },
-			// {
-			// 	countryName: 'Netherlands',
-			// 	countryCode: 'NL'
-			// },
-			// {
-			// 	countryName: 'Netherlands',
-			// 	countryCode: 'NL'
-			// },
-			// {
-			// 	countryName: 'Netherlands',
-			// 	countryCode: 'NL'
-			// }
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			},
+			{
+				countryName: 'Netherlands',
+				countryCode: 'NL'
+			}
 		],
 		calculatedRates: store.calculatedRates
 	};

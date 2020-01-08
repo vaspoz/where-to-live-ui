@@ -57,7 +57,7 @@ const handleEnterKey = (functionHandler) => {
 	return (event) => {
 		if (event.keyCode === 13)
 			functionHandler(event);
-	}
+	};
 };
 
 const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, errorMessage}) => {
@@ -109,7 +109,7 @@ const LoginForm = ({loading, onSubmitClick, onUsernameEnter, onPasswordEnter, er
 				{errorMessage}
 			</form>
 		</Paper>
-	)
+	);
 };
 
 LoginForm.propTypes = {

@@ -53,7 +53,7 @@ const ControlButtonsElement = ({addNewSelectionEventHandler, addButtonDisabled, 
 				</Button>
 			</Grid>
 		</Grid>
-	)
+	);
 };
 
 ControlButtonsElement.propTypes = {

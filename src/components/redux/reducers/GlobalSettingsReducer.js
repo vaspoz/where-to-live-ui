@@ -52,7 +52,7 @@ function handleErrorSignup(state, authResponse) {
 			signupError: authResponse.error,
 			authorized: false
 		}
-	)
+	);
 }
 
 function handleErrorLogin(state, errorMessage) {
@@ -65,7 +65,7 @@ function handleErrorLogin(state, errorMessage) {
 			signupError: "",
 			authorized: false
 		}
-	)
+	);
 }
 
 function handleSignupLoginSuccess(state, authResponse) {

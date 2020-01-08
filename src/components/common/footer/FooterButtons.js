@@ -4,18 +4,14 @@ import CompareToButton from "./compareToButton";
 import CountriesOverviewButton from "./countriesOverviewButton";
 import {connect} from "react-redux";
 import AboutPageButton from "./aboutPageButton";
-
-export var testvar = "";
+import PropTypes from "prop-types";
 
 class FooterButtons extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 
-
 		this.state = {
 		};
-
-		console.log(this.props);
 	}
 
 	render() {
@@ -29,6 +25,12 @@ class FooterButtons extends React.Component {
 		);
 	}
 }
+
+FooterButtons.propTypes = {
+	baseDataButtonDisabled: PropTypes.bool.isRequired,
+	compareToButtonDisabled: PropTypes.bool.isRequired,
+	countriesOverviewButtonDisabled: PropTypes.bool.isRequired
+};
 
 function mapStateToProps(state) {
 	let baseDataButtonDisabled = !state.globalSettings.authorized;

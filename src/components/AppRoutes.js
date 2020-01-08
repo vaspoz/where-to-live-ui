@@ -16,7 +16,7 @@ const AppRoutes = () => {
 		<TransitionGroup>
 			<CSSTransition
 				key={location.key}
-				appear={true}
+				appear
 				classNames="fade"
 				timeout={300}
 			>
@@ -42,7 +42,7 @@ const AppRoutes = () => {
 				</Switch>
 			</CSSTransition>
 		</TransitionGroup>
-	)
+	);
 };
 
 export default AppRoutes;
