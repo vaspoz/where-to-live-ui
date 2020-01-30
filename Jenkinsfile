@@ -4,6 +4,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'npm run build'
+        sh 'rm -rf dist/'
       }
     }
 
