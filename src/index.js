@@ -6,16 +6,16 @@ import {BrowserRouter} from 'react-router-dom';
 import configureStore from './components/redux/store/CofigureStore.dev';
 import {Provider} from 'react-redux';
 import './index.css';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/core/styles';
 import App from "./components/App";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import theme from './ui/theme/index';
 
 const store = configureStore();
-const muiTheme = createMuiTheme();
 
 render(
 	<Provider store={store}>
-		<ThemeProvider theme={muiTheme}>
+		<ThemeProvider theme={theme}>
 			<BrowserRouter>
 				<CssBaseline/>
 				<App/>

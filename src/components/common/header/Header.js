@@ -9,6 +9,8 @@ import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as globalActions from "../../redux/actions/GlobalSettingsActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {Typography} from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 
 class Header extends React.Component {
 	static getDerivedStateFromProps(props) {
@@ -33,9 +35,10 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<AppBar position="fixed" color="default">
+			<AppBar position="fixed" color="primary">
 				<ToolBar>
 					{this.props.loading && <CircularProgress color="secondary" value={100} size={30}/>}
+					<Typography variant="h4" style={{fontWeight: '500'}}>Aliyah</Typography>
 					<div style={{flex: 1}}/>
 					<LoginButton isVisible={!this.state.authorized}/>
 					<SignupButton isVisible={!this.state.authorized}/>

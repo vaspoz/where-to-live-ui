@@ -3,10 +3,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from '@material-ui/core/styles';
 import {Link as RouterLink} from "react-router-dom";
+import {Typography} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
 	button: {
 		margin: theme.spacing(1)
+	},
+	text: {
+		color: theme.palette.primary.contrastText
 	}
 }));
 
@@ -17,8 +21,10 @@ const LoginButton = ({isVisible}) => {
 
 	return (
 		<div>
-			{isVisible && <Button color="primary" className={classes.button} component={LoginLink}>
+			{isVisible && <Button className={classes.button} component={LoginLink}>
+				<Typography variant="button" className={classes.text}>
 				Log In
+				</Typography>
 			</Button>}
 		</div>
 	);

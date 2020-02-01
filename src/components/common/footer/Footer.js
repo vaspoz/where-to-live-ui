@@ -8,7 +8,8 @@ import FooterButtons from "./FooterButtons";
 const useStyles = makeStyles(theme => ({
 	appBar: {
 		top: 'auto',
-		bottom: 0
+		bottom: 0,
+		backgroundColor: theme.palette.primary.main
 	},
 	toolbar: {
 		justifyContent: 'center'
@@ -21,7 +22,7 @@ const Footer = () => {
 	return (
 		<div>
 			<CssBaseline/>
-			<AppBar position="fixed" color="default" className={classes.appBar}>
+			<AppBar position="fixed" className={classes.appBar}>
 				<Toolbar className={classes.toolbar}>
 					<FooterButtons/>
 				</Toolbar>
