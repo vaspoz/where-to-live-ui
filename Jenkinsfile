@@ -9,7 +9,7 @@ pipeline {
 
     stage('deploy') {
       steps {
-        sh 'scp -i aliyah_key.pem /var/lib/jenkins/workspace/where-to-live-ui_master/dist/* ec2-user@35.159.30.173:where-to-live-ui/dist'
+        sh 'scp -i /home/ec2-user/aliyah_key.pem /var/lib/jenkins/workspace/where-to-live-ui_master/dist/* ec2-user@35.159.30.173:where-to-live-ui/dist'
       }
     }
 
