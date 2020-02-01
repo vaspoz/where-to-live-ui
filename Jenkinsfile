@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'pwd'
+        sh 'scp -i aliyah_key.pem /var/lib/jenkins/workspace/where-to-live-ui_master/dist/* ec2-user@35.159.30.173:where-to-live-ui/dist'
         sh 'npm run build'
       }
     }
