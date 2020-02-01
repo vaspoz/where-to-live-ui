@@ -7,5 +7,22 @@ pipeline {
       }
     }
 
-  }
-}
+    stage('deploy') {
+      steps {
+        sshPublisher(failOnError: true, publishers: [
+                                                                                                                                                                            sshPublisherDesc(
+                                                                                                                                                                                                              configName: "theserver",
+                                                                                                                                                                                                              verbose: true,
+                                                                                                                                                                                                              transfers: [
+                                                                                                                                                                                                                                                sshTransfer(
+                                                                                                                                                                                                                                                                                  sourceFiles: "dist/*",
+                                                                removePrefix: "dist"
+                                                                                                                                                                                                                                                                                )
+                                                                                                                                                                                                                                                                              ]
+                                                                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                                                                          ])
+              }
+            }
+
+          }
+        }
