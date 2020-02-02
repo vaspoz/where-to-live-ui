@@ -31,7 +31,7 @@ export default {
 			{test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
 			{test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
 			{
-				test: /\.(jpg|png|gif|svg)$/i, loaders: [
+				test: /\.(jpg|png|gif|svg|ico)$/i, loaders: [
 				'file?hash=sha512&digest=hex&name=[hash].[ext]',
 				'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
 			]
