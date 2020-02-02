@@ -1,5 +1,6 @@
 export const serverPort = 9999;
-export const baseURL = 'http://localhost:' + serverPort + '/aliyah';
+// export const baseURL = 'http://localhost:' + serverPort;
+export const baseURL = 'http://http://3.120.40.14/aliyah';
 export const countriesURL = baseURL + '/countries';
 export const citiesURL = baseURL + '/cities/by/';
 export const chartsURL = baseURL + '/compare';
