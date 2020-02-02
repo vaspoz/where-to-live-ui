@@ -65,9 +65,9 @@ const AboutPageForm = () => {
 				<NumberedList number={2}
 											text="Firstly, you need to login/signup. Then you'll chose your current location. After that you'll provide a list of countries to compare."/>
 				<NumberedList number={3}
-											text="Use the bottom buttons to navigate through the site. Play around and text me if you hove an excellent idea about improvements."/>
+											text="Use the bottom buttons to navigate through the site. Play around and text me if you have an excellent idea about improvements."/>
 				<NumberedList number={4}
-											text={"Remember - everything was developed by only myself, so it's bug-free (obviously). If you find something, it's mean to be there"}/>
+											text={"Remember - everything was developed by only myself, so it's bug-free (obviously). If you find something, it's meant to be there"}/>
 			</CardContent>
 		</Card>
 	);
