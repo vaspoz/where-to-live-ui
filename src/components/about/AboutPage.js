@@ -6,7 +6,7 @@ import AboutPageForm from "./aboutPageForm";
 class AboutPage extends React.Component {
 	render() {
 		return (
-			<Container maxWidth={'xs'}>
+			<Container maxWidth="md">
 				<CssBaseline/>
 				<AboutPageForm/>
 			</Container>

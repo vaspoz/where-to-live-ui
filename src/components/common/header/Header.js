@@ -40,7 +40,7 @@ class Header extends React.Component {
 			<AppBar position="fixed" color="primary">
 				<ToolBar>
 					<PersonPinCircleOutlinedIcon fontSize="large" color="action" style={{marginLeft: '-10px'}}/>
-					<AddIcon fontSize="large" color="white" style={{marginLeft: '-5px'}}/>
+					<AddIcon fontSize="large" style={{marginLeft: '-5px'}}/>
 					<FavoriteBorderIcon fontSize="large" color="secondary" style={{marginLeft: '-5px'}}/>
 					<div style={{marginLeft: '15px'}}>
 						<Typography variant="h4" style={{fontWeight: '500'}}>Aliyah</Typography>
