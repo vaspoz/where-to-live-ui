@@ -31,7 +31,7 @@ const NumberedList = ({number, text}) => {
 };
 
 NumberedList.propTypes = {
-	number: PropTypes.string.isRequired,
+	number: PropTypes.number.isRequired,
 	text: PropTypes.string.isRequired
 };
 
