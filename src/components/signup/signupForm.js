@@ -62,7 +62,6 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					<Grid item xs={12} sm={6}>
 						<TextField
 							name="firstName"
-							variant="outlined"
 							required
 							fullWidth
 							id="firstName"
@@ -75,7 +74,6 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					</Grid>
 					<Grid item xs={12} sm={6}>
 						<TextField
-							variant="outlined"
 							required
 							fullWidth
 							id="lastName"
@@ -88,7 +86,6 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							variant="outlined"
 							required
 							fullWidth
 							id="email"
@@ -101,7 +98,6 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							variant="outlined"
 							required
 							fullWidth
 							name="countryOrigin"
@@ -114,7 +110,6 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							variant="outlined"
 							required
 							fullWidth
 							name="username"
@@ -127,7 +122,6 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							variant="outlined"
 							required
 							fullWidth
 							name="password"
@@ -143,7 +137,7 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					<Button
 						fullWidth
 						variant="contained"
-						color="primary"
+						color="secondary"
 						className={classes.submit}
 						type="submit"
 						disabled={loading}

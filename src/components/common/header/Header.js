@@ -10,7 +10,9 @@ import {bindActionCreators} from 'redux';
 import * as globalActions from "../../redux/actions/GlobalSettingsActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {Typography} from "@material-ui/core";
-import Box from "@material-ui/core/Box";
+import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
+import AddIcon from '@material-ui/icons/Add';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 class Header extends React.Component {
 	static getDerivedStateFromProps(props) {
@@ -37,8 +39,14 @@ class Header extends React.Component {
 		return (
 			<AppBar position="fixed" color="primary">
 				<ToolBar>
+					<PersonPinCircleOutlinedIcon fontSize="large" color="action" style={{marginLeft: '-10px'}}/>
+					<AddIcon fontSize="large" color="white" style={{marginLeft: '-5px'}}/>
+					<FavoriteBorderIcon fontSize="large" color="secondary" style={{marginLeft: '-5px'}}/>
+					<div style={{marginLeft: '15px'}}>
+						<Typography variant="h4" style={{fontWeight: '500'}}>Aliyah</Typography>
+						Find a better place to live
+					</div>
 					{this.props.loading && <CircularProgress color="secondary" value={100} size={30}/>}
-					<Typography variant="h4" style={{fontWeight: '500'}}>Aliyah</Typography>
 					<div style={{flex: 1}}/>
 					<LoginButton isVisible={!this.state.authorized}/>
 					<SignupButton isVisible={!this.state.authorized}/>

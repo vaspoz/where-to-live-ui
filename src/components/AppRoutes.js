@@ -4,7 +4,6 @@ import SignupPage from "./signup/SignupPage";
 import {Switch, Route, useLocation} from "react-router-dom";
 import LoginPage from "./login_page/LoginPage";
 import AboutPage from "./about/AboutPage";
-import AboutPageMock from "./about/AboutPageMock";
 import BaseDataPage from "./base_data/BaseDataPage";
 import CompareToFormComponent from "./compareTo_data/CompareToFormComponent";
 import ComparisonChartsWrapper from "./comparison_chart/ComparisonChartsWrapper";
@@ -37,7 +36,7 @@ const AppRoutes = () => {
 						<ComparisonChartsWrapper />
 					</Route>
 					<Route path="/">
-						<AboutPageMock/>
+						<AboutPage/>
 					</Route >
 				</Switch>
 			</CSSTransition>

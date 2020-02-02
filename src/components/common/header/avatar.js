@@ -19,7 +19,7 @@ const Avatar = ({isVisible, onClickAction}) => {
 		<div>
 			{isVisible && <Button
 				variant="contained"
-				color="primary"
+				color="secondary"
 				className={classes.button}
 				component={LogoutLink}
 				onClick={onClickAction}
