@@ -1,4 +1,4 @@
-export const serverPort = 8080;
+export const serverPort = 9999;
 export const baseURL = 'http://localhost:' + serverPort;
 export const countriesURL = baseURL + '/countries';
 export const citiesURL = baseURL + '/cities/by/';
