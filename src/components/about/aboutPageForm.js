@@ -11,19 +11,15 @@ const useStyles = makeStyles(theme => ({
 		margin: theme.spacing(25, 3),
 		height: '400px',
 		maxWidth: 345,
-		position: "absolute",
-		// transition: 'box-shadow .3s',
-		// "&:hover": {
-		// 	boxShadow: '0 4px 20px 0 rgba(0,0,0,.16)'
-		// }
+		position: "absolute"
 	},
 	header: {
 		backgroundColor: theme.palette.primary.light,
 		color: 'white'
-	},
+	}
 }));
 
-const AboutPageForm = ({}) => {
+const AboutPageForm = () => {
 	const classes = useStyles();
 
 	return (

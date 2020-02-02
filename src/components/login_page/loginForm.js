@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 		position: 'relative'
 	},
 	submit: {
-		margin: theme.spacing(0),
+		margin: theme.spacing(0)
 	}
 }));
 
