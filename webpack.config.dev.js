@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
 	debug: true,
@@ -21,17 +22,18 @@ export default {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin()
+		new webpack.NoErrorsPlugin(),
+		new HtmlWebpackPlugin({
+			favicon: './src/images/favicon.png',
+			template: './src/index.html',
+			inject: false
+		})
 	],
 	module: {
 		loaders: [
 			{test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
 			{test: /(\.css)$/, loaders: ['style', 'css']},
-			{
-				test: /\.(jpg|png|gif|svg)$/i, loaders: [
-				'file?hash=sha512&digest=hex&name=[hash].[ext]'
-			]
-			},
+			{test: /\.(jpe?g|png|gif|ico)$/i, loader: 'file?name=[name].[ext]'},
 			{test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},       // Remove it
 			{test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},  // Remove it
 			{test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}              // Remove it

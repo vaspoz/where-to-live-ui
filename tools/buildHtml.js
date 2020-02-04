@@ -19,19 +19,3 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
 		console.log('index.html written to /dist'.green);
 	});
 });
-
-/*eslint-disable no-console */
-fs.readFile('src/favicon.ico', 'utf8', (err, markup) => {
-	if (err) {
-		return console.log(err);
-	}
-
-	const $ = cheerio.load(markup);
-
-	fs.writeFile('dist/favicon.ico', $.html(), 'utf8', (err) => {
-		if (err) {
-			return console.log(err);
-		}
-		console.log('favicon.ico written to /dist'.green);
-	});
-});
