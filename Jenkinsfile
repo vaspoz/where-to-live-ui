@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
+        sh 'npm install'
         sh 'npm run build'
       }
     }
@@ -10,17 +11,17 @@ pipeline {
     stage('deploy') {
       steps {
         sshPublisher(failOnError: true, publishers: [
-                                                                                                                                                                            sshPublisherDesc(
-                                                                                                                                                                                                              configName: "theserver",
-                                                                                                                                                                                                              verbose: true,
-                                                                                                                                                                                                              transfers: [
-                                                                                                                                                                                                                                                sshTransfer(
-                                                                                                                                                                                                                                                                                  sourceFiles: "dist/*",
-                                                                removePrefix: "dist"
-                                                                                                                                                                                                                                                                                )
-                                                                                                                                                                                                                                                                              ]
-                                                                                                                                                                                                                                                                            )
-                                                                                                                                                                                                                                                                          ])
+                                                                                                                                                                                      sshPublisherDesc(
+                                                                                                                                                                                                                          configName: "theserver",
+                                                                                                                                                                                                                          verbose: true,
+                                                                                                                                                                                                                          transfers: [
+                                                                                                                                                                                                                                                              sshTransfer(
+                                                                                                                                                                                                                                                                                                  sourceFiles: "dist/*",
+                                                                                removePrefix: "dist"
+                                                                                                                                                                                                                                                                                                )
+                                                                                                                                                                                                                                                                                              ]
+                                                                                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                                                                                          ])
               }
             }
 
