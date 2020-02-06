@@ -10,8 +10,7 @@ import NumberedList from "./numberedList";
 
 const useStyles = makeStyles(theme => ({
 	paper: {
-		margin: theme.spacing(20, 0),
-		// margin: 'auto',
+		marginTop: theme.spacing(15),
 		height: 480,
 		width: 900,
 		position: "absolute"

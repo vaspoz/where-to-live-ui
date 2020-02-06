@@ -1,6 +1,6 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {Container} from "@material-ui/core";
+import {Box, Container} from "@material-ui/core";
 import PropTypes from "prop-types";
 import * as globalActions from "../redux/actions/GlobalSettingsActions";
 import * as countryActions from "../redux/actions/CountryActions";
