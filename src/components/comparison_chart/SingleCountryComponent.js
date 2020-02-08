@@ -57,7 +57,7 @@ class SingleCountryComponent extends React.Component {
 SingleCountryComponent.propTypes = {
 	countryName: PropTypes.string.isRequired,
 	countryCode: PropTypes.string.isRequired,
-	calculatedRates: PropTypes.object,
+	calculatedRates: PropTypes.array,
 	chartActions: PropTypes.object,
 	baseCity: PropTypes.string,
 	baseCountry: PropTypes.string

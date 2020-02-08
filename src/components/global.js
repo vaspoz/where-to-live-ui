@@ -1,4 +1,4 @@
-export const serverPort = 9999;
+// export const serverPort = 8080;
 // export const baseURL = 'http://localhost:' + serverPort;
 export const baseURL = 'http://3.120.40.14/aliyah';
 export const countriesURL = baseURL + '/countries';
