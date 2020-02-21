@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
+const SignupForm = ({loading, onSubmitClick, onInputChange, onUsernameEnter, errorMessage}) => {
 	const classes = useStyles();
 
 	return (
@@ -117,7 +117,7 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 							id="username"
 							autoComplete="current-username"
 							disabled={loading}
-							onChange={onInputChange}
+							onChange={onUsernameEnter}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -156,7 +156,8 @@ SignupForm.propTypes = {
 	onSubmitClick: PropTypes.func.isRequired,
 	loading: PropTypes.bool.isRequired,
 	onInputChange: PropTypes.func.isRequired,
-	errorMessage: PropTypes.string
+	errorMessage: PropTypes.string,
+	onUsernameEnter: PropTypes.func
 };
 
 export default SignupForm;

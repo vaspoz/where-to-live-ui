@@ -18,11 +18,13 @@ class SignupPage extends React.Component {
 			username: "",
 			password: "",
 			countryOrigin: "",
+			loginErrorMessage: "",
 			authorized: false
 		};
 
 		this.onClickSignup = this.onClickSignup.bind(this);
 		this.onTextFieldChange = this.onTextFieldChange.bind(this);
+		this.onUsernameEnter = this.onUsernameEnter.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps, nextContext) {
@@ -39,6 +41,14 @@ class SignupPage extends React.Component {
 			});
 			this.props.history.push('/base-data');
 		}
+	}
+
+	onUsernameEnter(event) {
+		event.persist();
+		this.setState({
+			username: event.target.value,
+			loginErrorMessage: ""
+		});
 	}
 
 	onClickSignup() {
@@ -65,6 +75,7 @@ class SignupPage extends React.Component {
 					errorMessage={this.state.loginErrorMessage}
 					loading={this.state.loading}
 					onInputChange={this.onTextFieldChange}
+					onUsernameEnter={this.onUsernameEnter}
 				/>
 			</Container>
 		);

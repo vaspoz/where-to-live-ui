@@ -5,6 +5,7 @@ import api from '../../ajax/api';
 export function signUpUser(firstName, lastName, username, password, email, countryOrigin) {
 	return (dispatch) => {
 		dispatch(beginAjaxCall());
+		dispatch(clearLoginErrors());
 		return api.signUp(firstName, lastName, username, password, email, countryOrigin)
 			.then(authResponse => {
 				if (authResponse.error) {
