@@ -1,3 +1,5 @@
+/*eslint-disable no-undef */
+
 // look for baseURL in the webpack configuration files
 export const countriesURL = baseURL + '/countries';
 export const citiesURL = baseURL + '/cities/by/';
