@@ -7,8 +7,12 @@ export function signUpUser(firstName, lastName, username, password, email, count
 		dispatch(beginAjaxCall());
 		return api.signUp(firstName, lastName, username, password, email, countryOrigin)
 			.then(authResponse => {
-				localStorage.setItem('jwttoken', authResponse.jwttoken);
-				dispatch(loginUserSuccess(authResponse));
+				if (authResponse.error) {
+					dispatch(loginUserFailure(authResponse.error));
+				} else {
+					localStorage.setItem('jwttoken', authResponse.jwttoken);
+					dispatch(loginUserSuccess(authResponse));
+				}
 			})
 			.catch(error => {
 				throw(error);

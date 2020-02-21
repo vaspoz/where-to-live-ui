@@ -146,6 +146,7 @@ const SignupForm = ({loading, onSubmitClick, onInputChange, errorMessage}) => {
 					</Button>
 					{loading && <CircularProgress size={24} className={classes.circularProgress}/>}
 				</div>
+				{errorMessage}
 			</form>
 		</Paper>
 	);

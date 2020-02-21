@@ -62,7 +62,7 @@ class SignupPage extends React.Component {
 				<CssBaseline/>
 				<SignupForm
 					onSubmitClick={this.onClickSignup}
-					errorMessage={'errorMessage'}
+					errorMessage={this.state.loginErrorMessage}
 					loading={this.state.loading}
 					onInputChange={this.onTextFieldChange}
 				/>

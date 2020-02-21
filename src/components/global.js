@@ -1,6 +1,6 @@
-// export const serverPort = 8080;
-// export const baseURL = 'http://localhost:' + serverPort;
-export const baseURL = 'http://aliyah.io/aliyah';
+export const serverPort = 8080;
+export const baseURL = 'http://localhost:' + serverPort;
+// export const baseURL = 'http://aliyah.io/aliyah';
 export const countriesURL = baseURL + '/countries';
 export const citiesURL = baseURL + '/cities/by/';
 export const chartsURL = baseURL + '/compare';
