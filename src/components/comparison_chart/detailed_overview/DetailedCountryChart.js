@@ -127,7 +127,7 @@ class DetailedCountryChart extends React.Component {
 	render() {
 		const chartDataOverall = this.getOverallChartDataIfExist(this.props.countryName);
 		const chartDataDetailed = this.getChartDataIfExist(this.props.countryName);
-		let chartData = chartDataOverall;
+		let chartData = chartDataDetailed;
 		const {classes} = this.props;
 
 
