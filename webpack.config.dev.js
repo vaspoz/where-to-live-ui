@@ -2,6 +2,10 @@ import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
+const GLOBALS = {
+	'process.env.NODE_ENB': JSON.stringify('development'),
+	baseURL: JSON.stringify('http://localhost:8080')
+};
 export default {
 	debug: true,
 	devtool: 'cheap-module-eval-source-map',
@@ -22,6 +26,7 @@ export default {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
+		new webpack.DefinePlugin(GLOBALS),
 		new webpack.NoErrorsPlugin(),
 		new HtmlWebpackPlugin({
 			favicon: './src/images/favicon.png',

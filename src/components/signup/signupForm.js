@@ -156,7 +156,7 @@ SignupForm.propTypes = {
 	onSubmitClick: PropTypes.func.isRequired,
 	loading: PropTypes.bool.isRequired,
 	onInputChange: PropTypes.func.isRequired,
-	errorMessage: PropTypes.string.isRequired
+	errorMessage: PropTypes.string
 };
 
 export default SignupForm;

@@ -1,6 +1,4 @@
-export const serverPort = 8080;
-export const baseURL = 'http://localhost:' + serverPort;
-// export const baseURL = 'http://aliyah.io/aliyah';
+// look for baseURL in the webpack configuration files
 export const countriesURL = baseURL + '/countries';
 export const citiesURL = baseURL + '/cities/by/';
 export const chartsURL = baseURL + '/compare';

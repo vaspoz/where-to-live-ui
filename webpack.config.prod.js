@@ -4,7 +4,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const GLOBALS = {
-	'process.env.NODE_ENB': JSON.stringify('production')
+	'process.env.NODE_ENB': JSON.stringify('production'),
+	baseURL: JSON.stringify('http://aliyah.io/aliyah')
 };
 export default {
 	debug: true,
