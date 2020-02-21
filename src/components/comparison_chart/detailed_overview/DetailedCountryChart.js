@@ -16,6 +16,9 @@ import MinimizeIcon from '@material-ui/icons/Minimize';
 import IconButton from "@material-ui/core/IconButton";
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 import CardContent from "@material-ui/core/CardContent";
+import Grid from "@material-ui/core/Grid";
+import Switch from "@material-ui/core/Switch";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = theme => {
 	return {
@@ -78,7 +81,7 @@ class DetailedCountryChart extends React.Component {
 			scales: {
 				xAxes: [{
 					ticks: {
-						callback: function(value, index, values) {
+						callback: function (value, index, values) {
 							if (value.length > 10)
 								value = value.substr(0, 9) + "...";
 							return value;
@@ -103,9 +106,14 @@ class DetailedCountryChart extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
-		this.getOverallChartDataIfExist = this.getOverallChartDataIfExist.bind(this);
-	}
 
+		this.state = {
+			typeOfChart: 'simple'
+		};
+
+		this.getOverallChartDataIfExist = this.getOverallChartDataIfExist.bind(this);
+		this.handleSwitchChange = this.handleSwitchChange.bind(this);
+	}
 
 
 	getChartDataIfExist(country) {
@@ -124,12 +132,20 @@ class DetailedCountryChart extends React.Component {
 		return DetailedCountryChart.prepareOverallChart(countryRates.cityRates);
 	}
 
-	render() {
-		const chartDataOverall = this.getOverallChartDataIfExist(this.props.countryName);
-		const chartDataDetailed = this.getChartDataIfExist(this.props.countryName);
-		let chartData = chartDataDetailed;
-		const {classes} = this.props;
+	handleSwitchChange(event) {
+		this.setState({
+			typeOfChart: event.target.checked ? 'detailed' : 'simple'
+		});
+	}
 
+	render() {
+		const chartTypes = {
+			simple: this.getOverallChartDataIfExist(this.props.countryName),
+			detailed: this.getChartDataIfExist(this.props.countryName)
+		};
+		let chartData = chartTypes[this.state.typeOfChart];
+
+		const {classes} = this.props;
 
 		return (
 			<Card className={classes.paper}>
@@ -137,9 +153,18 @@ class DetailedCountryChart extends React.Component {
 					title={this.props.countryName}
 					subheader="High level chart"
 					action={
-						<IconButton onClick={this.props.onDetailsClick}>
-							<FullscreenExitIcon />
-						</IconButton>
+						<Grid>
+							<Tooltip title={'Detailed'}>
+								<Switch
+									defaultChecked={false}
+									value="DetailedChart"
+									onChange={this.handleSwitchChange}
+								/>
+							</Tooltip>
+							<IconButton onClick={this.props.onDetailsClick}>
+								<FullscreenExitIcon/>
+							</IconButton>
+						</Grid>
 					}
 				/>
 				<CardContent>
