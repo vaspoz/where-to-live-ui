@@ -75,22 +75,10 @@ function mapStateToProps(store) {
 	};
 }
 
-function tempMapStateToProps(store) {
-	return {
-		countryList: [
-			"Poland",
-			"France",
-			"Germany",
-			"Portugal"
-		],
-		compareToList: store.compareTo
-	};
-}
-
 function mapDispatchToProps(dispatch) {
 	return {
 		countryActions: bindActionCreators(countryActions, dispatch)
 	};
 }
 
-export default connect(tempMapStateToProps, mapDispatchToProps)(SelectCountryComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectCountryComponent);

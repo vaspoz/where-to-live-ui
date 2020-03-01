@@ -33,14 +33,14 @@ const styles = theme => {
 };
 
 class DetailedCountryChart extends React.Component {
-	static prepareOverallChart(cityRates) {
-		const labels = cityRates.map(singleCityRate => singleCityRate.city);
+	static prepareOverallChart(relativeCityRateList) {
+		const labels = relativeCityRateList.map(singleCityRate => singleCityRate.city);
 		return {
 			labels: labels,
 			datasets: [
 				{
 					label: 'Profit Value',
-					data: cityRates.map(singleCityRate => singleCityRate.overall),
+					data: relativeCityRateList.map(singleCityRate => singleCityRate.overall),
 					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'blue'),
 					borderWidth: 1
 				}
@@ -48,20 +48,20 @@ class DetailedCountryChart extends React.Component {
 		};
 	}
 
-	static prepareCityRatesForChart(cityRates) {
-		const labels = cityRates.map(singleCityRate => singleCityRate.city);
+	static prepareCityRatesForChart(relativeCityRateList) {
+		const labels = relativeCityRateList.map(singleCityRate => singleCityRate.city);
 		return {
 			labels: labels,
 			datasets: [
 				{
 					label: 'Salary',
-					data: cityRates.map(singleCityRate => singleCityRate.salary),
+					data: relativeCityRateList.map(singleCityRate => singleCityRate.salary),
 					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'green'),
 					borderWidth: 1
 				},
 				{
 					label: 'Expenses',
-					data: cityRates.map(singleCityRate => singleCityRate.expenses),
+					data: relativeCityRateList.map(singleCityRate => singleCityRate.expenses),
 					backgroundColor: DetailedCountryChart.getRandomColors(labels.length, 'red')
 				}
 			]
@@ -121,7 +121,7 @@ class DetailedCountryChart extends React.Component {
 			.filter(rates => rates.country === country)[0];
 		if (!countryRates)
 			return null;
-		return DetailedCountryChart.prepareCityRatesForChart(countryRates.cityRates);
+		return DetailedCountryChart.prepareCityRatesForChart(countryRates.relativeCityRateList);
 	}
 
 	getOverallChartDataIfExist(country) {
@@ -129,7 +129,7 @@ class DetailedCountryChart extends React.Component {
 			.filter(rates => rates.country === country)[0];
 		if (!countryRates)
 			return null;
-		return DetailedCountryChart.prepareOverallChart(countryRates.cityRates);
+		return DetailedCountryChart.prepareOverallChart(countryRates.relativeCityRateList);
 	}
 
 	handleSwitchChange(event) {

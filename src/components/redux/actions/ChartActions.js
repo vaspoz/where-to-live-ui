@@ -32,6 +32,7 @@ function fetchChartsSuccess(chartsList) {
 }
 
 function fetchSingleChartSuccess(chart) {
+	console.log(chart);
 	return {
 		type: types.ADD_CALCULATED_RATES_AJAXEND,
 		calculatedRates: chart

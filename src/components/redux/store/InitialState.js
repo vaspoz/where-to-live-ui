@@ -23,7 +23,7 @@ const initialState = {
 	calculatedRates: [
 		{
 			country: "",
-			cityRates: [
+			relativeCityRateList: [
 				{
 					city: "",
 					expenses: 0.00,

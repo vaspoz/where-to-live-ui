@@ -40,14 +40,14 @@ class ShortCountryOverview extends React.Component {
 			.filter(rates => rates.country === country)[0];
 		if (!countryRates)
 			return null;
-		return DetailedCountryChart.prepareOverallChart(countryRates.cityRates);
+		return DetailedCountryChart.prepareOverallChart(countryRates.relativeCityRateList);
 	}
 
 	getNoOfCities(countryName) {
 		const calcRatesForCurrentCountry = this.props.calculatedRates.filter(countryRates => countryRates.country === countryName)[0];
 		let noOfCities;
 		if (calcRatesForCurrentCountry) {
-			noOfCities = calcRatesForCurrentCountry.cityRates.length;
+			noOfCities = calcRatesForCurrentCountry.relativeCityRateList.length;
 		}
 		return noOfCities || 0;
 	}
@@ -57,7 +57,7 @@ class ShortCountryOverview extends React.Component {
 		let averageProfit;
 		if (calcRatesForCurrentCountry) {
 			let overallFlattened = 0;
-			calcRatesForCurrentCountry.cityRates.forEach(cityRate => overallFlattened += cityRate.overall);
+			calcRatesForCurrentCountry.relativeCityRateList.forEach(cityRate => overallFlattened += cityRate.overall);
 			averageProfit = (overallFlattened / this.getNoOfCities(countryName)).toFixed(2);
 		}
 		return parseFloat(averageProfit || 0);

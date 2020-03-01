@@ -81,7 +81,7 @@ const sortCountryRates = (countryRates = []) => {
 };
 
 const sortByCityName = (singleCountryRates) => {
-	singleCountryRates.cityRates.sort(
+	singleCountryRates.relativeCityRateList.sort(
 		(cityA, cityB) => {
 			if (cityA[sortChartBy] > cityB[sortChartBy])
 				return 1;
