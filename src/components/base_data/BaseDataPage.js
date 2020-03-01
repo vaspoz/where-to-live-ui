@@ -19,6 +19,7 @@ class BaseDataPage extends React.Component {
 			countryInputDisabled: false,
 			cityInputDisabled: true,
 			submitDisabled: !isBaseDateHere,
+			resetDisabled: !isBaseDateHere || this.props.isTestUser,
 			baseCountry: isBaseDateHere ? this.props.baseCountry : "",
 			baseCity: isBaseDateHere ? this.props.baseCity : ""
 		};
@@ -78,6 +79,7 @@ class BaseDataPage extends React.Component {
 				<BaseDataForm
 					key={this.state.innerKey}
 					submitDisabled={this.state.submitDisabled}
+					resetDisabled={this.state.resetDisabled}
 					countryList={this.props.countries}
 					cityList={this.props.cities}
 					onCountrySelect={this.onCountrySelect}
@@ -102,7 +104,8 @@ BaseDataPage.propTypes = {
 	countries: PropTypes.array.isRequired,
 	cities: PropTypes.array.isRequired,
 	calculatedRatesActions: PropTypes.object.isRequired,
-	history: PropTypes.object.isRequired
+	history: PropTypes.object.isRequired,
+	isTestUser: PropTypes.bool
 };
 
 function mapDispatchToProps(dispatch) {
@@ -119,7 +122,8 @@ function mapStateToProps(state) {
 		countries: state.countryList,
 		cities: state.cityList,
 		baseCountry: state.baseData.country,
-		baseCity: state.baseData.city
+		baseCity: state.baseData.city,
+		isTestUser: state.globalSettings.currentUser.username === 'a'
 	};
 }
 

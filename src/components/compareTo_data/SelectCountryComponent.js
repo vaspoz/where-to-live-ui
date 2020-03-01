@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import SelectItemField from "./selectItemField";
 import DeleteItem from "./deleteItemButton";
 import {bindActionCreators} from "redux";
+import {testUserName} from "../global";
 
 class SelectCountryComponent extends React.Component {
 	constructor(props, context) {
@@ -52,7 +53,7 @@ class SelectCountryComponent extends React.Component {
 					isError={this.state.isError}
 					value={this.state.chosenCountry}
 				/>
-				<DeleteItem deleteHandler={this.onDelete}/>
+				<DeleteItem deleteHandler={this.onDelete} isDisabled={this.props.isTestUser}/>
 			</div>
 		);
 	}
@@ -65,13 +66,15 @@ SelectCountryComponent.propTypes = {
 	countryActions: PropTypes.object,
 	compareToList: PropTypes.array,
 	countryList: PropTypes.array,
-	className: PropTypes.string
+	className: PropTypes.string,
+	isTestUser: PropTypes.bool
 };
 
 function mapStateToProps(store) {
 	return {
 		countryList: store.countryList,
-		compareToList: store.compareTo
+		compareToList: store.compareTo,
+		isTestUser: store.globalSettings.currentUser.username === testUserName
 	};
 }
 

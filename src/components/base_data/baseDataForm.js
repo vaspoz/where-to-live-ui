@@ -57,6 +57,7 @@ const BaseDataForm = ({
 												countryInputDisabled,
 												cityInputDisabled,
 												submitDisabled,
+												resetDisabled,
 												onReset,
 												countryValue,
 												cityValue
@@ -100,7 +101,7 @@ const BaseDataForm = ({
 						fullWidth
 						variant="contained"
 						color="primary"
-						disabled={submitDisabled}
+						disabled={resetDisabled}
 						className={classes.reset}
 						onClick={onReset}
 					>
@@ -126,6 +127,7 @@ const BaseDataForm = ({
 
 BaseDataForm.propTypes = {
 	submitDisabled: PropTypes.bool.isRequired,
+	resetDisabled: PropTypes.bool.isRequired,
 	countryList: PropTypes.array.isRequired,
 	cityList: PropTypes.array.isRequired,
 	onCountrySelect: PropTypes.func.isRequired,

@@ -10,17 +10,18 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const DeleteItemButton = ({deleteHandler}) => {
+const DeleteItemButton = ({deleteHandler, isDisabled}) => {
 	const classes = useStyles();
 	return (
-		<IconButton onClick={deleteHandler} className={classes.icon}>
+		<IconButton onClick={deleteHandler} className={classes.icon} disabled={isDisabled}>
 			<DeleteIcon fontSize="small"/>
 		</IconButton>
 	);
 };
 
 DeleteItemButton.propTypes = {
-	deleteHandler: PropTypes.func.isRequired
+	deleteHandler: PropTypes.func.isRequired,
+	isDisabled: PropTypes.bool
 };
 
 export default DeleteItemButton;

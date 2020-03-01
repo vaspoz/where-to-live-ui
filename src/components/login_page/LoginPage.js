@@ -1,13 +1,15 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {Box, Container} from "@material-ui/core";
+import {Container} from "@material-ui/core";
 import PropTypes from "prop-types";
 import * as globalActions from "../redux/actions/GlobalSettingsActions";
 import * as countryActions from "../redux/actions/CountryActions";
+import * as cityActions from "../redux/actions/CityActions";
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import LoginForm from './loginForm';
 import {withRouter} from 'react-router';
+import {testUserName} from "../global";
 
 class LoginPage extends React.Component {
 	constructor(props, context) {
@@ -58,6 +60,18 @@ class LoginPage extends React.Component {
 	}
 
 	onClickLogin() {
+		if (this.state.username === testUserName) {
+			this.props.countryActions.selectBaseCountry('Poland');
+			this.props.cityActions.selectBaseCity('Gdansk');
+
+			this.props.countryActions.selectCompareToCountry('France');
+			this.props.countryActions.fetchCountryCode('France');
+			this.props.countryActions.selectCompareToCountry('Germany');
+			this.props.countryActions.fetchCountryCode('Germany');
+			this.props.countryActions.selectCompareToCountry('Portugal');
+			this.props.countryActions.fetchCountryCode('Portugal');
+		}
+
 		this.props.globalActions.loginUser(this.state.username, this.state.password);
 		this.setState({
 			loading: true
@@ -82,13 +96,16 @@ class LoginPage extends React.Component {
 
 LoginPage.propTypes = {
 	globalActions: PropTypes.object.isRequired,
+	countryActions: PropTypes.object.isRequired,
+	cityActions: PropTypes.object.isRequired,
 	history: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch) {
 	return {
 		globalActions: bindActionCreators(globalActions, dispatch),
-		countryActions: bindActionCreators(countryActions, dispatch)
+		countryActions: bindActionCreators(countryActions, dispatch),
+		cityActions: bindActionCreators(cityActions, dispatch)
 	};
 }
 
