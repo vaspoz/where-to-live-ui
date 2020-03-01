@@ -68,7 +68,7 @@ const BaseDataForm = ({
 				<FlightTakeoffIcon/>
 			</Avatar>
 			<Typography component="h1" variant="h5">
-				Base Data Input
+				Your current location
 			</Typography>
 			<Autocomplete
 				id="base-country"
