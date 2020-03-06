@@ -5,7 +5,7 @@ import {Switch, Route, useLocation} from "react-router-dom";
 import LoginPage from "./login_page/LoginPage";
 import AboutPage from "./about/AboutPage";
 import BaseDataPage from "./base_data/BaseDataPage";
-import CompareToFormComponent from "./compareTo_data/CompareToFormComponent";
+import CompareToFormComponent from "./compareTo_data/CompareToPage";
 import ComparisonChartsWrapper from "./comparison_chart/ComparisonChartsWrapper";
 
 const AppRoutes = () => {

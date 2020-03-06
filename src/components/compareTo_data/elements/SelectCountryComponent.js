@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import * as countryActions from "../redux/actions/CountryActions";
+import * as countryActions from "../../redux/actions/CountryActions";
 import {connect} from "react-redux";
 import SelectItemField from "./selectItemField";
 import DeleteItem from "./deleteItemButton";
 import {bindActionCreators} from "redux";
-import {testUserName} from "../global";
+import {testUserName} from "../../global";
 
 class SelectCountryComponent extends React.Component {
 	constructor(props, context) {

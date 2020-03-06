@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		padding: theme.spacing(5, 3),
+		padding: theme.spacing(3),
 		marginTop: theme.spacing(20),
 		height: '400px',
 		width: '350px',
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 		transition: 'box-shadow .3s'
 	},
 	avatar: {
-		margin: theme.spacing(1),
+		margin: theme.spacing(1,1,2,1),
 		backgroundColor: theme.palette.primary.main
 	},
 	buttonsWrapper: {
@@ -70,6 +70,9 @@ const BaseDataForm = ({
 			</Avatar>
 			<Typography component="h1" variant="h5">
 				Your current location
+			</Typography>
+			<Typography variant="caption" color="textSecondary">
+				That will be a base data for the engine to compare
 			</Typography>
 			<Autocomplete
 				id="base-country"
