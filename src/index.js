@@ -9,7 +9,7 @@ import './index.css';
 import {ThemeProvider} from '@material-ui/core/styles';
 import App from "./components/App";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from './ui/theme/index';
+import theme from './ui/theme/v3/index';
 import './images/favicon.png';
 
 const store = configureStore();
