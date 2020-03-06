@@ -11,4 +11,4 @@ export const countryCodesAPI = 'https://restcountries.eu/rest/v2/name';
 
 export const sortChartBy = 'overall';
 
-export const testUserName = 'a';
+export const testUserName = 'fisher';
