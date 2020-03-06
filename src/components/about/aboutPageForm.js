@@ -62,11 +62,11 @@ const AboutPageForm = () => {
 				<NumberedList number={1}
 											text="Aliyah will help you to compare salary/expenses of your current location (country/city) with locations you'd like to relocate to."/>
 				<NumberedList number={2}
-											text="Firstly, you need to login/signup. Then you'll chose your current location. After that you'll provide a list of countries to compare."/>
-				<NumberedList number={3}
 											text="Use the bottom buttons to navigate through the site. Play around and text me if you have an excellent idea about improvements."/>
-				<NumberedList number={4}
+				<NumberedList number={3}
 											text={"Remember - everything was developed by only myself, so it's bug-free (obviously). If you find something, it's meant to be there"}/>
+				<NumberedList number={4}
+											text="To try it, you can use a test user with the username 'fisher' and the password 'guesswhat'"/>
 			</CardContent>
 		</Card>
 	);
