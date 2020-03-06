@@ -11,15 +11,22 @@ const useStyles = makeStyles(theme => ({
 		height: 35,
 		width: 35,
 		marginRight: 10
+	},
+	specNum: {
+		backgroundColor: theme.palette.secondary.dark,
+		height: 35,
+		width: 35,
+		marginRight: 10
 	}
 }));
 
 const NumberedList = ({number, text}) => {
 	const classes = useStyles();
+	const numClassName = number === 4 ? classes.specNum : classes.numbers;
 	return (
 		<Grid container alignItems="center">
 			<Grid item>
-				<Avatar className={classes.numbers}>{number}</Avatar>
+				<Avatar className={numClassName}>{number}</Avatar>
 			</Grid>
 			<Grid item xs>
 				<Typography variant="body1" color="textPrimary">
