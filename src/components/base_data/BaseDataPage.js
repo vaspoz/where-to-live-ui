@@ -9,6 +9,7 @@ import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router';
 import * as cityActions from '../redux/actions/CityActions';
 import BaseDataForm from "./baseDataForm";
+import {testUserName} from "../global";
 
 class BaseDataPage extends React.Component {
 	constructor(props, context) {
@@ -123,7 +124,7 @@ function mapStateToProps(state) {
 		cities: state.cityList,
 		baseCountry: state.baseData.country,
 		baseCity: state.baseData.city,
-		isTestUser: state.globalSettings.currentUser.username === 'a'
+		isTestUser: state.globalSettings.currentUser.username === testUserName
 	};
 }
 
