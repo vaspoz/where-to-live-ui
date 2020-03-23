@@ -13,19 +13,25 @@ import {Typography} from "@material-ui/core";
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import AdminButton from "./adminButton";
+import {adminUserName} from "../../global";
 
 class Header extends React.Component {
 	static getDerivedStateFromProps(props) {
 		return {
-			authorized: !!props.currentUser && Object.keys(props.currentUser).length > 0
+			authorized: !!props.currentUser && Object.keys(props.currentUser).length > 0,
+			isAdmin: !!props.currentUser && props.currentUser.username === adminUserName
 		};
 	}
 
 	constructor(props, context) {
 		super(props, context);
 
+		let isUserAuthorized =!!this.props.currentUser && Object.keys(this.props.currentUser).length > 0;
+
 		this.state = {
-			authorized: !!this.props.currentUser && Object.keys(this.props.currentUser).length > 0
+			authorized: isUserAuthorized,
+			isAdmin: isUserAuthorized && this.props.currentUser.username === adminUserName
 		};
 
 		this.onClickLogout = this.onClickLogout.bind(this);
@@ -48,6 +54,7 @@ class Header extends React.Component {
 					</div>
 					{this.props.loading && <CircularProgress color="secondary" value={100} size={30}/>}
 					<div style={{flex: 1}}/>
+					<AdminButton isVisible={this.state.isAdmin}/>
 					<LoginButton isVisible={!this.state.authorized}/>
 					<SignupButton isVisible={!this.state.authorized}/>
 					<Avatar isVisible={this.state.authorized} onClickAction={this.onClickLogout}/>

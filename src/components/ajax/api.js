@@ -1,8 +1,17 @@
 import fetch from 'isomorphic-fetch';
-import {countriesURL, citiesURL, chartsURL, sortChartBy, countryCodesAPI, signupURL, loginURL} from '../global';
+import {
+	countriesURL,
+	citiesURL,
+	chartsURL,
+	sortChartBy,
+	countryCodesAPI,
+	signupURL,
+	loginURL,
+	adminUserCountURL, adminLogsURL
+} from '../global';
 
 // Use a fetch wrapper to inject headers in all requests
-let fetchWrap = function(url, options) {
+let fetchWrap = function (url, options) {
 	if (!options) options = {};
 	let jwttoken = localStorage.getItem('jwttoken');
 
@@ -68,6 +77,15 @@ const BEapi = {
 				password
 			})
 		})
+			.then(response => response.json());
+	},
+
+	adminGetUserCount: () => {
+		return fetchWrap(adminUserCountURL)
+			.then(response => response.json());
+	},
+	adminGetLogs: (logsCount) => {
+		return fetchWrap(adminLogsURL + `/${logsCount}`)
 			.then(response => response.json());
 	}
 };

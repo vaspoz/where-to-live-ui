@@ -12,3 +12,8 @@ export const countryCodesAPI = 'https://restcountries.eu/rest/v2/name';
 export const sortChartBy = 'overall';
 
 export const testUserName = 'fisher';
+export const adminUserName = 'vaspoz';
+
+// admin links
+export const adminUserCountURL = baseURL + '/admin/users-count';
+export const adminLogsURL = baseURL + '/admin/get-logs/';

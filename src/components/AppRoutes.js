@@ -7,6 +7,7 @@ import AboutPage from "./about/AboutPage";
 import BaseDataPage from "./base_data/BaseDataPage";
 import CompareToFormComponent from "./compareTo_data/CompareToPage";
 import ComparisonChartsWrapper from "./comparison_chart/ComparisonChartsWrapper";
+import AdminPortalPage from "./admin_portal/AdminPortalPage";
 
 const AppRoutes = () => {
 	let location = useLocation();
@@ -34,6 +35,9 @@ const AppRoutes = () => {
 					</Route>
 					<Route path="/comparison-chart">
 						<ComparisonChartsWrapper />
+					</Route>
+					<Route path="/admin-portal">
+						<AdminPortalPage />
 					</Route>
 					<Route path="/">
 						<AboutPage/>
