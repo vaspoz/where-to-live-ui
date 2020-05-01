@@ -95,7 +95,6 @@ const AboutPageForm = () => {
 				<br/>
 				<Grid container justify="center">
 					{logos.map(logoImg => {
-						console.log();
 						return (<Grid key={logoImg} item>
 							<TechLogo source={logoImg} height={48}/>
 						</Grid>);
