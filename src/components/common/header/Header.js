@@ -15,6 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import AdminButton from "./adminButton";
 import {adminUserName} from "../../global";
+import TryMeButton from "./tryMeComponent";
 
 class Header extends React.Component {
 	static getDerivedStateFromProps(props) {
@@ -57,6 +58,7 @@ class Header extends React.Component {
 					<AdminButton isVisible={this.state.isAdmin}/>
 					<LoginButton isVisible={!this.state.authorized}/>
 					<SignupButton isVisible={!this.state.authorized}/>
+					<TryMeButton isVisible={!this.state.authorized}/>
 					<Avatar isVisible={this.state.authorized} onClickAction={this.onClickLogout}/>
 				</ToolBar>
 			</AppBar>

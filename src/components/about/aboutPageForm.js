@@ -49,9 +49,13 @@ const AboutPageForm = () => {
 					project</Typography> to
 					keep my IT knowledge <EmojiInline emoji={'👨🏽‍💻‍'}/>up to date.
 					So don't be surprised <EmojiInline emoji={'🙀'}/>by various features which maybe not needed.
-					For example, the authorization<EmojiInline emoji={'🕵🏽‍♂️'}/>️ - c'mon we both know that it's too much
-					for so small app, right? But who cares,<Typography variant="inherit" color="secondary"> I can do here
-					whatever I want</Typography>, right? <EmojiInline emoji={'😈'}/>
+					For example, the authorization<EmojiInline emoji={'🕵🏽‍♂️'}/>️ is not mandatory needed. I implemented it
+					only for the purpose of education.
+				</Typography>
+				<Typography variant="body1" color="textPrimary" align="justify" paragraph>
+					<span style={{marginLeft: 15}}/>
+					The service is completely free, you can use it by clicking on 'Try Me' button.
+					However, I'm gonna to extend functionality for authorized users in future.
 				</Typography>
 				<Typography variant="body1" color="textPrimary" align="justify" paragraph>
 					<span style={{marginLeft: 15}}/>
@@ -65,8 +69,6 @@ const AboutPageForm = () => {
 											text="Use the bottom buttons to navigate through the site. Play around and text me if you have an excellent idea about improvements."/>
 				<NumberedList number={3}
 											text={"Remember - everything was developed by only myself, so it's bug-free (obviously). If you find something, it's meant to be there"}/>
-				<NumberedList number={4}
-											text="To try it, you can use a test user with the username 'fisher' and the password 'guesswhat'"/>
 			</CardContent>
 		</Card>
 	);
