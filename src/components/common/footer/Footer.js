@@ -20,6 +20,11 @@ const useStyles = makeStyles(theme => ({
 		position: 'absolute',
 		right: 20,
 		top: 20
+	},
+	years: {
+		position: 'absolute',
+		left: 20,
+		top: 20
 	}
 }));
 
@@ -30,6 +35,11 @@ const Footer = () => {
 		<div>
 			<CssBaseline/>
 			<AppBar position="fixed" className={classes.appBar}>
+				<Box className={classes.years}>
+					<Typography variant="subtitle2">
+						© 2017-{new Date().getFullYear()}
+					</Typography>
+				</Box>
 				<Toolbar className={classes.toolbar}>
 					<FooterButtons/>
 				</Toolbar>
