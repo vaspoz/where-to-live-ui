@@ -11,7 +11,7 @@ import App from "./components/App";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from './ui/theme/v3/index';
 import './images/favicon.png';
-import './images/icon300x200.png'
+import './images/icon300x300.png'
 
 const store = configureStore();
 
