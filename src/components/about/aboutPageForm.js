@@ -33,7 +33,7 @@ import nginxLogo from "../../images/nginx.png";
 const useStyles = makeStyles(theme => ({
 	paper: {
 		marginTop: theme.spacing(15),
-		height: 550,
+		height: 560,
 		width: 900,
 		position: "absolute"
 	},
